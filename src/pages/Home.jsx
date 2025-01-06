@@ -7,7 +7,6 @@ import Steps from '../components/Steps'
 import Testimonial from '../components/Essentials/Testimonial'
 import DailyStats from '../components/Essentials/DailyStats'
 import PerService from '../components/Essentials/PerService'
-import Auto from '../components/Auto'
 import Partners from '../components/Partners'
 
 
@@ -23,7 +22,6 @@ const Home = () => {
       <Testimonial />
       <DailyStats />
       <PerService />
-      <Auto />
       <Partners />
      
     </div>
