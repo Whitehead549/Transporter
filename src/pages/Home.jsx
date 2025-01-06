@@ -53,7 +53,7 @@ const Home = () => {
   useEffect(() => {
     // When all images are loaded, add the extra 1.5-second delay before stopping the loader.
     if (imagesLoaded === imageCount) {
-      setTimeout(() => setIsLoading(false), 1500); // 1.5 seconds delay
+      setTimeout(() => setIsLoading(false), 3000); // 3 seconds delay
     }
   }, [imagesLoaded, imageCount]);
 
