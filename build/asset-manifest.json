@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/static/css/main.2baaaed8.css",
-    "main.js": "/static/js/main.cbd12687.js",
-    "static/media/ship.png": "/static/media/ship.f618a805f01dad40079c.png",
+    "main.js": "/static/js/main.7a2c76df.js",
     "static/media/dollar.png": "/static/media/dollar.cc2823ec9bffd52151d8.png",
+    "static/media/ship.png": "/static/media/ship.0f671d72359c7171a64e.png",
     "static/media/package.png": "/static/media/package.f4b70543758c43bb4a27.png",
     "static/media/fa-solid-900.ttf": "/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
-    "static/media/new_section.jpg": "/static/media/new_section.b240b5a268cf2a76d2dc.jpg",
     "static/media/personservice.jpg": "/static/media/personservice.d1fe81516b234e645ea9.jpg",
     "static/media/fa-brands-400.ttf": "/static/media/fa-brands-400.1815e00441357e01619e.ttf",
     "static/media/fa-solid-900.woff2": "/static/media/fa-solid-900.2463b90d9a316e4e5294.woff2",
     "static/media/fa-brands-400.woff2": "/static/media/fa-brands-400.c210719e60948b211a12.woff2",
     "static/media/fa-regular-400.ttf": "/static/media/fa-regular-400.914997e1bdfc990d0897.ttf",
     "static/media/logo4.png": "/static/media/logo4.adfccfe4c3fe7b68720e.png",
+    "static/media/new_section.jpg": "/static/media/new_section.96a5a7383a1e156d224a.jpg",
     "static/media/logo3.png": "/static/media/logo3.ddb317d69a3604c2e632.png",
     "static/media/logo1.png": "/static/media/logo1.70a5b984349f15efedbf.png",
     "static/media/fa-regular-400.woff2": "/static/media/fa-regular-400.89999bdf5d835c012025.woff2",
@@ -21,10 +21,10 @@
     "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
     "index.html": "/index.html",
     "main.2baaaed8.css.map": "/static/css/main.2baaaed8.css.map",
-    "main.cbd12687.js.map": "/static/js/main.cbd12687.js.map"
+    "main.7a2c76df.js.map": "/static/js/main.7a2c76df.js.map"
   },
   "entrypoints": [
     "static/css/main.2baaaed8.css",
-    "static/js/main.cbd12687.js"
+    "static/js/main.7a2c76df.js"
   ]
 }
