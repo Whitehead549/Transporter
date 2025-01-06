@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import heroBanner from "../assets/ship.png"; // Single image
+import heroBanner from "../assets/ship.jpg"; // Single image
 
 const Hero = () => {
   return (
