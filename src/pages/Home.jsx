@@ -14,13 +14,33 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time (e.g., fetch API data or prepare components)
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000); // 2 seconds delay for the loader
+    const images = document.querySelectorAll('img');
+    const totalImages = images.length;
+    let loadedImages = 0;
 
-    // Cleanup timer on unmount
-    return () => clearTimeout(timer);
+    const handleImageLoad = () => {
+      loadedImages += 1;
+      if (loadedImages === totalImages) {
+        setIsLoading(false);
+      }
+    };
+
+    images.forEach((img) => {
+      if (img.complete) {
+        handleImageLoad();
+      } else {
+        img.addEventListener('load', handleImageLoad);
+        img.addEventListener('error', handleImageLoad);
+      }
+    });
+
+    // Cleanup event listeners
+    return () => {
+      images.forEach((img) => {
+        img.removeEventListener('load', handleImageLoad);
+        img.removeEventListener('error', handleImageLoad);
+      });
+    };
   }, []);
 
   if (isLoading) {
