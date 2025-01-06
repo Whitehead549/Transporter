@@ -12,16 +12,50 @@ import LoaderSpinner from '../components/Essentials/LoaderSpinner';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [imageCount, setImageCount] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
 
   useEffect(() => {
-    // Simulate loading time (e.g., fetch API data or prepare components)
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000); // 2 seconds delay for the loader
+    const allImages = Array.from(document.images); // Get all images in the DOM.
+    const totalImages = allImages.length;
 
-    // Cleanup timer on unmount
-    return () => clearTimeout(timer);
+    if (totalImages === 0) {
+      // If there are no images, stop the loader immediately with delay.
+      setTimeout(() => setIsLoading(false), 1500); // 1.5 seconds delay
+      return;
+    }
+
+    setImageCount(totalImages);
+
+    const handleImageLoad = () => {
+      setImagesLoaded((prev) => prev + 1);
+    };
+
+    // Attach load/error listeners to each image.
+    allImages.forEach((img) => {
+      if (img.complete) {
+        handleImageLoad();
+      } else {
+        img.addEventListener('load', handleImageLoad);
+        img.addEventListener('error', handleImageLoad);
+      }
+    });
+
+    // Cleanup event listeners
+    return () => {
+      allImages.forEach((img) => {
+        img.removeEventListener('load', handleImageLoad);
+        img.removeEventListener('error', handleImageLoad);
+      });
+    };
   }, []);
+
+  useEffect(() => {
+    // When all images are loaded, add the extra 1.5-second delay before stopping the loader.
+    if (imagesLoaded === imageCount) {
+      setTimeout(() => setIsLoading(false), 1500); // 1.5 seconds delay
+    }
+  }, [imagesLoaded, imageCount]);
 
   if (isLoading) {
     return (
