@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import heroBanner from "../assets/ship.jpg"; // Single image
+import heroBanner from "../assets/ship.png"; // Single image
 
 const Hero = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden">
       <div className="absolute inset-0">
         {/* Overlay with dark transparent color */}
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div> {/* This applies the dark overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-35"></div> {/* This applies the dark overlay */}
         
         {/* Background Image */}
         <div
