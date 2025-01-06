@@ -12,20 +12,27 @@ import LoaderSpinner from '../components/Essentials/LoaderSpinner';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [imageCount, setImageCount] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
 
   useEffect(() => {
-    const images = document.querySelectorAll('img');
-    const totalImages = images.length;
-    let loadedImages = 0;
+    const allImages = Array.from(document.images); // Get all images in the DOM.
+    const totalImages = allImages.length;
+
+    if (totalImages === 0) {
+      // If there are no images, stop the loader immediately.
+      setIsLoading(false);
+      return;
+    }
+
+    setImageCount(totalImages);
 
     const handleImageLoad = () => {
-      loadedImages += 1;
-      if (loadedImages === totalImages) {
-        setIsLoading(false);
-      }
+      setImagesLoaded((prev) => prev + 1);
     };
 
-    images.forEach((img) => {
+    // Attach load/error listeners to each image.
+    allImages.forEach((img) => {
       if (img.complete) {
         handleImageLoad();
       } else {
@@ -36,12 +43,19 @@ const Home = () => {
 
     // Cleanup event listeners
     return () => {
-      images.forEach((img) => {
+      allImages.forEach((img) => {
         img.removeEventListener('load', handleImageLoad);
         img.removeEventListener('error', handleImageLoad);
       });
     };
   }, []);
+
+  useEffect(() => {
+    // When all images are loaded, stop the loader.
+    if (imagesLoaded === imageCount) {
+      setIsLoading(false);
+    }
+  }, [imagesLoaded, imageCount]);
 
   if (isLoading) {
     return (
