@@ -12,23 +12,33 @@ import LoaderSpinner from '../components/Essentials/LoaderSpinner';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [showDarkScreen, setShowDarkScreen] = useState(false);
 
   useEffect(() => {
-    // Simulate loading time (e.g., fetch API data or prepare components)
-    const timer = setTimeout(() => {
+    // Simulate loading time
+    const loaderTimer = setTimeout(() => {
       setIsLoading(false);
+      setShowDarkScreen(true);
     }, 2000); // 2 seconds delay for the loader
 
-    // Cleanup timer on unmount
-    return () => clearTimeout(timer);
+    // Show dark background for 1 second after loading
+    const darkScreenTimer = setTimeout(() => {
+      setShowDarkScreen(false);
+    }, 5000); // 3 seconds total (2 seconds loader + 1 second dark background)
+
+    // Cleanup timers on unmount
+    return () => {
+      clearTimeout(loaderTimer);
+      clearTimeout(darkScreenTimer);
+    };
   }, []);
 
   if (isLoading) {
-    return (
-      
-        <LoaderSpinner />
-      
-    );
+    return <LoaderSpinner />;
+  }
+
+  if (showDarkScreen) {
+    return <div className="w-full h-screen bg-black"></div>;
   }
 
   return (
