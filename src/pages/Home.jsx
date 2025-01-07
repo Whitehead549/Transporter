@@ -33,7 +33,7 @@ const Home = () => {
 
     const timeout = setTimeout(() => {
       setPageLoaded(true);
-    }, 700);
+    }, 900);
 
     return () => clearTimeout(timeout);
   }, []);
