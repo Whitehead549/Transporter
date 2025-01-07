@@ -36,7 +36,7 @@ const Home = () => {
     // Simulate page fully rendered state
     const timeout = setTimeout(() => {
       setPageLoaded(true);
-    }, 1000); // Adjust the delay as needed
+    }, 500); // Adjust the delay as needed
 
     return () => clearTimeout(timeout);
   }, []);
