@@ -65,7 +65,7 @@ const Home = () => {
            
             <a
               href="https://freightswiftlogistics.com/about/"
-              className="bg-white border-2 border-white rounded-md text-[#000000] py-3 px-2 sm:px-5 lg:px-3 md:px-2 hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 shadow-2xl text-sm sm:text-base"
+              className="bg-white border-2 border-white rounded-full text-[#000000] py-2 px-2 sm:px-5 lg:px-3 md:px-2 hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 shadow-2xl text-sm sm:text-base"
             >
               Request a Quote
             </a>
