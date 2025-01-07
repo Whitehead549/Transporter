@@ -21,7 +21,7 @@ const Home = () => {
     if (pageLoaded) {
       const heroSection = document.getElementById('hero-section');
       if (heroSection) {
-        heroSection.scrollIntoView({ behavior: 'smooth' });
+        heroSection.scrollIntoView({ behavior: 'auto' });
       }
     }
   }, [pageLoaded]);
@@ -36,7 +36,7 @@ const Home = () => {
     // Simulate page fully rendered state
     const timeout = setTimeout(() => {
       setPageLoaded(true);
-    }, 200); // Adjust the delay as needed
+    }, 10); // Adjust the delay as needed
 
     return () => clearTimeout(timeout);
   }, []);
