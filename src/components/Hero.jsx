@@ -1,64 +1,39 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <div className="relative w-full h-screen bg-gradient-to-bl from-custom_blue via-custom_gold to-white flex items-center justify-center">
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-custom_blue opacity-30 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-custom_gold opacity-40 rounded-full blur-3xl" />
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent opacity-60" />
-
+    <div className="relative w-full h-[30rem] bg-white flex items-center justify-center">
       {/* Content Wrapper */}
-      <div className="text-center px-8 max-w-6xl z-20">
-        {/* Animated Heading */}
-        <motion.h1
-          className="text-6xl md:text-8xl font-extrabold text-custom_blue mb-8 leading-tight"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        >
-          Transforming Logistics Worldwide
-        </motion.h1>
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 lg:px-20">
+        {/* Heading */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight max-w-3xl tracking-wide">
+          We Are Global Logistic Providers
+        </h1>
 
-        {/* Animated Subtext */}
-        <motion.p
-          className="text-lg md:text-2xl text-gray-800 mb-10"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-        >
-          Delivering innovative and reliable solutions, we empower your global logistics journey with unmatched precision and care.
-        </motion.p>
+        {/* Description */}
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 max-w-2xl mb-10 px-4 sm:px-8 leading-relaxed">
+          Specializing in fast, reliable, and global logistics services, we ensure your goods are delivered safely and on time with a network that spans the globe.
+        </p>
 
         {/* Button Container */}
-        <div className="flex flex-wrap justify-center gap-8">
-          {/* Primary Action Button */}
-          <motion.a
-            href="#services"
-            className="py-4 px-10 rounded-full text-lg font-medium text-white bg-custom_blue hover:bg-custom_gold hover:text-custom_blue transition-transform transform hover:scale-105 shadow-xl"
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
+        <div className="flex flex-col sm:flex-row sm:space-x-6 justify-center gap-4">
+          {/* Track Item Button */}
+          <a
+            href="https://freightswiftlogistics.com/tracking/"
+            className="bg-transparent border-2 border-gray-800 text-gray-800 py-3 px-8 sm:px-10 rounded-full hover:bg-gray-800 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
-            Explore Services
-          </motion.a>
+            Track Item
+          </a>
 
-          {/* Secondary Action Button */}
-          <motion.a
-            href="#contact"
-            className="py-4 px-10 rounded-full text-lg font-medium text-custom_blue bg-white border-2 border-custom_blue hover:bg-custom_gold hover:text-white transition-transform transform hover:scale-105 shadow-xl"
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.9, ease: "easeOut" }}
+          {/* About Us Button */}
+          <a
+            href="https://freightswiftlogistics.com/about/"
+            className="bg-transparent border-2 border-gray-800 text-gray-800 py-3 px-8 sm:px-10 rounded-full hover:bg-gray-800 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
-            Contact Us
-          </motion.a>
+            About Us
+          </a>
         </div>
       </div>
-
-      {/* Overlay for Depth Effect */}
-      <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent pointer-events-none" />
     </div>
   );
 };
