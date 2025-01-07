@@ -103,7 +103,7 @@ const Navbar = () => {
           ) : (
             <HiMenuAlt3
               onClick={toggleMenu}
-              className="cursor-pointer text-custom_gold transition-transform transform hover:scale-110"
+              className="cursor-pointer text-white transition-transform transform hover:scale-110"
               size={30}
             />
           )}
