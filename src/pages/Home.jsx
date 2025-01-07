@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import heroBanner from "../assets/ship.jpg"; // Single image
 import Logistics from '../components/Logistics';
 import Support from '../components/Support';
@@ -10,26 +10,56 @@ import Partners from '../components/Partners';
 
 const Home = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [pageLoaded, setPageLoaded] = useState(false);
 
-  // Handle the image load
   const handleImageLoad = () => {
     setImageLoaded(true);
   };
 
+  useEffect(() => {
+    // Scroll to Hero section after the page has fully rendered
+    if (pageLoaded) {
+      const heroSection = document.getElementById('hero-section');
+      if (heroSection) {
+        heroSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [pageLoaded]);
+
+  useEffect(() => {
+    // Scroll to "Other Sections" on page load
+    const otherSections = document.getElementById('other-sections');
+    if (otherSections) {
+      otherSections.scrollIntoView();
+    }
+
+    // Simulate page fully rendered state
+    const timeout = setTimeout(() => {
+      setPageLoaded(true);
+    }, 1000); // Adjust the delay as needed
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <div className="bg-gray-100 overflow-x-hidden">
       {/* Hero Section */}
-      <div className="relative w-full h-screen overflow-hidden">
+      <div
+        id="hero-section"
+        className="relative w-full h-screen overflow-hidden"
+      >
         <div className="absolute inset-0">
           {/* Overlay with dark transparent color */}
           <div className="absolute inset-0 bg-black bg-opacity-20"></div>
 
-          {/* Image will load only when the image is ready */}
+          {/* Image is loaded and displayed */}
           <img
             src={heroBanner}
             alt="Hero Banner"
-            className={`w-full h-full object-cover ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-            onLoad={handleImageLoad} // When image loads, handle it
+            className={`w-full h-full object-cover ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+            onLoad={handleImageLoad}
             style={{ transition: 'opacity 0.1s ease' }} // Smooth fade-in effect
           />
         </div>
@@ -43,7 +73,9 @@ const Home = () => {
 
           {/* Description */}
           <p className="text-lg md:text-xl text-white max-w-2xl mb-10 px-6 leading-relaxed">
-            Specializing in fast, reliable, and global logistics services, we ensure your goods are delivered safely and on time with a network that spans the globe.
+            Specializing in fast, reliable, and global logistics services, we
+            ensure your goods are delivered safely and on time with a network
+            that spans the globe.
           </p>
 
           {/* Button Container */}
@@ -68,14 +100,15 @@ const Home = () => {
       </div>
 
       {/* Other Sections */}
-      {/* These sections are rendered immediately without waiting for the image */}
-      <Logistics />
-      <Support />
-      <Steps />
-      <Testimonial />
-      <DailyStats />
-      <PerService />
-      <Partners />
+      <div id="other-sections">
+        <Logistics />
+        <Support />
+        <Steps />
+        <Testimonial />
+        <DailyStats />
+        <PerService />
+        <Partners />
+      </div>
     </div>
   );
 };
