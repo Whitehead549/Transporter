@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import heroBanner from "../assets/ship.jpg"; // Single image
+import heroBanner from "../assets/ship.jpg";
 import Logistics from '../components/Logistics';
 import Support from '../components/Support';
 import Steps from '../components/Steps';
@@ -17,7 +17,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    // Scroll to Hero section after the page has fully rendered
     if (pageLoaded) {
       const heroSection = document.getElementById('hero-section');
       if (heroSection) {
@@ -27,16 +26,14 @@ const Home = () => {
   }, [pageLoaded]);
 
   useEffect(() => {
-    // Scroll to "Other Sections" on page load
     const otherSections = document.getElementById('other-sections');
     if (otherSections) {
       otherSections.scrollIntoView();
     }
 
-    // Simulate page fully rendered state
     const timeout = setTimeout(() => {
       setPageLoaded(true);
-    }, 500); // Adjust the delay as needed
+    }, 600);
 
     return () => clearTimeout(timeout);
   }, []);
@@ -44,15 +41,9 @@ const Home = () => {
   return (
     <div className="bg-gray-100 overflow-x-hidden">
       {/* Hero Section */}
-      <div
-        id="hero-section"
-        className="relative w-full h-screen overflow-hidden"
-      >
+      <div id="hero-section" className="relative w-full h-screen overflow-hidden">
         <div className="absolute inset-0">
-          {/* Overlay with dark transparent color */}
           <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-
-          {/* Image is loaded and displayed */}
           <img
             src={heroBanner}
             alt="Hero Banner"
@@ -60,38 +51,30 @@ const Home = () => {
               imageLoaded ? 'opacity-100' : 'opacity-0'
             }`}
             onLoad={handleImageLoad}
-            style={{ transition: 'opacity 0.1s ease' }} // Smooth fade-in effect
+            style={{ transition: 'opacity 0.1s ease' }}
           />
         </div>
 
         {/* Content Wrapper */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          {/* Heading */}
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight max-w-3xl tracking-wide">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-3xl tracking-wide">
             We Are Global Logistic Providers
           </h1>
-
-          {/* Description */}
-          <p className="text-lg md:text-xl text-white max-w-2xl mb-10 px-6 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white max-w-2xl mb-10 px-4 sm:px-6 leading-relaxed">
             Specializing in fast, reliable, and global logistics services, we
             ensure your goods are delivered safely and on time with a network
             that spans the globe.
           </p>
-
-          {/* Button Container */}
-          <div className="flex space-x-6 justify-center">
-            {/* Track Item Button */}
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center">
             <a
               href="https://freightswiftlogistics.com/tracking/"
-              className="bg-transparent border-2 border-white text-white py-3 px-10 rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 shadow-2xl"
+              className="bg-transparent border-2 border-white text-white py-3 px-6 sm:px-10 rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 shadow-2xl text-sm sm:text-base"
             >
               Track Item
             </a>
-
-            {/* About Us Button */}
             <a
               href="https://freightswiftlogistics.com/about/"
-              className="bg-transparent border-2 border-white text-white py-3 px-10 rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 shadow-2xl"
+              className="bg-transparent border-2 border-white text-white py-3 px-6 sm:px-10 rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 shadow-2xl text-sm sm:text-base"
             >
               About Us
             </a>
