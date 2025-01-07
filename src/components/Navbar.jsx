@@ -18,7 +18,7 @@ const Navbar = () => {
         {/* Logo Section */}
         <div className="flex-shrink-0">
           <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-            <h1 className="text-2xl font-bold">ShippingSite</h1>
+            <h1 className="text-2xl font-bold">Shipping <span className="text-custom_gold">Site</span></h1>
           </Link>
         </div>
 
@@ -103,7 +103,7 @@ const Navbar = () => {
           ) : (
             <HiMenuAlt3
               onClick={toggleMenu}
-              className="cursor-pointer text-white transition-transform transform hover:scale-110"
+              className="cursor-pointer text-custom_gold transition-transform transform hover:scale-110"
               size={30}
             />
           )}
