@@ -4,11 +4,15 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 const Logistics = () => {
   return (
     <div className="">
-      {/* Banner Section */}
-      <section className="bg-[#091242] text-white text-center py-16">
-        <h1 className="text-4xl font-bold">Logistics Solutions for Industry</h1>
-        <p className="mt-4 text-lg">Streamlining your operations with innovative and reliable solutions.</p>
-      </section>
+     {/* Banner Section */}
+<section className="bg-[#091242] text-white text-center py-6 sm:py-6 md:py-20 lg:py-12 xl:py-12">
+  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+    Logistics Solutions
+  </h1>
+  <p className="mt-4 text-base sm:text-lg md:text-xl lg:text-2xl">
+    Streamlining your operations with innovative and reliable solutions.
+  </p>
+</section>
 
       {/* Cards Section */}
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-8 max-w-6xl mx-auto">
