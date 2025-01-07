@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import heroBanner from "../assets/ship.jpg"; // Single image
 import Logistics from '../components/Logistics';
 import Support from '../components/Support';
@@ -9,6 +9,13 @@ import PerService from '../components/Essentials/PerService';
 import Partners from '../components/Partners';
 
 const Home = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // Handle the image load
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
   return (
     <div className="bg-gray-100 overflow-x-hidden">
       {/* Hero Section */}
@@ -17,10 +24,13 @@ const Home = () => {
           {/* Overlay with dark transparent color */}
           <div className="absolute inset-0 bg-black bg-opacity-20"></div>
 
-          {/* Background Image */}
-          <div
-            className="w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: `url(${heroBanner})` }}
+          {/* Image will load only when the image is ready */}
+          <img
+            src={heroBanner}
+            alt="Hero Banner"
+            className={`w-full h-full object-cover ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+            onLoad={handleImageLoad} // When image loads, handle it
+            style={{ transition: 'opacity 0.1s ease' }} // Smooth fade-in effect
           />
         </div>
 
@@ -58,6 +68,7 @@ const Home = () => {
       </div>
 
       {/* Other Sections */}
+      {/* These sections are rendered immediately without waiting for the image */}
       <Logistics />
       <Support />
       <Steps />
