@@ -12,7 +12,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full bg-custom_blue text-white shadow-md z-[9999]">
+    <div className="fixed top-0 left-0 w-full text-custom_blue bg-white shadow-md z-[9999]">
       {/* Main Navbar */}
       <div className="container mx-auto px-4 lg:px-8 py-4 flex justify-between items-center">
         {/* Logo Section */}
@@ -97,13 +97,13 @@ const Navbar = () => {
           {showMenu ? (
             <FaRegWindowClose
               onClick={toggleMenu}
-              className="cursor-pointer text-white transition-transform transform hover:scale-110"
+              className="cursor-pointer text-custom_blue transition-transform transform hover:scale-110"
               size={30}
             />
           ) : (
             <HiMenuAlt3
               onClick={toggleMenu}
-              className="cursor-pointer text-white transition-transform transform hover:scale-110"
+              className="cursor-pointer text-custom_blue transition-transform transform hover:scale-110"
               size={30}
             />
           )}

@@ -5,13 +5,10 @@ const Logistics = () => {
   return (
     <div className="">
      {/* Banner Section */}
-  <section className="bg-[#091242] text-white text-center py-6 sm:py-6 md:py-20 lg:py-12 xl:py-12">
-    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
-      Logistics <span className="text-custom_gold">Solutions</span>
+  <section className="text-[#000000] text-center py-6 sm:py-6 md:py-20 lg:py-12 xl:py-12">
+    <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+      Logistics Solutions
     </h1>
-    <p className="mt-4 text-base sm:text-lg md:text-xl lg:text-2xl">
-      Streamlining your operations with innovative and reliable solutions.
-    </p>
   </section>
 
       {/* Cards Section */}
