@@ -6,7 +6,7 @@ const Logistics = () => {
     <div className="">
      {/* Banner Section */}
   <section className="text-[#000000] text-center py-0 sm:py-6 md:pt-8 lg:py-12 xl:pt-12">
-    <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+    <h1 className="text-xl sm:text-xl md:text-2xl lg:text-3xl font-bold">
       Logistics Solutions
     </h1>
   </section>
@@ -18,7 +18,7 @@ const Logistics = () => {
           <div className="text-custom_gold text-4xl mb-4">
             <i className="fas fa-truck"></i>
           </div>
-          <h2 className="font-semibold text-lg">Freight Transport</h2>
+          <h2 className="font-semibold text-md">Freight Transport</h2>
         </div>
 
         {/* Card 2 */}
@@ -26,7 +26,7 @@ const Logistics = () => {
           <div className="text-custom_gold text-4xl mb-4">
             <i className="fas fa-warehouse"></i>
           </div>
-          <h2 className="font-semibold text-lg">Warehouse Management</h2>
+          <h2 className="font-semibold text-md">Warehouse Management</h2>
         </div>
 
         {/* Card 3 */}
@@ -34,7 +34,7 @@ const Logistics = () => {
           <div className="text-custom_gold text-4xl mb-4">
             <i className="fas fa-plane"></i>
           </div>
-          <h2 className="font-semibold text-lg">Air Freight</h2>
+          <h2 className="font-semibold text-md">Air Freight</h2>
         </div>
 
         {/* Card 4 */}
@@ -42,7 +42,7 @@ const Logistics = () => {
           <div className="text-custom_gold text-4xl mb-4">
             <i className="fas fa-ship"></i>
           </div>
-          <h2 className="font-semibold text-lg">Sea Freight</h2>
+          <h2 className="font-semibold text-md">Sea Freight</h2>
         </div>
 
         {/* Card 5 */}
@@ -50,7 +50,7 @@ const Logistics = () => {
           <div className="text-custom_gold text-4xl mb-4">
             <i className="fas fa-route"></i>
           </div>
-          <h2 className="font-semibold text-lg">Route Optimization</h2>
+          <h2 className="font-semibold text-md">Route Optimization</h2>
         </div>
 
         {/* Card 6 */}
@@ -58,7 +58,7 @@ const Logistics = () => {
           <div className="text-custom_gold text-4xl mb-4">
             <i className="fas fa-box"></i>
           </div>
-          <h2 className="font-semibold text-lg">Package Delivery</h2>
+          <h2 className="font-semibold text-md">Package Delivery</h2>
         </div>
       </section>
     </div>
