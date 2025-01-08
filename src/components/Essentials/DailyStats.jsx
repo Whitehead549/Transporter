@@ -5,16 +5,16 @@ import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 
 const StatCard = ({ icon, title, value, inView, isThousandFormat }) => (
-  <div className="flex flex-col justify-center items-center text-center bg-[#1c1c3a] hover:bg-[#28284a] transition-all duration-300 ease-in-out shadow-lg rounded-lg px-6 py-8 m-4">
-    <div className="text-[#9f9fc8] text-4xl mb-4">{icon}</div>
-    <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
-    <p className="text-5xl font-bold text-[#FFD700]">
+  <div className="flex flex-col justify-center items-center text-center bg-[#0A1448] hover:bg-[#0C1650] transition-all duration-300 ease-in-out shadow-full rounded-lg p-4 sm:p-6 m-2">
+    <div className="text-[#9f9fc8] text-2xl sm:text-3xl mb-3">{icon}</div>
+    <h3 className="text-xs sm:text-sm font-semibold text-white mb-1.5">{title}</h3>
+    <p className="text-3xl sm:text-4xl font-bold text-[#FFD700]">
       {inView && (
         <>
           <CountUp
             end={isThousandFormat ? value / 1000 : value}
             duration={2}
-            separator=","
+            separator="," 
             decimals={isThousandFormat && value % 1000 !== 0 ? 1 : 0}
           />
           {isThousandFormat && "K"}
@@ -55,10 +55,10 @@ const DailyStats = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-b from-[#0f0f2d] to-[#151540] text-[#9f9fc8] py-16">
+    <div className="bg-custom_blue py-8 sm:py-12">
       <div
         ref={ref}
-        className="flex flex-wrap justify-center items-center w-4/5 mx-auto"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 sm:w-8/12  w-8/12 md:w-10/12 lg:w-9/12 max-w-screen-xl mx-auto"
       >
         {stats.map((stat, index) => (
           <StatCard

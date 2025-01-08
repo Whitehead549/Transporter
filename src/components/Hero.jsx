@@ -7,11 +7,11 @@ const Hero = () => {
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center pt-16 sm:pt-8 md:pt-12 lg:pt-16 px-4 sm:px-6 md:px-8">
         {/* Heading */}
         <h1 className="text-2xl sm:text-2xl md:text-5xl lg:text-6xl font-bold text-custom_gold mb-3 sm:mb-2 md:mb-4 leading-snug sm:leading-tight md:leading-normal max-w-3xl tracking-wide">
-          We Are Global <br/>Logistic Providers
+          We Are <span className='text-white'>Global <br/>Logistic</span> Providers
         </h1>
 
         {/* Description */}
-        <p className="text-sm sm:text-xs md:text-xl lg:text-lg text-custom_gold max-w-xs sm:max-w-xl md:max-w-2xl mb-4 sm:mb-3 md:mb-6 px-2 sm:px-6 leading-relaxed">
+        <p className="text-sm sm:text-xs md:text-xl lg:text-lg text-white max-w-xs sm:max-w-xl md:max-w-2xl mb-4 sm:mb-3 md:mb-6 px-2 sm:px-6 leading-relaxed">
           Specializing in fast and reliable logistics services, 
           with a network that spans the globe.
         </p>
@@ -21,7 +21,7 @@ const Hero = () => {
           {/* Get Quote Button */}
           <a
             href="https://freightswiftlogistics.com/about/"
-            className="bg-custom_gold  border-2 border-custom_gold  text-custom_blue py-1 px-4 sm:px-6 md:px-10 lg:px-12 lg:py-2 rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 shadow-xl"
+            className="bg-white border-2 border-white text-custom_blue py-1 px-4 sm:px-6 md:px-10 lg:px-12 lg:py-2 rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 shadow-xl"
           >
             Get Quote
           </a>
