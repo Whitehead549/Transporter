@@ -18,7 +18,7 @@ const Logistics = () => {
           <div className="text-custom_gold text-4xl mb-4">
             <i className="fas fa-truck"></i>
           </div>
-          <h2 className="font-semibold text-sm">Freight Transport</h2>
+          <h2 className="font-medium text-md">Freight Transport</h2>
         </div>
 
         {/* Card 2 */}
@@ -26,7 +26,7 @@ const Logistics = () => {
           <div className="text-custom_gold text-4xl mb-4">
             <i className="fas fa-warehouse"></i>
           </div>
-          <h2 className="font-semibold text-sm">Warehouse Management</h2>
+          <h2 className="font-medium text-md">Warehouse Management</h2>
         </div>
 
         {/* Card 3 */}
@@ -34,7 +34,7 @@ const Logistics = () => {
           <div className="text-custom_gold text-4xl mb-4">
             <i className="fas fa-plane"></i>
           </div>
-          <h2 className="font-semibold text-sm">Air Freight</h2>
+          <h2 className="font-medium text-md">Air Freight</h2>
         </div>
 
         {/* Card 4 */}
@@ -42,7 +42,7 @@ const Logistics = () => {
           <div className="text-custom_gold text-4xl mb-4">
             <i className="fas fa-ship"></i>
           </div>
-          <h2 className="font-semibold text-sm">Sea Freight</h2>
+          <h2 className="font-medium text-md">Sea Freight</h2>
         </div>
 
         {/* Card 5 */}
@@ -50,7 +50,7 @@ const Logistics = () => {
           <div className="text-custom_gold text-4xl mb-4">
             <i className="fas fa-route"></i>
           </div>
-          <h2 className="font-semibold text-sm">Route Optimization</h2>
+          <h2 className="font-medium text-md">Route Optimization</h2>
         </div>
 
         {/* Card 6 */}
@@ -58,7 +58,7 @@ const Logistics = () => {
           <div className="text-custom_gold text-4xl mb-4">
             <i className="fas fa-box"></i>
           </div>
-          <h2 className="font-semibold text-sm">Package Delivery</h2>
+          <h2 className="font-medium text-md">Package Delivery</h2>
         </div>
       </section>
     </div>
