@@ -5,14 +5,14 @@ const Logistics = () => {
   return (
     <div className="">
      {/* Banner Section */}
-  <section className="text-[#000000] text-center py-6 sm:py-6 md:py-20 lg:py-12 xl:py-12">
+  <section className="text-[#000000] text-center py-0 sm:py-6 md:pt-8 lg:py-12 xl:pt-12">
     <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
       Logistics Solutions
     </h1>
   </section>
 
       {/* Cards Section */}
-      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-8 max-w-6xl mx-auto">
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6 max-w-6xl mx-auto">
         {/* Card 1 */}
         <div className="bg-white shadow-md rounded-lg p-6 text-center">
           <div className="text-custom_gold text-4xl mb-4">
