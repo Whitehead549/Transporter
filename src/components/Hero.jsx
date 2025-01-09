@@ -7,13 +7,12 @@ const Hero = () => {
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center pt-16 sm:pt-8 md:pt-12 lg:pt-16 px-4 sm:px-6 md:px-8">
         {/* Heading */}
         <h1 className="text-2xl sm:text-2xl md:text-5xl lg:text-6xl font-bold text-custom_gold mb-3 sm:mb-2 md:mb-4 leading-snug sm:leading-tight md:leading-normal max-w-3xl tracking-wide">
-          We Are <span className='text-white'>Global <br/>Logistic</span> Providers
+          NAZ <span className='text-white'>TRUST <br/>LOGISTICS</span> SERVICES
         </h1>
 
         {/* Description */}
         <p className="text-sm sm:text-xs md:text-xl lg:text-lg text-white max-w-xs sm:max-w-xl md:max-w-2xl mb-4 sm:mb-3 md:mb-6 px-2 sm:px-6 leading-relaxed">
-          Specializing in fast and reliable logistics services, 
-          with a network that spans the globe.
+        Your partner for efficient and reliable logistics solutions worldwide.
         </p>
 
         {/* Button Container */}
