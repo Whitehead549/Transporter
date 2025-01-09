@@ -12,7 +12,7 @@ const Hero = () => {
 
         {/* Description */}
         <p className="text-sm sm:text-xs md:text-xl lg:text-lg text-white max-w-xs sm:max-w-xl md:max-w-2xl mb-4 sm:mb-3 md:mb-6 px-2 sm:px-6 leading-relaxed">
-        Your partner for efficient and reliable logistics solutions worldwide.
+        Your partner for efficient and reliable logistics solutions worldwide
         </p>
 
         {/* Button Container */}
