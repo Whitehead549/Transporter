@@ -72,13 +72,14 @@ const Navbar = () => {
             to="/track"
             className={({ isActive }) =>
               isActive
-                ? "text-text-custom_gold font-semibold"
+                ? "text-custom_gold font-semibold"
                 : "hover:text-custom_gold transition-colors duration-300"
             }
             onClick={() => window.scrollTo(0, 0)}
           >
             Track
           </NavLink>
+        
           <NavLink
             to="/contact"
             className={({ isActive }) =>
