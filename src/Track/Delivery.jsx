@@ -61,14 +61,15 @@ const Delivery = ({ selectedCode }) => {
   };
 
   return (
-    <div className="max-w-xs mx-auto p-4 bg-white shadow-lg rounded-lg border border-gray-300 text-black">
-      <h2 className="text-lg font-semibold mb-2 bg-[#091242] text-white p-2 rounded-t-lg">
-      DELIVERY INFORMATION
-      </h2>
-
-      {loading ? (
-        <p className="text-center text-gray-500">Loading...</p>
-      ) : deliveryData ? (
+    <div className="max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto p-4 bg-white shadow-lg rounded-lg border border-gray-300 text-black h-[400px] overflow-y-auto">
+    <h2 className="text-lg font-semibold mb-2 bg-[#091242] text-white p-2 rounded-t-lg">
+      INFORMATION
+    </h2>
+  
+    {loading ? (
+      <p className="text-center text-gray-500">Loading...</p>
+    ) : deliveryData ? (
+      <div className="overflow-x-auto">
         <table className="w-full bg-gray-100">
           <tbody>
             {Object.entries(deliveryData).map(([key, value]) => (
@@ -83,10 +84,11 @@ const Delivery = ({ selectedCode }) => {
             ))}
           </tbody>
         </table>
-      ) : (
-        <p className="text-center text-gray-500">No delivery details available.</p>
-      )}
-    </div>
+      </div>
+    ) : (
+      <p className="text-center text-gray-500">No delivery details available.</p>
+    )}
+  </div>
   );
 };
 
