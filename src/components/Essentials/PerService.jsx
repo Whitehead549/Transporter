@@ -5,7 +5,7 @@ import PersonalService from '../../assets/personservice.jpg';  // Import an imag
 const PerService = () => {
   const progressData = [
     { title: "Logistics & Transportation", percentage: 93 },
-    { title: "Warehousing Packaging", percentage: 85 },
+    { title: "Warehousing Package", percentage: 85 },
     { title: "Freight Management", percentage: 72 },
   ];
 
@@ -17,18 +17,17 @@ const PerService = () => {
           <div className="section-title mb-16">
             <div className="title-header">
               <h3 className="text-indigo-500 text-lg uppercase tracking-wide font-bold mb-2">
-                What makes us different?
+                
               </h3>
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 leading-tight">
-                Leading 3PL <br />
-                with <span className="text-orange-500">Global Presence</span>.
+              <h2 className="text-4xl lg:text-5xl font-bold text-custom_blue leading-tight">
+                Leading<br />
+                with <span className="text-custom_blue">Global Presence</span>.
               </h2>
             </div>
-            <div className="title-desc mt-6">
+            <div className="title-desc mt-6 pb-0">
               <p className="text-gray-600 text-lg lg:text-xl max-w-3xl">
-                We are a global (3PL) freight forwarder focused on offering
-                competitive and comprehensive solutions without compromising
-                personal service.
+              We combine the velocity you need with the trust you demand.
+               Velo Trust Logistics delivers fast, reliable, and transparent logistics solutions tailored to your unique requirements. Experience the difference.
               </p>
             </div>
           </div>
@@ -43,7 +42,7 @@ const PerService = () => {
                 {/* Progress Bar */}
                 <div className="progress-bar-inner relative h-4 bg-gray-300 rounded-lg overflow-hidden">
                   <div
-                    className="progress-bar bg-indigo-500 h-full"
+                    className="progress-bar bg-custom_blue h-full"
                     style={{
                       width: `${item.percentage}%`,
                       transition: "width 0.6s ease-in-out",

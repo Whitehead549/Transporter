@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 
 const StatCard = ({ icon, title, value, inView, isThousandFormat }) => (
   <div className="flex flex-col justify-center items-center text-center bg-[#0A1448] hover:bg-[#0C1650] transition-all duration-300 ease-in-out shadow-full rounded-lg p-4 sm:p-6 m-2">
-    <div className="text-[#9f9fc8] text-2xl sm:text-3xl mb-3">{icon}</div>
+    <div className="text-gray-50 text-2xl sm:text-3xl mb-3">{icon}</div>
     <h3 className="text-xs sm:text-sm font-semibold text-white mb-1.5">{title}</h3>
     <p className="text-3xl sm:text-4xl font-bold text-[#FFD700]">
       {inView && (

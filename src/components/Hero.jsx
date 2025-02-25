@@ -6,8 +6,8 @@ const Hero = () => {
       {/* Content Wrapper */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center pt-16 sm:pt-8 md:pt-12 lg:pt-16 px-4 sm:px-6 md:px-8">
         {/* Heading */}
-        <h1 className="text-2xl sm:text-2xl md:text-5xl lg:text-6xl font-bold text-custom_gold mb-3 sm:mb-2 md:mb-4 leading-snug sm:leading-tight md:leading-normal max-w-3xl tracking-wide">
-          NAZ <span className='text-white'>TRUST <br/>LOGISTICS</span> SERVICES
+        <h1 className="text-2xl sm:text-2xl md:text-5xl lg:text-6xl font-bold text-white  mb-3 sm:mb-2 md:mb-4 leading-snug sm:leading-tight md:leading-normal max-w-3xl tracking-wide">
+        VELO  <span>TRUST <br/>LOGISTICS</span>
         </h1>
 
         {/* Description */}
@@ -20,7 +20,7 @@ const Hero = () => {
           {/* Get Quote Button */}
           <a
             href="https://freightswiftlogistics.com/about/"
-            className="bg-white border-2 border-white text-custom_blue py-1 px-4 sm:px-6 md:px-10 lg:px-12 lg:py-2 rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 shadow-xl"
+            className="bg-gray-50 border-2 border-gray-50 text-custom_blue py-1 px-4 sm:px-6 md:px-10 lg:px-12 lg:py-2 rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 shadow-xl"
           >
             Get Quote
           </a>

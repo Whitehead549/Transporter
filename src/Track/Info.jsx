@@ -67,7 +67,7 @@ const Info = ({ selectedCode }) => {
   };
 
   return (
-    <div className="max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto p-4 bg-white shadow-lg rounded-lg border border-gray-300 text-black h-[600px] overflow-y-auto">
+    <div className="max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto p-4 bg-white shadow-lg rounded-lg border border-gray-300 text-black h-[560px] overflow-y-auto">
     <h2 className="text-lg font-semibold mb-2 bg-[#091242] text-white p-2 rounded-t-lg">
     STATUS AND OPTIONS
     </h2>

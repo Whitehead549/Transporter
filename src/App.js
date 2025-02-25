@@ -7,8 +7,12 @@ import MakePayment from './pages/MakePayment';
 import Track from './pages/Track';
 import ContactUs from './pages/ContactUs';
 import Footer from './components/Footer';
-import Admin from './Admin/Admin';
 import Navbar from './components/Navbar';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import Codes from './Admin/Codes';
+import Admin from './Admin/Admin';
+import Contact from './Admin/Contact';
 
 
 
@@ -27,6 +31,10 @@ function App() {
             <Route path="/payment" element={<MakePayment />} />
             <Route path="/track" element={<Track />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+            <Route path="/termsofservice" element={<TermsOfService />} />
+            <Route path="/codes" element={<Codes />} />
+            <Route path="/contacts" element={<Contact />} />
 
             {/* Admin Route */}
             <Route path="/admin" element={<Admin />} />

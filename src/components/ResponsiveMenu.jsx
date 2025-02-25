@@ -8,29 +8,24 @@ const navbarLinks = [
     id: 1,
   },
   {
-    name: "About",
+    name: "About Us",
     link: "/about",
     id: 2,
   },
   {
-    name: "Services",
+    name: "Our Services",
     link: "/services",
     id: 3,
   },
   {
-    name: "Make Payment",
-    link: "/payment",
-    id: 4,
-  },
-  {
-    name: "Track",
+    name: "Track Package",
     link: "/track",
-    id: 5,
+    id: 4,
   },
   {
     name: "Contact Us",
     link: "/contact",
-    id: 6,
+    id: 5,
   },
 ];
 

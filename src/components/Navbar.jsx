@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { HiMenuAlt3 } from "react-icons/hi";
-import { FaRegWindowClose } from "react-icons/fa";
+import { CgMenuGridO } from "react-icons/cg";
+import { IoClose } from "react-icons/io5";
 import ResponsiveMenu from "./ResponsiveMenu";
+import logo from "../assets/navLogo.png"; // Adjust path based on your folder structure
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -18,7 +19,7 @@ const Navbar = () => {
         {/* Logo Section */}
         <div className="flex-shrink-0">
           <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-            <h1 className="text-2xl font-bold">Shipping <span className="text-custom_gold">Site</span></h1>
+          <img src={logo} alt="Shipping Site Logo" className="h-10 w-40" />
           </Link>
         </div>
 
@@ -44,7 +45,7 @@ const Navbar = () => {
             }
             onClick={() => window.scrollTo(0, 0)}
           >
-            About
+            About Us
           </NavLink>
           <NavLink
             to="/services"
@@ -55,18 +56,7 @@ const Navbar = () => {
             }
             onClick={() => window.scrollTo(0, 0)}
           >
-            Services
-          </NavLink>
-          <NavLink
-            to="/payment"
-            className={({ isActive }) =>
-              isActive
-                ? "text-custom_gold font-semibold"
-                : "hover:text-custom_gold transition-colors duration-300"
-            }
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            Make Payment
+            Our Services
           </NavLink>
           <NavLink
             to="/track"
@@ -77,7 +67,7 @@ const Navbar = () => {
             }
             onClick={() => window.scrollTo(0, 0)}
           >
-            Track
+            Track Package
           </NavLink>
         
           <NavLink
@@ -96,13 +86,13 @@ const Navbar = () => {
         {/* Mobile Hamburger Menu */}
         <div className="md:hidden flex items-center">
           {showMenu ? (
-            <FaRegWindowClose
+            <IoClose
               onClick={toggleMenu}
               className="cursor-pointer text-custom_blue transition-transform transform hover:scale-110"
               size={30}
             />
           ) : (
-            <HiMenuAlt3
+            <CgMenuGridO
               onClick={toggleMenu}
               className="cursor-pointer text-custom_blue transition-transform transform hover:scale-110"
               size={30}

@@ -1,145 +1,123 @@
-import React, { useEffect, useState } from "react";
-import { db } from "../Config/Config";
-import { collection, onSnapshot, query, where, addDoc } from "firebase/firestore";
-import Section from "./Section";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { auth, db } from '../Config/Config';
+import { AtSign, Lock, Eye, EyeOff } from 'lucide-react';
 
 const Admin = () => {
-  const [codes, setCodes] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [code, setCode] = useState("");
-  const [message, setMessage] = useState("");
-  const [selectedCode, setSelectedCode] = useState(""); // State to store selected code
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+  const [successMsg, setSuccessMsg] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const codesRef = collection(db, "codes");
-    const q = query(codesRef, where("code", "!=", null));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const codeValues = querySnapshot.docs.map((doc) => doc.data().code);
-      setCodes(codeValues);
-      setLoading(false);
-    });
-    return () => unsubscribe();
-  }, []);
-
-  const generateCode = () => {
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let randomCode = "";
-    for (let i = 0; i < 10; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      randomCode += characters[randomIndex];
-    }
-    setCode(randomCode);
-    setMessage("");
-  };
-
-  const addToFirestore = async () => {
-    if (!code) {
-      setMessage("⚠️ Please generate a code first!");
-      return;
-    }
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setErrorMsg('');
+    setSuccessMsg('');
 
     try {
-      await addDoc(collection(db, "codes"), {
-        code,
-        timestamp: new Date(),
-      });
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const adminDocRef = doc(db, 'admins', email);
+      const adminDoc = await getDoc(adminDocRef);
 
-      if (/[^a-zA-Z0-9]/.test(code)) {
-        setMessage("❌ Code contains invalid characters.");
+      if (!adminDoc.exists() || adminDoc.data().role !== 'admin') {
+        setErrorMsg('Access denied. You are not authorized.');
         return;
       }
 
-      await addDoc(collection(db, code), {
-        message: "Collection created with this code!",
-        timestamp: new Date(),
-      });
-
-      setMessage(`✅ Code added to Firestore and collection '${code}' created!`);
+      setSuccessMsg('You are Logged in successfully.');
+      setIsLoggedIn(true);
     } catch (error) {
-      console.error("Error adding document: ", error);
-      setMessage(`❌ Failed to add code. Error: ${error.message}`);
+      if (error.message.includes('network-request-failed')) {
+        setErrorMsg('Please check your Internet connection.');
+      } else if (error.message.includes('invalid-credential')) {
+        setErrorMsg('Incorrect email or password.');
+      } else {
+        setErrorMsg(error.message);
+      }
     }
   };
 
-  const handleSelect = (selectedCode) => {
-    console.log("Selected code:", selectedCode);
-    setSelectedCode(selectedCode); // Update state with selected code
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
   };
 
   return (
-    <div className="flex flex-col gap-8 px-8 py-8 bg-gray-100 min-h-screen">
-      <div className="flex flex-col md:flex-row justify-center items-start gap-8 pt-16">
-        <div className="flex-1 max-w-lg">
-          <div className="bg-white px-6 md:p-8 rounded-xl shadow-xl w-full min-h-[460px] flex flex-col justify-center">
-            <h2 className="text-2xl font-semibold text-center mb-6 text-gray-700">Generate Code</h2>
-            <button
-              onClick={generateCode}
-              className="w-full py-3 px-4 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition"
-            >
-              Generate Code
-            </button>
+    <div className="bg-white p-4 sm:p-6 md:p-8 max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl w-full mx-auto my-24 sm:mt-20 md:mt-24 shadow-md rounded-lg">
+  <h1 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 sm:mb-6 text-center font-serif">
+  {isLoggedIn ? "Select the page you wish to navigate to" : "Sign In"}
+ </h1>
 
-            {code && (
-              <div className="text-center mt-6 p-4 bg-gray-50 border rounded-lg">
-                <p className="text-lg font-semibold text-gray-700">Generated Code:</p>
-                <p className="text-2xl font-bold text-blue-500 tracking-wider">{code}</p>
-                <button
-                  onClick={addToFirestore}
-                  className="mt-4 w-full py-3 px-4 bg-green-500 text-white font-medium rounded-lg hover:bg-green-600 transition"
-                >
-                  Save Code to Firestore
-                </button>
-              </div>
-            )}
-
-            {message && (
-              <p
-                className={`mt-4 text-center font-medium ${
-                  message.includes("✅")
-                    ? "text-green-600"
-                    : message.includes("❌")
-                    ? "text-red-500"
-                    : "text-yellow-500"
-                }`}
-              >
-                {message}
-              </p>
-            )}
-          </div>
-        </div>
-
-        <div className="flex-1 max-w-lg bg-white shadow-lg rounded-xl p-6">
-          <h1 className="text-2xl font-semibold text-gray-700 mb-6 text-center">Codes</h1>
-          {loading ? (
-            <p className="text-gray-500 text-center animate-pulse">Loading...</p>
-          ) : codes.length > 0 ? (
-            <ul className="space-y-3">
-              {codes.map((code, index) => (
-                <li
-                  key={index}
-                  className="flex justify-between items-center p-4 bg-gray-50 border rounded-lg"
-                >
-                  <span className="text-gray-800 font-medium">{code}</span>
-                  <button
-                    onClick={() => handleSelect(code)}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
-                  >
-                    Select
-                  </button>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-gray-500 text-center">No codes found</p>
-          )}
-        </div>
-      </div>
-
-      {/* Pass selectedCode as a prop to Section */}
-      <div className="w-full mt-6">
-        <Section selectedCode={selectedCode} />
-      </div>
+  
+  {successMsg && (
+    <div className="bg-green-50 border border-green-400 text-green-600 p-3 rounded mb-4 text-sm md:text-base">
+      {successMsg}
     </div>
+  )}
+
+  {!isLoggedIn ? (
+    <form className="space-y-4 sm:space-y-6" onSubmit={handleLogin}>
+      <div className="flex items-center border border-gray-300 rounded-lg focus-within:ring-2 focus-within:ring-blue-500 p-2">
+        <AtSign className="w-5 h-5 text-gray-400 mx-2" />
+        <input
+          id="email"
+          type="email"
+          className="w-full px-3 py-2 border-0 focus:outline-none text-sm sm:text-base"
+          placeholder="Enter your email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+
+      <div className="flex items-center border border-gray-300 rounded-lg focus-within:ring-2 focus-within:ring-blue-500 p-2">
+        <Lock className="w-5 h-5 text-gray-400 mx-2" />
+        <input
+          id="password"
+          type={passwordVisible ? "text" : "password"}
+          className="w-full px-3 py-2 border-0 focus:outline-none text-sm sm:text-base"
+          placeholder="Enter your password"
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button
+          type="button"
+          onClick={togglePasswordVisibility}
+          className="text-gray-600 mx-2"
+        >
+          {passwordVisible ? <EyeOff /> : <Eye />}
+        </button>
+      </div>
+
+      <button
+        type="submit"
+        className="w-full py-3 bg-[#091242] text-white font-semibold rounded-lg hover:bg-[#1A2D6D] transition-colors duration-300 text-sm sm:text-base"
+      >
+        Sign In
+      </button>
+    </form>
+  ) : (
+    <div className="flex flex-col space-y-3 sm:space-y-4 mt-4">
+      <Link to="/codes" className="w-full py-3 bg-[#091242] text-white font-semibold rounded-lg text-center hover:bg-[#1A2D6D]  text-sm sm:text-base">
+        Generate
+      </Link>
+      <Link to="/contacts" className="w-full py-3 bg-[#091242] text-white font-semibold rounded-lg text-center hover:bg-[#1A2D6D]  text-sm sm:text-base">
+        Contacts
+      </Link>
+    </div>
+  )}
+
+  {errorMsg && (
+    <div className="bg-red-50 border border-red-400 text-red-600 p-3 rounded mt-4 text-sm md:text-base">
+      {errorMsg}
+    </div>
+  )}
+</div>
+
   );
 };
 

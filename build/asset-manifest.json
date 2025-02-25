@@ -1,7 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.5346a3a2.css",
-    "main.js": "/static/js/main.7f05c082.js",
+    "main.css": "/static/css/main.3b6f75f2.css",
+    "main.js": "/static/js/main.bb609ca2.js",
+    "static/js/977.9cdb9254.chunk.js": "/static/js/977.9cdb9254.chunk.js",
+    "static/js/732.da1bd201.chunk.js": "/static/js/732.da1bd201.chunk.js",
     "static/media/fa-solid-900.ttf": "/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
     "static/media/personservice.jpg": "/static/media/personservice.d1fe81516b234e645ea9.jpg",
     "static/media/ship.jpg": "/static/media/ship.363c6e4d14d04e939739.jpg",
@@ -11,17 +13,20 @@
     "static/media/fa-regular-400.ttf": "/static/media/fa-regular-400.914997e1bdfc990d0897.ttf",
     "static/media/logo4.png": "/static/media/logo4.adfccfe4c3fe7b68720e.png",
     "static/media/logo3.png": "/static/media/logo3.ddb317d69a3604c2e632.png",
+    "static/media/navLogo.png": "/static/media/navLogo.f1821e0ea30ba7c8d768.png",
     "static/media/logo1.png": "/static/media/logo1.70a5b984349f15efedbf.png",
     "static/media/fa-regular-400.woff2": "/static/media/fa-regular-400.89999bdf5d835c012025.woff2",
     "static/media/logo2.jpg": "/static/media/logo2.52ed5b7e803d9be92a61.jpg",
+    "static/media/stamp Velo88.png": "/static/media/stamp Velo88.7d8bd9073f0789878dc1.png",
     "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.da94ef451f4969af06e6.ttf",
     "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
     "index.html": "/index.html",
-    "main.5346a3a2.css.map": "/static/css/main.5346a3a2.css.map",
-    "main.7f05c082.js.map": "/static/js/main.7f05c082.js.map"
+    "main.3b6f75f2.css.map": "/static/css/main.3b6f75f2.css.map",
+    "main.bb609ca2.js.map": "/static/js/main.bb609ca2.js.map",
+    "732.da1bd201.chunk.js.map": "/static/js/732.da1bd201.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5346a3a2.css",
-    "static/js/main.7f05c082.js"
+    "static/css/main.3b6f75f2.css",
+    "static/js/main.bb609ca2.js"
   ]
 }

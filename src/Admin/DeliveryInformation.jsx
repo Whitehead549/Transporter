@@ -102,104 +102,111 @@ export default function DeliveryInformation({ selectedCode }) {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-xl">
-      <h2 className="text-xl font-semibold mb-4">
-        {editingId ? `Edit Delivery for ${selectedCode}` : `Create New Delivery for ${selectedCode}`}
-      </h2>
+    <div className="w-full max-w-2xl mx-auto p-4 sm:p-6 md:p-8 bg-white shadow-md rounded-xl">
+  <h2 className="text-lg sm:text-xl font-semibold mb-4 text-center">
+    {editingId ? `Edit Delivery for ${selectedCode}` : `Create New Delivery for ${selectedCode}`}
+  </h2>
 
-      <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-        <div className="space-y-4">
-          <input
-            type="text"
-            placeholder="Tracking Number"
-            value={trackingNumber}
-            onChange={(e) => setTrackingNumber(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="text"
-            placeholder="Shipper"
-            value={shipper}
-            onChange={(e) => setShipper(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="text"
-            placeholder="Receiver"
-            value={receiver}
-            onChange={(e) => setReceiver(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="text"
-            placeholder="Pickup Address"
-            value={pickupAddress}
-            onChange={(e) => setPickupAddress(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="text"
-            placeholder="Delivery Address"
-            value={deliveryAddress}
-            onChange={(e) => setDeliveryAddress(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="date"
-            placeholder="Expected Delivery Date"
-            value={expectedDate}
-            onChange={(e) => setExpectedDate(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="time"
-            placeholder="Delivery Time"
-            value={deliveryTime}
-            onChange={(e) => setDeliveryTime(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <label className="flex items-center space-x-2">
-            <input
-              type="checkbox"
-              checked={signatureRequired}
-              onChange={(e) => setSignatureRequired(e.target.checked)}
-              className="form-checkbox"
-            />
-            <span>Signature Required</span>
-          </label>
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition"
-          >
-            {loading ? "Saving..." : editingId ? "Update Delivery" : "Create Delivery"}
-          </button>
-        </div>
-      </form>
-
-      <h2 className="text-xl font-semibold mt-6 mb-4">All Deliveries</h2>
-      {deliveries.length > 0 ? (
-        <ul className="space-y-4">
-          {deliveries.map((delivery) => (
-            <li key={delivery.id} className="p-4 border rounded bg-gray-100 flex justify-between">
-              <div>
-                <p className="text-gray-700"><span className="font-semibold">Tracking Number:</span> {delivery.trackingNumber}</p>
-                <p className="text-gray-700"><span className="font-semibold">Shipper:</span> {delivery.shipper}</p>
-                <p className="text-gray-700"><span className="font-semibold">Receiver:</span> {delivery.receiver}</p>
-                <p className="text-gray-700"><span className="font-semibold">Pickup Address:</span> {delivery.pickupAddress}</p>
-                <p className="text-gray-700"><span className="font-semibold">Delivery Address:</span> {delivery.deliveryAddress}</p>
-                <p className="text-gray-700"><span className="font-semibold">Expected Delivery Date:</span> {delivery.expectedDate}</p>
-                <p className="text-gray-700"><span className="font-semibold">Delivery Time:</span> {delivery.deliveryTime}</p>
-                <p className="text-gray-700"><span className="font-semibold">Signature Required:</span> {delivery.signatureRequired ? "Yes" : "No"}</p>
-                <button onClick={() => handleEdit(delivery)} className="w-full bg-yellow-500 text-white p-2 rounded-lg mt-2 hover:bg-yellow-600 transition">Edit</button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="text-gray-500">No deliveries available.</p>
-      )}
+  <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <input
+        type="text"
+        placeholder="Tracking Number"
+        value={trackingNumber}
+        onChange={(e) => setTrackingNumber(e.target.value)}
+        className="w-full p-3 border rounded-md sm:text-sm"
+      />
+      <input
+        type="text"
+        placeholder="Shipper"
+        value={shipper}
+        onChange={(e) => setShipper(e.target.value)}
+        className="w-full p-3 border rounded-md sm:text-sm"
+      />
+      <input
+        type="text"
+        placeholder="Receiver"
+        value={receiver}
+        onChange={(e) => setReceiver(e.target.value)}
+        className="w-full p-3 border rounded-md sm:text-sm"
+      />
+      <input
+        type="text"
+        placeholder="Pickup Address"
+        value={pickupAddress}
+        onChange={(e) => setPickupAddress(e.target.value)}
+        className="w-full p-3 border rounded-md sm:text-sm"
+      />
+      <input
+        type="text"
+        placeholder="Delivery Address"
+        value={deliveryAddress}
+        onChange={(e) => setDeliveryAddress(e.target.value)}
+        className="w-full p-3 border rounded-md sm:text-sm"
+      />
+      <input
+        type="date"
+        value={expectedDate}
+        onChange={(e) => setExpectedDate(e.target.value)}
+        className="w-full p-3 border rounded-md sm:text-sm"
+      />
+      <input
+        type="time"
+        value={deliveryTime}
+        onChange={(e) => setDeliveryTime(e.target.value)}
+        className="w-full p-3 border rounded-md sm:text-sm"
+      />
     </div>
+
+    <label className="flex items-center space-x-2 mt-4">
+      <input
+        type="checkbox"
+        checked={signatureRequired}
+        onChange={(e) => setSignatureRequired(e.target.checked)}
+        className="form-checkbox h-5 w-5"
+      />
+      <span className="text-sm">Signature Required</span>
+    </label>
+
+    <button
+      type="submit"
+      disabled={loading}
+      className="w-full bg-blue-500 text-white p-3 rounded-lg mt-4 hover:bg-blue-600 transition sm:text-sm"
+    >
+      {loading ? "Saving..." : editingId ? "Update Delivery" : "Create Delivery"}
+    </button>
+  </form>
+
+  <h2 className="text-lg sm:text-xl font-semibold mt-6 mb-4 text-center">All Deliveries</h2>
+  {deliveries.length > 0 ? (
+    <ul className="space-y-4">
+      {deliveries.map((delivery) => (
+        <li key={delivery.id} className="p-4 border rounded-lg bg-gray-100">
+          <div className="text-sm space-y-1">
+            <p><span className="font-semibold">Tracking Number:</span> {delivery.trackingNumber}</p>
+            <p><span className="font-semibold">Shipper:</span> {delivery.shipper}</p>
+            <p><span className="font-semibold">Receiver:</span> {delivery.receiver}</p>
+            <p><span className="font-semibold">Pickup Address:</span> {delivery.pickupAddress}</p>
+            <p><span className="font-semibold">Delivery Address:</span> {delivery.deliveryAddress}</p>
+            <p><span className="font-semibold">Expected Delivery Date:</span> {delivery.expectedDate}</p>
+            <p><span className="font-semibold">Delivery Time:</span> {delivery.deliveryTime}</p>
+            <p><span className="font-semibold">Signature Required:</span> {delivery.signatureRequired ? "Yes" : "No"}</p>
+          </div>
+          <button
+            onClick={() => handleEdit(delivery)}
+            className="w-full sm:w-auto bg-yellow-500 text-white p-2 rounded-lg mt-2 sm:mt-0 hover:bg-yellow-600 transition sm:text-sm"
+          >
+            Edit
+          </button>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p className="text-gray-500 text-center">No deliveries available.</p>
+  )}
+</div>
+
+
   );
 }
 

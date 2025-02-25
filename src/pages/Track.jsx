@@ -23,13 +23,13 @@ const Track = () => {
         <div className="section-left flex-1">
           <div className="section-title mb-8">
             <h3 className="text-indigo-500 text-lg uppercase tracking-wide font-bold mb-2">
-              Track Your Order
+            Track Your Package
             </h3>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 leading-tight">
               Enter Your <span className="text-orange-500">Tracking ID</span>
             </h2>
             <p className="text-gray-600 text-lg lg:text-xl max-w-3xl mt-4">
-              Enter your unique tracking ID below to get real-time updates on your shipment.
+              Enter your unique Tracking ID below to get real-time updates on your shipment.
             </p>
           </div>
 

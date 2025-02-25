@@ -3,6 +3,7 @@ import DocumentEditor from './DocumentEditor'
 import DeliveryInformation from './DeliveryInformation'
 import Status from './Status'
 import Package from './Package'
+import Images from './Images'
 
 
 const Section = ({selectedCode}) => {
@@ -12,6 +13,8 @@ const Section = ({selectedCode}) => {
     <DeliveryInformation selectedCode={selectedCode} />
     <Status selectedCode={selectedCode} />
     <Package selectedCode={selectedCode}/>
+    <Images selectedCode={selectedCode} />
+   
 
   </div>
   

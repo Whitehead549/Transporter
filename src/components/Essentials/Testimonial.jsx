@@ -7,34 +7,34 @@ import "swiper/css/autoplay"; // Import necessary CSS for autoplay
 
 const testimonials = [
   {
-    name: "Scott Hannah",
-    title: "Warehouse Manager, Bailiwick",
+    name: "Ethan Thompson",
+    title: "Supply Chain Manager",
     rating: 5,
-    text: "Spring Co Logistics has been a trusted, reliable partner for Bailiwick since the first shipment they picked up. They give me peace of mind knowing that my US shipments will get to their destinations safely.",
+    text: "Velo Trust Logistics has been a game-changer for our business. Their reliable and efficient services have helped us streamline our operations and improve customer satisfaction.",
   },
   {
-    name: "Avic Gonzalez",
-    title: "Transportation Manager, Beckman Coulter",
+    name: "Maya Ramos",
+    title: "Operations Director",
     rating: 5,
-    text: "I was really impressed with Spring Co Logistics' consultative approach to our distribution needs. They simply have the best execution and customer service of all my supply chain providers.",
+    text: "Velo Trust Logistics has consistently delivered exceptional service, providing timely and cost-effective solutions that meet our unique logistics needs.",
   },
   {
-    name: "Lisa Veach",
-    title: "Parts Manager, Power Curbers",
+    name: "Lucas Brooks",
+    title: "Logistics Manager",
     rating: 5,
-    text: "As always, Spring Co Logistics once again came through for us when the shipment had to be there. I know I can always count on you and I can go home and let you handle it. That is priceless.",
+    text: "Velo Trust Logistics has provided us with reliable, efficient, and cost-effective logistics solutions, exceeding our expectations and improving our bottom line.",
   },
 ];
 
 const Testimonial = () => {
   return (
-    <div className="w-full px-4 py-10 bg-gradient-to-r from-blue-50 to-white">
+    <div className="w-full px-4 py-10">
       {/* Desktop View */}
       <div className="hidden md:grid grid-cols-3 gap-6">
         {testimonials.map((testimonial, index) => (
           <div
             key={index}
-            className="bg-white p-6 shadow-lg rounded-xl hover:shadow-xl transition-shadow duration-300 ease-in-out"
+            className="bg-gray-50 p-6 shadow-lg rounded-xl hover:shadow-xl transition-shadow duration-300 ease-in-out"
           >
             <div className="text-center">
               <h3 className="text-lg font-semibold text-gray-800">

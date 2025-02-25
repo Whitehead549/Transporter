@@ -42,21 +42,29 @@ const Support = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 p-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:p-6 p-2">
       {cards.map((card) => (
         <div
           key={card.id}
           className={`flex flex-col items-center justify-center text-center ${card.bgColor} ${card.id === 1 ? "" : "border border-gray-300 rounded-lg shadow-md"}`}
           style={{
-            aspectRatio: "1.4 / 1", // Reduces height by 20% compared to the width
-            width: "90%", // Increased width by 10%
+            aspectRatio: "1.6 / 1", // Reduces height by 20% compared to the width
+            width: "86%", // Increased width by 10%
             margin: "0 auto", // Centers cards within the grid
           }}
         >
-          <div className={`mb-4 ${card.id === 1 ? "text-black" : "text-white"}`}>{card.icon}</div>
-          <p className={`text-lg sm:text-xl lg:text-2xl font-extrabold tracking-wide ${card.id === 1 ? "text-black" : "text-custom_gold"}`}>
+                   <div className={`mb-4 ${card.id === 1 ? "text-[#091242]" : "text-white"}`}>
+            {card.icon}
+          </div>
+          <p
+            className={`font-extrabold tracking-wide ${
+              card.id === 1
+                ? "text-2xl sm:text-2xl md:text-2xl lg:text-2xl xl:text-3xl text-[#091242] font-serif" // Increased font size and black text for id 1
+                : "text-sm sm:text-md lg:text-lg text-custom_gold" // Original font size and gold text for others
+            }`}
+          >
             {card.content}
-          </p> {/* Conditional text color: white for all except first card */}
+          </p>
         </div>
       ))}
     </div>

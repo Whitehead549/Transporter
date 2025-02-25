@@ -126,101 +126,50 @@ export default function Package({ selectedCode }) {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-xl">
-      <h2 className="text-xl font-semibold mb-4">
-        {editingId ? `Edit Package for ${selectedCode}` : `Create New Package for ${selectedCode}`}
-      </h2>
+    <div className="max-w-lg w-full mx-auto p-6 bg-white shadow-md rounded-xl sm:max-w-xl md:max-w-2xl lg:max-w-3xl">
+  <h2 className="text-xl font-semibold mb-4 text-center sm:text-left">
+    {editingId ? `Edit Package for ${selectedCode}` : `Create New Package for ${selectedCode}`}
+  </h2>
 
-      <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-        <div className="space-y-4">
-          <input
-            type="text"
-            placeholder="Package Type"
-            value={packageType}
-            onChange={(e) => setPackageType(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="text"
-            placeholder="Package Weight"
-            value={packageWeight}
-            onChange={(e) => setPackageWeight(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="text"
-            placeholder="Package Dimensions"
-            value={packageDimensions}
-            onChange={(e) => setPackageDimensions(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="text"
-            placeholder="Package Description"
-            value={packageDescription}
-            onChange={(e) => setPackageDescription(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="number"
-            placeholder="Number of Items"
-            value={numberOfItems}
-            onChange={(e) => setNumberOfItems(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="text" // Changed from number to text
-            placeholder="Package Value"
-            value={packageValue}
-            onChange={(e) => setPackageValue(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="text"
-            placeholder="Special Handling"
-            value={specialHandling}
-            onChange={(e) => setSpecialHandling(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="text"
-            placeholder="Package Reference Number"
-            value={packageReferenceNumber}
-            onChange={(e) => setPackageReferenceNumber(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition"
-          >
-            {loading ? "Saving..." : editingId ? "Update Package" : "Create Package"}
-          </button>
-        </div>
-      </form>
-
-      <h2 className="text-xl font-semibold mt-6 mb-4">All Packages</h2>
-      {packages.length > 0 ? (
-        <ul className="space-y-4">
-          {packages.map((pkg) => (
-            <li key={pkg.id} className="p-4 border rounded bg-gray-100 flex justify-between">
-              <div>
-                <p className="text-gray-700"><span className="font-semibold">Package Type:</span> {pkg.packageType}</p>
-                <p className="text-gray-700"><span className="font-semibold">Package Weight:</span> {pkg.packageWeight}</p>
-                <p className="text-gray-700"><span className="font-semibold">Package Dimensions:</span> {pkg.packageDimensions}</p>
-                <p className="text-gray-700"><span className="font-semibold">Package Description:</span> {pkg.packageDescription}</p>
-                <p className="text-gray-700"><span className="font-semibold">Number of Items:</span> {pkg.numberOfItems}</p>
-                <p className="text-gray-700"><span className="font-semibold">Package Value:</span> {pkg.packageValue}</p>
-                <p className="text-gray-700"><span className="font-semibold">Special Handling:</span> {pkg.specialHandling}</p>
-                <p className="text-gray-700"><span className="font-semibold">Package Reference Number:</span> {pkg.packageReferenceNumber}</p>
-                <button onClick={() => handleEdit(pkg)} className="w-full bg-yellow-500 text-white p-2 rounded-lg mt-2 hover:bg-yellow-600 transition">Edit</button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="text-gray-500">No packages available.</p>
-      )}
+  <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <input type="text" placeholder="Package Type" value={packageType} onChange={(e) => setPackageType(e.target.value)} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <input type="text" placeholder="Package Weight" value={packageWeight} onChange={(e) => setPackageWeight(e.target.value)} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <input type="text" placeholder="Package Dimensions" value={packageDimensions} onChange={(e) => setPackageDimensions(e.target.value)} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <input type="text" placeholder="Package Description" value={packageDescription} onChange={(e) => setPackageDescription(e.target.value)} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <input type="number" placeholder="Number of Items" value={numberOfItems} onChange={(e) => setNumberOfItems(e.target.value)} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <input type="text" placeholder="Package Value" value={packageValue} onChange={(e) => setPackageValue(e.target.value)} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <input type="text" placeholder="Special Handling" value={specialHandling} onChange={(e) => setSpecialHandling(e.target.value)} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <input type="text" placeholder="Package Reference Number" value={packageReferenceNumber} onChange={(e) => setPackageReferenceNumber(e.target.value)} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
     </div>
+    <button type="submit" disabled={loading} className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition disabled:opacity-50 mt-4">
+      {loading ? "Saving..." : editingId ? "Update Package" : "Create Package"}
+    </button>
+  </form>
+
+  <h2 className="text-xl font-semibold mt-6 mb-4">All Packages</h2>
+  {packages.length > 0 ? (
+    <ul className="space-y-4">
+      {packages.map((pkg) => (
+        <li key={pkg.id} className="p-4 border rounded bg-gray-100 flex flex-col sm:flex-row sm:justify-between">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <p className="text-gray-700"><span className="font-semibold">Package Type:</span> {pkg.packageType}</p>
+            <p className="text-gray-700"><span className="font-semibold">Package Weight:</span> {pkg.packageWeight}</p>
+            <p className="text-gray-700"><span className="font-semibold">Package Dimensions:</span> {pkg.packageDimensions}</p>
+            <p className="text-gray-700"><span className="font-semibold">Package Description:</span> {pkg.packageDescription}</p>
+            <p className="text-gray-700"><span className="font-semibold">Number of Items:</span> {pkg.numberOfItems}</p>
+            <p className="text-gray-700"><span className="font-semibold">Package Value:</span> {pkg.packageValue}</p>
+            <p className="text-gray-700"><span className="font-semibold">Special Handling:</span> {pkg.specialHandling}</p>
+            <p className="text-gray-700"><span className="font-semibold">Package Reference Number:</span> {pkg.packageReferenceNumber}</p>
+          </div>
+          <button onClick={() => handleEdit(pkg)} className="w-full sm:w-auto bg-yellow-500 text-white p-2 rounded-lg mt-2 sm:mt-0 hover:bg-yellow-600 transition">Edit</button>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p className="text-gray-500 text-center">No packages available.</p>
+  )}
+</div>
+
   );
 }

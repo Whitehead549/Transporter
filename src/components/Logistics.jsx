@@ -6,8 +6,8 @@ const Logistics = () => {
     <div className="">
      {/* Banner Section */}
   <section className="text-[#000000] text-center py-0 sm:py-6 md:pt-8 lg:py-12 xl:pt-12">
-    <h1 className="text-xl sm:text-xl md:text-2xl lg:text-3xl font-bold">
-      Logistics Solutions
+    <h1 className="text-xl sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#091242] font-serif">
+    Our Services
     </h1>
   </section>
 
@@ -18,7 +18,7 @@ const Logistics = () => {
           <div className="text-custom_gold text-4xl mb-4">
             <i className="fas fa-truck"></i>
           </div>
-          <h2 className="font-medium text-md">Freight Transport</h2>
+          <h2 className="font-medium text-md">Land Freight</h2>
         </div>
 
         {/* Card 2 */}
