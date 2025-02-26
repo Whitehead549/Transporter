@@ -13,6 +13,7 @@ import TermsOfService from './pages/TermsOfService';
 import Codes from './Admin/Codes';
 import Admin from './Admin/Admin';
 import Contact from './Admin/Contact';
+import Quote from './pages/Quote';
 
 
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/termsofservice" element={<TermsOfService />} />
             <Route path="/codes" element={<Codes />} />
             <Route path="/contacts" element={<Contact />} />
+            <Route path="/quote" element={<Quote />} />
 
             {/* Admin Route */}
             <Route path="/admin" element={<Admin />} />

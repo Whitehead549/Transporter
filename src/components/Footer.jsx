@@ -27,7 +27,7 @@ const Footer = () => {
 
           {/* Column 2: Contact Information */}
           <div className="text-center md:text-left lg:pl-[8rem] xl:pl-[9rem] md:pl-[3.5rem]">
-            <h2 className="text-sm md:text-base font-bold mb-4">Contact Information</h2>
+            <h2 className="text-sm md:text-base font-bold pb-[1.2rem]">Contact Information</h2>
             <p className="text-xs md:text-sm pb-2 lg:pb-0.5">
               <strong>Email:</strong> contact@velotrustlogistics.com
             </p>
@@ -52,7 +52,7 @@ const Footer = () => {
 
           {/* Column 3: Legal Links */}
           <div className="text-center md:text-left lg:pl-[8.7rem] lg:pl-[10.7rem] md:pl-[4.5rem]">
-            <h3 className="text-sm md:text-base font-semibold mb-4">Legal</h3>
+            <h3 className="text-sm md:text-base font-semibold pb-[1rem]">Legal</h3>
             <ul className="space-y-1">
               <li>
                 <Link to="/privacypolicy" className="text-xs md:text-sm hover:text-white transition">

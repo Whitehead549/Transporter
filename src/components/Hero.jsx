@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -18,12 +19,12 @@ const Hero = () => {
         {/* Button Container */}
         <div className="flex flex-wrap space-x-0 sm:space-x-4 justify-center gap-2 sm:gap-0 pb-4">
           {/* Get Quote Button */}
-          <a
-            href="https://freightswiftlogistics.com/about/"
+          <Link
+            to="/quote"
             className="bg-gray-50 border-2 border-gray-50 text-custom_blue py-1 px-4 sm:px-6 md:px-10 lg:px-12 lg:py-2 rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 shadow-xl"
           >
             Get Quote
-          </a>
+          </Link>
         </div>
       </div>
     </div>
