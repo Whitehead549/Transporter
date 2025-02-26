@@ -1,4 +1,3 @@
-// src/App.js
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -14,37 +13,42 @@ import Codes from './Admin/Codes';
 import Admin from './Admin/Admin';
 import Contact from './Admin/Contact';
 import Quote from './pages/Quote';
-
+import WhatsAppButton from './Track/WhatsAppButton';
+import Whatapp from './Admin/Whatapp';
 
 
 function App() {
   return (
-    <div className="overflow-x-hidden">
-    <Router>
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <main className="flex-grow">
-          <Routes>
-            {/* Main Routes */}
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/payment" element={<MakePayment />} />
-            <Route path="/track" element={<Track />} />
-            <Route path="/contact" element={<ContactUs />} />
-            <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-            <Route path="/termsofservice" element={<TermsOfService />} />
-            <Route path="/codes" element={<Codes />} />
-            <Route path="/contacts" element={<Contact />} />
-            <Route path="/quote" element={<Quote />} />
+    <div className="overflow-x-hidden relative">
+      <Router>
+        <div className="min-h-screen flex flex-col">
+          <Navbar />
+          <main className="flex-grow">
+            <Routes>
+              {/* Main Routes */}
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/payment" element={<MakePayment />} />
+              <Route path="/track" element={<Track />} />
+              <Route path="/contact" element={<ContactUs />} />
+              <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+              <Route path="/termsofservice" element={<TermsOfService />} />
+              <Route path="/codes" element={<Codes />} />
+              <Route path="/whatapp" element={<Whatapp />} />
+              <Route path="/contacts" element={<Contact />} />
+              <Route path="/quote" element={<Quote />} />
 
-            {/* Admin Route */}
-            <Route path="/admin" element={<Admin />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+              {/* Admin Route */}
+              <Route path="/admin" element={<Admin />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+
+      {/* WhatsApp Chat Button */}
+      <WhatsAppButton />
     </div>
   );
 }

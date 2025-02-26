@@ -15,7 +15,7 @@ const Footer = () => {
           <img 
             src={logo} 
             alt="Company Logo" 
-            className="w-32 md:w-40 h-10 mx-auto md:mx-0 mb-2"
+            className="w-32 md:w-32 h-9 mx-auto md:mx-0 mb-3"
           />
 
             <p className="text-xs md:text-sm leading-relaxed">
@@ -52,7 +52,7 @@ const Footer = () => {
 
           {/* Column 3: Legal Links */}
           <div className="text-center md:text-left lg:pl-[8.7rem] lg:pl-[10.7rem] md:pl-[4.5rem]">
-            <h3 className="text-sm md:text-base font-semibold pb-[1rem]">Legal</h3>
+            <h3 className="text-sm md:text-base font-semibold pb-[0.8rem]">Legal</h3>
             <ul className="space-y-1">
               <li>
                 <Link to="/privacypolicy" className="text-xs md:text-sm hover:text-white transition">
@@ -69,7 +69,7 @@ const Footer = () => {
         </div>
 
         {/* Divider and Copyright */}
-        <div className="border-t border-gray-700 mt-1 py-1 text-center">
+        <div className="border-t border-gray-700 mt-1 py-4 text-center">
           <p className="text-xs md:text-sm">&copy; {currentYear} Velo Trust Logistics. All Rights Reserved.</p>
         </div>
       </footer>

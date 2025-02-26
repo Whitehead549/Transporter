@@ -108,6 +108,9 @@ const Admin = () => {
       <Link to="/contacts" className="w-full py-3 bg-[#091242] text-white font-semibold rounded-lg text-center hover:bg-[#1A2D6D]  text-sm sm:text-base">
         Contacts
       </Link>
+      <Link to="/whatapp" className="w-full py-3 bg-[#091242] text-white font-semibold rounded-lg text-center hover:bg-[#1A2D6D]  text-sm sm:text-base">
+        Whatapp
+      </Link>
     </div>
   )}
 
