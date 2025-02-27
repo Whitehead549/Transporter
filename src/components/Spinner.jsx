@@ -1,17 +1,17 @@
 import React from "react";
 import "tailwindcss/tailwind.css";
+import { motion } from "framer-motion";
 
 const Spinner = () => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-white z-[99999]">
-      <div className="relative flex space-x-2">
-        <div className="w-6 h-6 bg-[#091242] animate-bounce delay-100"></div>
-        <div className="w-6 h-6 bg-[#091242] animate-bounce delay-200"></div>
-        <div className="w-6 h-6 bg-[#091242] animate-bounce delay-300"></div>
-      </div>
+      <motion.div
+        className="w-16 h-16 border-4 border-t-[#091242] border-gray-200 rounded-full"
+        animate={{ rotate: 360 }}
+        transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+      />
     </div>
   );
 };
 
 export default Spinner;
-
