@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Services = () => {
   return (
     <div className="bg-gray-50 overflow-x-hidden">
-      <section className="relative pt-16">
+      <section className="relative pt-[6rem]">
         {/* Content Section */}
         <div className="relative px-6 md:px-12 lg:px-20 pb-10">
           {/* Decorative Image Positioned Behind */}
@@ -18,7 +18,7 @@ const Services = () => {
           </div>
 
           {/* Heading */}
-          <h1 className="text-xl md:text-4xl font-semibold text-center mb-6 relative z-10 text-[#091242]">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-6 relative z-10 text-[#091242]">
             Our Services
           </h1>
 

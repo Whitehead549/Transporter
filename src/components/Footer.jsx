@@ -29,7 +29,7 @@ const Footer = () => {
           <div className="text-center md:text-left lg:pl-[8rem] xl:pl-[9rem] md:pl-[3.5rem]">
             <h2 className="text-sm md:text-base font-bold pb-[1.2rem]">Contact Information</h2>
             <p className="text-xs md:text-sm pb-2 lg:pb-0.5">
-              <strong>Email:</strong> contact@velotrustlogistics.com
+              <strong>Email:</strong> contact@rapidoxlogistics.com
             </p>
             <p className="text-xs md:text-sm pb-2">
               <strong>Address:</strong> 620 Emerson Road Alexandria, LA 71302
@@ -70,7 +70,7 @@ const Footer = () => {
 
         {/* Divider and Copyright */}
         <div className="border-t border-gray-700 mt-1 py-4 text-center">
-          <p className="text-xs md:text-sm">&copy; {currentYear} Velo Trust Logistics. All Rights Reserved.</p>
+          <p className="text-xs md:text-sm">&copy; {currentYear} Rapidox Logistics. All Rights Reserved.</p>
         </div>
       </footer>
     </>

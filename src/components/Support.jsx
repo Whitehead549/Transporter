@@ -59,7 +59,7 @@ const Support = () => {
           <p
             className={`font-extrabold tracking-wide ${
               card.id === 1
-                ? "text-2xl sm:text-2xl md:text-2xl lg:text-2xl xl:text-3xl text-[#091242] font-serif" // Increased font size and black text for id 1
+                ? "text-2xl sm:text-2xl md:text-2xl lg:text-2xl xl:text-3xl text-[#091242]" // Increased font size and black text for id 1
                 : "text-sm sm:text-md lg:text-lg text-custom_gold" // Original font size and gold text for others
             }`}
           >

@@ -64,11 +64,10 @@ const ContactUs = () => {
       <section className="relative px-6 md:px-12 lg:px-20 py-12 pt-24">
         {/* Contact Us Image */}
         <div className="flex justify-center mb-8">
-          <img
-            src={ContactUsImage}
-            alt="Contact Us"
-            className="w-full max-w-[130px] sm:max-w-[150px] md:max-w-[150px] lg:max-w-[180px]"
-          />
+           {/* Heading */}
+           <h1 className="text-xl md:text-4xl font-bold text-center mb-6 relative z-10 text-[#091242]">
+            Contact Us
+          </h1>
         </div>
 
         {/* Contact Information */}
@@ -78,7 +77,7 @@ const ContactUs = () => {
             Whether you have a question, comment, or need assistance with a shipment, our team is here to help.
           </p>
           <p className="text-[#4A5568] text-base md:text-lg mb-2">
-            <strong className="text-[#091242]">Email:</strong> contact@velotrustlogistics.com
+            <strong className="text-[#091242]">Email:</strong>contact@rapidoxlogistics.com
           </p>
           <p className="text-[#4A5568] text-base md:text-lg">
             <strong className="text-[#091242]">Address:</strong> 620 Emerson Road, Alexandria, LA 71302
@@ -188,7 +187,7 @@ const ContactUs = () => {
               value={formData.whatsappNumber}
               onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 border border-[#091242] rounded-md shadow-sm focus:ring-[#FFCC44] focus:border-[#FFCC44]"
-              placeholder="Enter your WhatsApp number"
+              placeholder="Enter your whatsApp number"
               required
             />
           </div>

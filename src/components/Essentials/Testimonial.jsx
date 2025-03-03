@@ -10,19 +10,19 @@ const testimonials = [
     name: "Ethan Thompson",
     title: "Supply Chain Manager",
     rating: 5,
-    text: "Velo Trust Logistics has been a game-changer for our business. Their reliable and efficient services have helped us streamline our operations and improve customer satisfaction.",
+    text: "Rapidox Logistics has been a game-changer for our business. Their reliable and efficient services have helped us streamline our operations and improve customer satisfaction.",
   },
   {
     name: "Maya Ramos",
     title: "Operations Director",
     rating: 5,
-    text: "Velo Trust Logistics has consistently delivered exceptional service, providing timely and cost-effective solutions that meet our unique logistics needs.",
+    text: "Rapidox Logistics has consistently delivered exceptional service, providing timely and cost-effective solutions that meet our unique logistics needs.",
   },
   {
     name: "Lucas Brooks",
     title: "Logistics Manager",
     rating: 5,
-    text: "Velo Trust Logistics has provided us with reliable, efficient, and cost-effective logistics solutions, exceeding our expectations and improving our bottom line.",
+    text: "Rapidox Logistics has provided us with reliable, efficient, and cost-effective logistics solutions, exceeding our expectations and improving our bottom line.",
   },
 ];
 

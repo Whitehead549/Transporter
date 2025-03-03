@@ -4,7 +4,7 @@ const Steps = () => {
   return (
     <section className="py-16">
   <div className="container mx-auto px-4 text-center">
-    <h2 className="text-4xl font-extrabold text-[#091242] mb-12 leading-tight font-serif">
+    <h2 className="text-4xl font-extrabold text-[#091242] mb-12 leading-tight">
       Ship your package in just 4 super simple steps
     </h2>
 
@@ -15,7 +15,7 @@ const Steps = () => {
           <i className="fas fa-calculator text-3xl"></i>
         </div>
         <h3 className="text-xl font-semibold text-gray-800 mb-2 group-hover:text-custom_blue">
-          Request a<br/>Quote
+          Get<br/>Quote
         </h3>
         <p className="text-sm text-gray-600 text-center">
           Get an instant price estimate for your shipment.
@@ -41,7 +41,7 @@ const Steps = () => {
           <i className="fas fa-shipping-fast text-3xl"></i>
         </div>
         <h3 className="text-xl font-semibold text-gray-800 mb-2 group-hover:text-custom_blue">
-          Track your <br/>Package
+          Track Your <br/>Package
         </h3>
         <p className="text-sm text-gray-600 text-center">
           Monitor your shipment status in real time.

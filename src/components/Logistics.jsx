@@ -6,7 +6,7 @@ const Logistics = () => {
     <div className="">
      {/* Banner Section */}
   <section className="text-[#000000] text-center py-0 sm:py-6 md:pt-8 lg:py-12 xl:pt-12">
-    <h1 className="text-xl sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#091242] font-serif">
+    <h1 className="text-xl sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#091242]">
     Our Services
     </h1>
   </section>

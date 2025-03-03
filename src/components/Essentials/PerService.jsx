@@ -5,7 +5,7 @@ import PersonalService from '../../assets/personservice.jpg';  // Import an imag
 const PerService = () => {
   const progressData = [
     { title: "Logistics & Transportation", percentage: 93 },
-    { title: "Warehousing Package", percentage: 85 },
+    { title: "Warehouse Packaging", percentage: 85 },
     { title: "Freight Management", percentage: 72 },
   ];
 
@@ -20,14 +20,14 @@ const PerService = () => {
                 
               </h3>
               <h2 className="text-4xl lg:text-5xl font-bold text-custom_blue leading-tight">
-                Leading<br />
-                with <span className="text-custom_blue">Global Presence</span>.
+              WHAT MAKES<br />
+              <span className="text-custom_blue"> US DIFFERENT?</span>.
               </h2>
             </div>
             <div className="title-desc mt-6 pb-0">
               <p className="text-gray-600 text-lg lg:text-xl max-w-3xl">
               We combine the velocity you need with the trust you demand.
-               Velo Trust Logistics delivers fast, reliable, and transparent logistics solutions tailored to your unique requirements. Experience the difference.
+               Rapidox Logistics delivers fast, reliable, and transparent logistics solutions tailored to your unique requirements. Experience the difference.
               </p>
             </div>
           </div>
