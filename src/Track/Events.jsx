@@ -29,7 +29,7 @@ const Events = ({selectedCode}) => {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-3 bg-white shadow-lg rounded-lg border border-gray-300 text-black text-sm md:text-base">
+    <div className="max-w-lg mx-auto text-black text-sm md:text-base">
     <h2 className="text-base md:text-lg font-semibold mb-2 bg-[#091242] text-white p-2 rounded-t-lg text-center">
       Events
     </h2>

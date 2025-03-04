@@ -73,7 +73,7 @@ const Clientel = ({ selectedCode }) => {
   }, [location]);
 
   return (
-    <div className="py-8 px-4 sm:px-6 lg:px-8 bg-gray-50 min-h-screen">
+    <div className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 min-h-screen lg:py-[8rem]">
       <div className="hidden lg:block">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-12xl mx-auto">
           <div className="space-y-4">

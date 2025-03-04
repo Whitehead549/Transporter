@@ -4,16 +4,16 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 
 export default function Status({ selectedCode }) {
   const [formData, setFormData] = useState({
-    deliveryNotes: "",
-    deliveryCarrier: "",
-    deliveryMethod: "",
-    deliveryFees: "",
-    paymentMethod: "",
-    deliveryAttempt: "",
-    deliveryConfirmation: "", // Changed to text input
-    redeliveryOptions: "",
-    currentStatus: "",
-    currentLocation: "",
+    DeliveryNotes: "",
+    DeliveryCarrier: "",
+    DeliveryMethod: "",
+    DeliveryFees: "",
+    PaymentMethod: "",
+    DeliveryAttempt: "",
+    DeliveryConfirmation: "", // Changed to text input
+    RedeliveryOptions: "",
+    CurrentStatus: "",
+    CurrentLocation: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -78,16 +78,16 @@ export default function Status({ selectedCode }) {
       alert("Status updated successfully");
       fetchEvents();
       setFormData({
-        deliveryNotes: "",
-        deliveryCarrier: "",
-        deliveryMethod: "",
-        deliveryFees: "",
-        paymentMethod: "",
-        deliveryAttempt: "",
-        deliveryConfirmation: "", // Reset to empty string
-        redeliveryOptions: "",
-        currentStatus: "",
-        currentLocation: "",
+        DeliveryNotes: "",
+        DeliveryCarrier: "",
+        DeliveryMethod: "",
+        DeliveryFees: "",
+        PaymentMethod: "",
+        DeliveryAttempt: "",
+        DeliveryConfirmation: "", // Reset to empty string
+        RedeliveryOptions: "",
+        CurrentStatus: "",
+        CurrentLocation: "",
       });
     } catch (error) {
       console.error("Error updating status: ", error);
@@ -99,16 +99,16 @@ export default function Status({ selectedCode }) {
   const handleEdit = (event) => {
     setEditingId(event.id);
     setFormData({
-      deliveryNotes: event.deliveryNotes || "",
-      deliveryCarrier: event.deliveryCarrier || "",
-      deliveryMethod: event.deliveryMethod || "",
-      deliveryFees: event.deliveryFees || "",
-      paymentMethod: event.paymentMethod || "",
-      deliveryAttempt: event.deliveryAttempt || "",
-      deliveryConfirmation: event.deliveryConfirmation || "", // Set to text value
-      redeliveryOptions: event.redeliveryOptions || "",
-      currentStatus: event.currentStatus || "",
-      currentLocation: event.currentLocation || "",
+      DeliveryNotes: event.DeliveryNotes || "",
+      DeliveryCarrier: event.DeliveryCarrier || "",
+      DeliveryMethod: event.DeliveryMethod || "",
+      DeliveryFees: event.DeliveryFees || "",
+      PaymentMethod: event.PaymentMethod || "",
+      DeliveryAttempt: event.DeliveryAttempt || "",
+      DeliveryConfirmation: event.DeliveryConfirmation || "", // Set to text value
+      RedeliveryOptions: event.RedeliveryOptions || "",
+      CurrentStatus: event.CurrentStatus || "",
+      CurrentLocation: event.CurrentLocation || "",
     });
   };
 
@@ -146,16 +146,16 @@ export default function Status({ selectedCode }) {
           {events.map((event) => (
             <li key={event.id} className="p-4 border rounded bg-gray-100">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <p className="text-gray-700"><span className="font-semibold">Location:</span> {event.currentLocation}</p>
-                <p className="text-gray-700"><span className="font-semibold">Status:</span> {event.currentStatus}</p>
-                <p className="text-gray-700"><span className="font-semibold">Delivery Notes:</span> {event.deliveryNotes}</p>
-                <p className="text-gray-700"><span className="font-semibold">Carrier:</span> {event.deliveryCarrier}</p>
-                <p className="text-gray-700"><span className="font-semibold">Method:</span> {event.deliveryMethod}</p>
-                <p className="text-gray-700"><span className="font-semibold">Fees:</span> ${event.deliveryFees}</p>
-                <p className="text-gray-700"><span className="font-semibold">Payment Method:</span> {event.paymentMethod}</p>
-                <p className="text-gray-700"><span className="font-semibold">Delivery Attempt:</span> {event.deliveryAttempt}</p>
-                <p className="text-gray-700"><span className="font-semibold">Redelivery Options:</span> {event.redeliveryOptions}</p>
-                <p className="text-gray-700"><span className="font-semibold">Delivery Confirmation:</span> {event.deliveryConfirmation}</p> {/* Display text value */}
+                <p className="text-gray-700"><span className="font-semibold">Location:</span> {event.CurrentLocation}</p>
+                <p className="text-gray-700"><span className="font-semibold">Status:</span> {event.CurrentStatus}</p>
+                <p className="text-gray-700"><span className="font-semibold">Delivery Notes:</span> {event.DeliveryNotes}</p>
+                <p className="text-gray-700"><span className="font-semibold">Carrier:</span> {event.DeliveryCarrier}</p>
+                <p className="text-gray-700"><span className="font-semibold">Method:</span> {event.DeliveryMethod}</p>
+                <p className="text-gray-700"><span className="font-semibold">Fees:</span> ${event.DeliveryFees}</p>
+                <p className="text-gray-700"><span className="font-semibold">Payment Method:</span> {event.PaymentMethod}</p>
+                <p className="text-gray-700"><span className="font-semibold">Delivery Attempt:</span> {event.DeliveryAttempt}</p>
+                <p className="text-gray-700"><span className="font-semibold">Redelivery Options:</span> {event.RedeliveryOptions}</p>
+                <p className="text-gray-700"><span className="font-semibold">Delivery Confirmation:</span> {event.DeliveryConfirmation}</p> {/* Display text value */}
               </div>
 
               <button

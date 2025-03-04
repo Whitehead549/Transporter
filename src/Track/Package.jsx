@@ -15,36 +15,35 @@ const Package = ({ selectedCode }) => {
   const fetchDeliveryData = async () => {
     setLoading(true);
     try {
-      const docRef = doc(db, selectedCode, "Package"); // 'selectedCode' is the collection name
+      const docRef = doc(db, selectedCode, "Package");
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
         const packages = docSnap.data().packages || [];
 
         if (packages.length > 0) {
-          const firstDelivery = packages[0]; // Get only the first object
+          const firstDelivery = packages[0];
 
-          // Extract only the required fields
           const {
-            numberOfItems,
-            packageDescription,
-            packageDimensions,
-            packageReferenceNumber,
-            packageType,
-            packageValue,
-            packageWeight,
-            specialHandling,
+            NumberOfItems,
+            PackageDescription,
+            PackageDimensions,
+            PackageReferenceNumber,
+            PackageType,
+            PackageValue,
+            PackageWeight,
+            SpecialHandling,
           } = firstDelivery;
 
           setDeliveryData({
-            numberOfItems,
-            packageDescription,
-            packageDimensions,
-            packageReferenceNumber,
-            packageType,
-            packageValue,
-            packageWeight,
-            specialHandling,
+            NumberOfItems,
+            PackageDescription,
+            PackageDimensions,
+            PackageReferenceNumber,
+            PackageType,
+            PackageValue,
+            PackageWeight,
+            SpecialHandling,
           });
         } else {
           setDeliveryData(null);
@@ -59,23 +58,30 @@ const Package = ({ selectedCode }) => {
   };
 
   return (
-    <div className="max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto p-4 bg-white shadow-lg rounded-lg border border-gray-300 text-black h-[400px] overflow-y-auto">
-    <h2 className="text-lg font-semibold mb-2 bg-[#091242] text-white p-2 rounded-t-lg">
+    <div className="max-w-xl mx-auto text-black h-[400px] overflow-y-auto">
+    <h2 className="text-lg font-semibold mb-2 bg-[#091242] text-white p-2 rounded-t-lg text-center">
       DETAILS
     </h2>
-  
+
     {loading ? (
       <p className="text-center text-gray-500">Loading...</p>
     ) : deliveryData ? (
       <div className="overflow-x-auto">
-        <table className="w-full bg-gray-100">
+        <table className="w-full bg-white border border-gray-300 rounded-md">
           <tbody>
-            {Object.entries(deliveryData).map(([key, value]) => (
-              <tr key={key} className="border-b border-gray-500">
-                <th className="px-2 py-1 text-left text-sm font-medium">
-                  {key.replace(/([A-Z])/g, " $1").trim()}
+            {Object.entries(deliveryData).map(([key, value], index) => (
+              <tr
+                key={key}
+                className={`border-b border-gray-300 ${
+                  index % 2 === 0 ? "bg-gray-100" : "bg-white"
+                }`}
+              >
+                <th className="w-48 px-4 py-2 text-left text-xs font-semibold text-gray-700 align-middle break-words whitespace-normal truncate">
+                  <span title={key.replace(/([A-Z])/g, " $1").trim()}>
+                    {key.replace(/([A-Z])/g, " $1").trim()}
+                  </span>:
                 </th>
-                <td className="px-2 py-1 text-sm">
+                <td className="px-4 py-2 text-sm text-gray-600 align-middle">
                   {typeof value === "boolean" ? (value ? "Yes" : "No") : value}
                 </td>
               </tr>

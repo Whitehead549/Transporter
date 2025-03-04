@@ -3,14 +3,14 @@ import { db } from "../Config/Config"; // Ensure Firebase is configured
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
 export default function DeliveryInformation({ selectedCode }) {
-  const [trackingNumber, setTrackingNumber] = useState("");
-  const [shipper, setShipper] = useState("");
-  const [receiver, setReceiver] = useState("");
-  const [pickupAddress, setPickupAddress] = useState("");
-  const [deliveryAddress, setDeliveryAddress] = useState("");
-  const [expectedDate, setExpectedDate] = useState("");
-  const [deliveryTime, setDeliveryTime] = useState("");
-  const [signatureRequired, setSignatureRequired] = useState(false);
+  const [TrackingNumber, setTrackingNumber] = useState("");
+  const [Shipper, setShipper] = useState("");
+  const [Receiver, setReceiver] = useState("");
+  const [PickupAddress, setPickupAddress] = useState("");
+  const [DeliveryAddress, setDeliveryAddress] = useState("");
+  const [ExpectedDate, setExpectedDate] = useState("");
+  const [DeliveryTime, setDeliveryTime] = useState("");
+  const [SignatureRequired, setSignatureRequired] = useState(false);
   const [loading, setLoading] = useState(false);
   const [deliveries, setDeliveries] = useState([]);
   const [editingId, setEditingId] = useState(null);
@@ -35,7 +35,7 @@ export default function DeliveryInformation({ selectedCode }) {
   };
 
   const handleSubmit = async () => {
-    if (!trackingNumber || !shipper || !receiver || !pickupAddress || !deliveryAddress || !expectedDate || !deliveryTime) {
+    if (!TrackingNumber || !Shipper || !Receiver || !PickupAddress || !DeliveryAddress || !ExpectedDate || !DeliveryTime) {
       alert("All fields are required.");
       return;
     }
@@ -49,21 +49,21 @@ export default function DeliveryInformation({ selectedCode }) {
       if (editingId) {
         updatedDeliveries = existingDeliveries.map((delivery) =>
           delivery.id === editingId
-            ? { id: editingId, trackingNumber, shipper, receiver, pickupAddress, deliveryAddress, expectedDate, deliveryTime, signatureRequired }
+            ? { id: editingId, TrackingNumber, Shipper, Receiver, PickupAddress, DeliveryAddress, ExpectedDate, DeliveryTime, SignatureRequired }
             : delivery
         );
         setEditingId(null);
       } else {
         const newDelivery = {
           id: new Date().getTime().toString(),
-          trackingNumber,
-          shipper,
-          receiver,
-          pickupAddress,
-          deliveryAddress,
-          expectedDate,
-          deliveryTime,
-          signatureRequired,
+          TrackingNumber,
+          Shipper,
+          Receiver,
+          PickupAddress,
+          DeliveryAddress,
+          ExpectedDate,
+          DeliveryTime,
+          SignatureRequired,
         };
         updatedDeliveries = [...existingDeliveries, newDelivery];
       }
@@ -91,14 +91,14 @@ export default function DeliveryInformation({ selectedCode }) {
 
   const handleEdit = (delivery) => {
     setEditingId(delivery.id);
-    setTrackingNumber(delivery.trackingNumber);
-    setShipper(delivery.shipper);
-    setReceiver(delivery.receiver);
-    setPickupAddress(delivery.pickupAddress);
-    setDeliveryAddress(delivery.deliveryAddress);
-    setExpectedDate(delivery.expectedDate);
-    setDeliveryTime(delivery.deliveryTime);
-    setSignatureRequired(delivery.signatureRequired);
+    setTrackingNumber(delivery.TrackingNumber);
+    setShipper(delivery.Shipper);
+    setReceiver(delivery.Receiver);
+    setPickupAddress(delivery.PickupAddress);
+    setDeliveryAddress(delivery.DeliveryAddress);
+    setExpectedDate(delivery.ExpectedDate);
+    setDeliveryTime(delivery.DeliveryTime);
+    setSignatureRequired(delivery.SignatureRequired);
   };
 
   return (
@@ -112,47 +112,47 @@ export default function DeliveryInformation({ selectedCode }) {
       <input
         type="text"
         placeholder="Tracking Number"
-        value={trackingNumber}
+        value={TrackingNumber}
         onChange={(e) => setTrackingNumber(e.target.value)}
         className="w-full p-3 border rounded-md sm:text-sm"
       />
       <input
         type="text"
         placeholder="Shipper"
-        value={shipper}
+        value={Shipper}
         onChange={(e) => setShipper(e.target.value)}
         className="w-full p-3 border rounded-md sm:text-sm"
       />
       <input
         type="text"
         placeholder="Receiver"
-        value={receiver}
+        value={Receiver}
         onChange={(e) => setReceiver(e.target.value)}
         className="w-full p-3 border rounded-md sm:text-sm"
       />
       <input
         type="text"
         placeholder="Pickup Address"
-        value={pickupAddress}
+        value={PickupAddress}
         onChange={(e) => setPickupAddress(e.target.value)}
         className="w-full p-3 border rounded-md sm:text-sm"
       />
       <input
         type="text"
         placeholder="Delivery Address"
-        value={deliveryAddress}
+        value={DeliveryAddress}
         onChange={(e) => setDeliveryAddress(e.target.value)}
         className="w-full p-3 border rounded-md sm:text-sm"
       />
       <input
         type="date"
-        value={expectedDate}
+        value={ExpectedDate}
         onChange={(e) => setExpectedDate(e.target.value)}
         className="w-full p-3 border rounded-md sm:text-sm"
       />
       <input
         type="time"
-        value={deliveryTime}
+        value={DeliveryTime}
         onChange={(e) => setDeliveryTime(e.target.value)}
         className="w-full p-3 border rounded-md sm:text-sm"
       />
@@ -161,7 +161,7 @@ export default function DeliveryInformation({ selectedCode }) {
     <label className="flex items-center space-x-2 mt-4">
       <input
         type="checkbox"
-        checked={signatureRequired}
+        checked={SignatureRequired}
         onChange={(e) => setSignatureRequired(e.target.checked)}
         className="form-checkbox h-5 w-5"
       />
@@ -183,14 +183,14 @@ export default function DeliveryInformation({ selectedCode }) {
       {deliveries.map((delivery) => (
         <li key={delivery.id} className="p-4 border rounded-lg bg-gray-100">
           <div className="text-sm space-y-1">
-            <p><span className="font-semibold">Tracking Number:</span> {delivery.trackingNumber}</p>
-            <p><span className="font-semibold">Shipper:</span> {delivery.shipper}</p>
-            <p><span className="font-semibold">Receiver:</span> {delivery.receiver}</p>
-            <p><span className="font-semibold">Pickup Address:</span> {delivery.pickupAddress}</p>
-            <p><span className="font-semibold">Delivery Address:</span> {delivery.deliveryAddress}</p>
-            <p><span className="font-semibold">Expected Delivery Date:</span> {delivery.expectedDate}</p>
-            <p><span className="font-semibold">Delivery Time:</span> {delivery.deliveryTime}</p>
-            <p><span className="font-semibold">Signature Required:</span> {delivery.signatureRequired ? "Yes" : "No"}</p>
+            <p><span className="font-semibold">Tracking Number:</span> {delivery.TrackingNumber}</p>
+            <p><span className="font-semibold">Shipper:</span> {delivery.Shipper}</p>
+            <p><span className="font-semibold">Receiver:</span> {delivery.Receiver}</p>
+            <p><span className="font-semibold">Pickup Address:</span> {delivery.PickupAddress}</p>
+            <p><span className="font-semibold">Delivery Address:</span> {delivery.DeliveryAddress}</p>
+            <p><span className="font-semibold">Expected Delivery Date:</span> {delivery.ExpectedDate}</p>
+            <p><span className="font-semibold">Delivery Time:</span> {delivery.DeliveryTime}</p>
+            <p><span className="font-semibold">Signature Required:</span> {delivery.SignatureRequired ? "Yes" : "No"}</p>
           </div>
           <button
             onClick={() => handleEdit(delivery)}
