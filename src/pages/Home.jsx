@@ -43,11 +43,11 @@ const Home = () => {
         <>
           {/* Hero Section */}
           <div 
-            className="relative w-full h-[48vh] sm:h-[54vh] md:h-[44vh] lg:h-[74vh] overflow-hidden my-6"
+            className="relative w-full h-[48vh] sm:h-[54vh] md:h-[64vh] lg:h-[74vh] overflow-hidden my-6"
             style={{ backgroundImage: `url(${heroImage})`, backgroundSize: "cover", backgroundPosition: "center" }}
           >
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center pt-16 sm:pt-8 md:pt-12 lg:pt-16 px-4 sm:px-6 md:px-8 bg-black bg-opacity-50">
-              <h1 className="text-2xl sm:text-2xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-2 md:mb-4 leading-snug sm:leading-tight md:leading-normal max-w-3xl tracking-wide">
+              <h1 className="text-2xl sm:text-2xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-2 md:mb-3 leading-snug sm:leading-tight md:leading-tight max-w-3xl tracking-wide">
               RAPIDOX<span><br/>LOGISTICS</span>
               </h1>
               <p className="text-sm sm:text-xs md:text-xl lg:text-lg text-white max-w-xs sm:max-w-xl md:max-w-2xl mb-4 sm:mb-3 md:mb-6 px-2 sm:px-6 leading-relaxed">

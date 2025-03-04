@@ -21,7 +21,7 @@ const PerService = () => {
               </h3>
               <h2 className="text-4xl lg:text-5xl font-bold text-custom_blue leading-tight">
               WHAT MAKES<br />
-              <span className="text-custom_blue"> US DIFFERENT?</span>.
+              <span className="text-custom_blue"> US DIFFERENT?</span>
               </h2>
             </div>
             <div className="title-desc mt-6 pb-0">

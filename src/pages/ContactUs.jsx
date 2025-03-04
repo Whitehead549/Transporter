@@ -187,7 +187,7 @@ const ContactUs = () => {
               value={formData.whatsappNumber}
               onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 border border-[#091242] rounded-md shadow-sm focus:ring-[#FFCC44] focus:border-[#FFCC44]"
-              placeholder="Enter your whatsApp number"
+              placeholder="Enter your whatsapp number"
               required
             />
           </div>

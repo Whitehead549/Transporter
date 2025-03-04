@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import stamp from '../../assets/stamp Velo88.png'; // Ensure the image is placed in the public or src folder
+import stamp from '../../assets/RAPIDOX 001.png'; // Ensure the image is placed in the public or src folder
 
 const Invoice = () => {
   const invoiceRef = useRef();
