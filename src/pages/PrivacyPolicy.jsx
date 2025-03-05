@@ -40,7 +40,7 @@ const PrivacyPolicy = () => {
             <p>
               If you have any questions or concerns regarding this policy, please contact us:
             </p>
-            <p className="font-semibold text-[#091242]">Email: contact@velotrustlogistics.com</p>
+            <p className="font-semibold text-[#091242]">Email: contact@rapidoxlogistics.com</p>
           </section>
         </div>
 
@@ -59,7 +59,7 @@ const sections = [
   {
     title: "Introduction",
     content:
-      "At Velo Trust Logistics, we value your trust and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and protect your information when you visit our website or use our services.",
+      "At RAPIDOX Logistics, we value your trust and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and protect your information when you visit our website or use our services.",
   },
   {
     title: "Collection of Personal Information",

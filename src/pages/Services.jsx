@@ -24,7 +24,7 @@ const Services = () => {
 
           {/* Introduction Paragraph */}
           <p className="text-[#4A5568] text-base md:text-lg leading-relaxed text-center mb-12 relative z-10 max-w-3xl mx-auto">
-            At Velo Trust Logistics, we offer a comprehensive range of logistics services designed to simplify your supply chain and meet your unique business needs. Our team of experts is dedicated to providing efficient, reliable, and cost-effective solutions that ensure your goods reach their destination safely and on time.
+            At Rapidox Logistics, we offer a comprehensive range of logistics services designed to simplify your supply chain and meet your unique business needs. Our team of experts is dedicated to providing efficient, reliable, and cost-effective solutions that ensure your goods reach their destination safely and on time.
           </p>
 
           {/* Services Grid */}

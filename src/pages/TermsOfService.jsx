@@ -39,7 +39,7 @@ const TermsOfService = () => {
             <p>
               If you have any questions or concerns regarding these terms, please contact us:
             </p>
-            <p className="font-semibold text-[#091242]">Email: contact@velotrustlogistics.com</p>
+            <p className="font-semibold text-[#091242]">Email: contact@rapidoxlogistics.com</p>
           </section>
         </div>
 

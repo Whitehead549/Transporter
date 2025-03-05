@@ -9,7 +9,7 @@ const About = () => {
         {/* <div className="flex justify-center py-8">
           <img
             src={LogisticsImage}
-            alt="Velo Trust Logistics"
+            alt="Rapidox Logistics"
             className="w-48 h-16"
           />
         </div> */}
@@ -28,12 +28,12 @@ const About = () => {
 
           {/* Heading */}
           <h1 className="text-xl md:text-4xl font-semibold text-center mb-6 relative z-10 text-[#091242]">
-            Welcome to Velo Trust Logistics
+            Welcome to Rapidox Logistics
           </h1>
 
           {/* Paragraph */}
           <p className="text-[#4A5568] text-base md:text-lg leading-relaxed text-center mb-8 relative z-10 max-w-3xl mx-auto">
-            At Velo Trust Logistics, we're dedicated to providing seamless and efficient logistics solutions to businesses and individuals alike. Our team of experts is passionate about streamlining the movement of goods, ensuring that your cargo reaches its destination safely, on time, and within budget.
+            At Rapidox Logistics, we're dedicated to providing seamless and efficient logistics solutions to businesses and individuals alike. Our team of experts is passionate about streamlining the movement of goods, ensuring that your cargo reaches its destination safely, on time, and within budget.
           </p>
 
           {/* Our Story Section */}
@@ -42,7 +42,7 @@ const About = () => {
               Our Story
             </h2>
             <p className="text-[#4A5568] text-base md:text-lg leading-relaxed text-center mb-8 max-w-3xl mx-auto">
-              Founded with a vision to revolutionize the logistics industry, Velo Trust Logistics has established itself as a trusted partner for all your transportation and warehousing needs. Our extensive network, cutting-edge technology, and commitment to excellence enable us to deliver tailored solutions that meet the unique requirements of each client.
+              Founded with a vision to revolutionize the logistics industry, Rapidox Logistics has established itself as a trusted partner for all your transportation and warehousing needs. Our extensive network, cutting-edge technology, and commitment to excellence enable us to deliver tailored solutions that meet the unique requirements of each client.
             </p>
           </div>
 
@@ -73,7 +73,7 @@ const About = () => {
             </h2>
             <div className="lg:text-center md:text-center">
               <p className="text-[#4A5568] text-base md:text-lg leading-relaxed text-center mb-8 max-w-3xl mx-auto">
-                At Velo Trust Logistics, we're guided by a set of core values that drive our mission to deliver exceptional logistics services:
+                At Rapidox Logistics, we're guided by a set of core values that drive our mission to deliver exceptional logistics services:
               </p>
               <ul className="list-disc list-outside pl-5 text-[#4A5568] text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
                 <li className="mb-2">Customer Focus: We prioritize your needs and strive to exceed your expectations.</li>
