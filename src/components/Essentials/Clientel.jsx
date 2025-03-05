@@ -176,9 +176,10 @@ const Clientel = ({ selectedCode }) => {
       <X size={28} className="sm:size-20" />
     </button>
 
-       <div className="w-full h-full overflow-y-auto">
-         <Invoice />
-       </div>
+    <div className="w-full h-full overflow-y-auto">
+      <Invoice selectedCode={selectedCode} />
+    </div>
+
      </div>
    </div>
    

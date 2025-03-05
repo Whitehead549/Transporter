@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Services = () => {
   return (
@@ -111,22 +110,6 @@ const Services = () => {
                 <li>Competitive pricing and customized solutions</li>
               </ul>
             </div>
-          </div>
-
-          {/* Call-to-Action Section */}
-          <div className="mt-16 text-center relative z-10">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-[#091242]">
-              Ready to Simplify Your Logistics?
-            </h2>
-            <p className="text-[#4A5568] text-base md:text-lg mb-8 max-w-3xl mx-auto">
-              Contact us today to learn more about how we can streamline your supply chain and meet your logistics needs.
-            </p>
-            <Link
-              to="/quote"
-              className="inline-block bg-[#091242] text-white px-8 py-3 rounded-sm font-semibold hover:bg-[#4A5568] transition-colors duration-300"
-            >
-              Get Quote
-            </Link>
           </div>
         </div>
 
