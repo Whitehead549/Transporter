@@ -35,16 +35,16 @@ const Footer = () => {
               <strong>Address:</strong> 620 Emerson Road Alexandria, LA 71302
             </p>
             <div className="flex justify-center md:justify-start space-x-4">
-              <a href="#" className="hover:text-white transition" aria-label="Facebook">
+              <a href="#" className="hover:text-blue-900 transition" aria-label="Facebook">
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="#" className="hover:text-white transition" aria-label="Twitter">
+              <a href="#" className="hover:text-blue-900 transition" aria-label="Twitter">
                 <i className="fab fa-twitter"></i>
               </a>
-              <a href="#" className="hover:text-white transition" aria-label="Instagram">
+              <a href="#" className="hover:text-blue-900 transition" aria-label="Instagram">
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="#" className="hover:text-white transition" aria-label="LinkedIn">
+              <a href="#" className="hover:text-blue-900 transition" aria-label="LinkedIn">
                 <i className="fab fa-linkedin-in"></i>
               </a>
             </div>
@@ -55,12 +55,12 @@ const Footer = () => {
             <h3 className="text-sm md:text-base font-semibold pb-[0.8rem]">Legal</h3>
             <ul className="space-y-1">
               <li>
-                <Link to="/privacypolicy" className="text-xs md:text-sm hover:text-white transition">
+                <Link to="/privacypolicy" className="text-xs md:text-sm hover:text-blue-900 transition">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/termsofservice" className="text-xs md:text-sm hover:text-white transition">
+                <Link to="/termsofservice" className="text-xs md:text-sm hover:text-blue-900 transition">
                   Terms of Service
                 </Link>
               </li>

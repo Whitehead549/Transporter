@@ -86,9 +86,7 @@ const About = () => {
 
           {/* Call to Action Section */}
           <div className="mt-12 relative z-10">
-            <h2 className="text-2xl md:text-3xl font-semibold text-center mb-6 text-[#091242]">
-              Let's Work Together
-            </h2>
+            
             <p className="text-[#4A5568] text-base md:text-lg leading-relaxed text-center mb-8 max-w-3xl mx-auto">
               Whether you're looking for a reliable logistics partner or seeking customized solutions for your business, we're here to help. Contact us today to learn more about how we can streamline your supply chain and meet your logistics needs.
             </p>
