@@ -62,7 +62,7 @@ const ContactUs = () => {
           At Velo Trust Logistics, we value your feedback and look forward to hearing from you. Whether you have a question, comment, or need assistance with a shipment, our team is here to help.
         </p>
         <p className="text-[#4A5568] text-base md:text-lg mb-2">
-          <strong className="text-[#091242]">Email:</strong> contact@velotrustlogistics.com
+          <strong className="text-[#091242]">Email:</strong> contact@rapidoxlogistics.com
         </p>
         <p className="text-[#4A5568] text-base md:text-lg">
           <strong className="text-[#091242]">Address:</strong> 620 Emerson Road, Alexandria, LA 71302

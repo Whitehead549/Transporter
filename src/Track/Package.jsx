@@ -25,7 +25,7 @@ const Package = ({ selectedCode }) => {
           const firstDelivery = packages[0];
 
           const {
-            NumberOfItems,
+            TotalItems,
             PackageDescription,
             PackageDimensions,
             PackageReferenceNumber,
@@ -36,7 +36,7 @@ const Package = ({ selectedCode }) => {
           } = firstDelivery;
 
           setDeliveryData({
-            NumberOfItems,
+            TotalItems,
             PackageDescription,
             PackageDimensions,
             PackageReferenceNumber,

@@ -3,7 +3,7 @@ import { db } from "../Config/Config"; // Ensure Firebase is configured
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
 export default function DeliveryInformation({ selectedCode }) {
-  const [TrackingNumber, setTrackingNumber] = useState("");
+  const [TrackingIdentifier, setTrackingIdentifier] = useState("");
   const [Shipper, setShipper] = useState("");
   const [Receiver, setReceiver] = useState("");
   const [PickupAddress, setPickupAddress] = useState("");
@@ -35,7 +35,7 @@ export default function DeliveryInformation({ selectedCode }) {
   };
 
   const handleSubmit = async () => {
-    if (!TrackingNumber || !Shipper || !Receiver || !PickupAddress || !DeliveryAddress || !ExpectedDate || !DeliveryTime) {
+    if (!TrackingIdentifier || !Shipper || !Receiver || !PickupAddress || !DeliveryAddress || !ExpectedDate || !DeliveryTime) {
       alert("All fields are required.");
       return;
     }
@@ -49,14 +49,14 @@ export default function DeliveryInformation({ selectedCode }) {
       if (editingId) {
         updatedDeliveries = existingDeliveries.map((delivery) =>
           delivery.id === editingId
-            ? { id: editingId, TrackingNumber, Shipper, Receiver, PickupAddress, DeliveryAddress, ExpectedDate, DeliveryTime, SignatureRequired }
+            ? { id: editingId, TrackingIdentifier, Shipper, Receiver, PickupAddress, DeliveryAddress, ExpectedDate, DeliveryTime, SignatureRequired }
             : delivery
         );
         setEditingId(null);
       } else {
         const newDelivery = {
           id: new Date().getTime().toString(),
-          TrackingNumber,
+          TrackingIdentifier,
           Shipper,
           Receiver,
           PickupAddress,
@@ -79,7 +79,7 @@ export default function DeliveryInformation({ selectedCode }) {
   };
 
   const resetForm = () => {
-    setTrackingNumber("");
+    setTrackingIdentifier("");
     setShipper("");
     setReceiver("");
     setPickupAddress("");
@@ -91,7 +91,7 @@ export default function DeliveryInformation({ selectedCode }) {
 
   const handleEdit = (delivery) => {
     setEditingId(delivery.id);
-    setTrackingNumber(delivery.TrackingNumber);
+    setTrackingIdentifier(delivery.TrackingIdentifier);
     setShipper(delivery.Shipper);
     setReceiver(delivery.Receiver);
     setPickupAddress(delivery.PickupAddress);
@@ -111,9 +111,9 @@ export default function DeliveryInformation({ selectedCode }) {
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <input
         type="text"
-        placeholder="Tracking Number"
-        value={TrackingNumber}
-        onChange={(e) => setTrackingNumber(e.target.value)}
+        placeholder="Tracking Identifier"
+        value={TrackingIdentifier}
+        onChange={(e) => setTrackingIdentifier(e.target.value)}
         className="w-full p-3 border rounded-md sm:text-sm"
       />
       <input
@@ -183,7 +183,7 @@ export default function DeliveryInformation({ selectedCode }) {
       {deliveries.map((delivery) => (
         <li key={delivery.id} className="p-4 border rounded-lg bg-gray-100">
           <div className="text-sm space-y-1">
-            <p><span className="font-semibold">Tracking Number:</span> {delivery.TrackingNumber}</p>
+            <p><span className="font-semibold">Tracking Identifier:</span> {delivery.TrackingIdentifier}</p>
             <p><span className="font-semibold">Shipper:</span> {delivery.Shipper}</p>
             <p><span className="font-semibold">Receiver:</span> {delivery.Receiver}</p>
             <p><span className="font-semibold">Pickup Address:</span> {delivery.PickupAddress}</p>

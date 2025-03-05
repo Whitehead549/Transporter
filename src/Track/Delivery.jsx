@@ -33,7 +33,7 @@ const Delivery = ({ selectedCode }) => {
             Receiver,
             Shipper,
             SignatureRequired,
-            TrackingNumber,
+            TrackingIdentifier,
           } = firstDelivery;
 
           setDeliveryData({
@@ -44,7 +44,7 @@ const Delivery = ({ selectedCode }) => {
             Receiver,
             Shipper,
             SignatureRequired,
-            TrackingNumber,
+            TrackingIdentifier,
           });
         } else {
           setDeliveryData(null);

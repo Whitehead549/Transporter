@@ -8,7 +8,7 @@ export default function Package({ selectedCode }) {
   const [PackageWeight, setPackageWeight] = useState("");
   const [PackageDimensions, setPackageDimensions] = useState("");
   const [PackageDescription, setPackageDescription] = useState("");
-  const [NumberOfItems, setNumberOfItems] = useState("");
+  const [TotalItems, setTotalItems] = useState("");
   const [PackageValue, setPackageValue] = useState("");
   const [SpecialHandling, setSpecialHandling] = useState("");
   const [PackageReferenceNumber, setPackageReferenceNumber] = useState("");
@@ -44,7 +44,7 @@ export default function Package({ selectedCode }) {
       !PackageWeight ||
       !PackageDimensions ||
       !PackageDescription ||
-      !NumberOfItems ||
+      !TotalItems ||
       !PackageValue ||
       !PackageReferenceNumber
     ) {
@@ -67,7 +67,7 @@ export default function Package({ selectedCode }) {
                 PackageWeight,
                 PackageDimensions,
                 PackageDescription,
-                NumberOfItems,
+                TotalItems,
                 PackageValue,
                 SpecialHandling,
                 PackageReferenceNumber,
@@ -82,7 +82,7 @@ export default function Package({ selectedCode }) {
           PackageWeight,
           PackageDimensions,
           PackageDescription,
-          NumberOfItems,
+          TotalItems,
           PackageValue,
           SpecialHandling,
           PackageReferenceNumber,
@@ -106,7 +106,7 @@ export default function Package({ selectedCode }) {
     setPackageWeight("");
     setPackageDimensions("");
     setPackageDescription("");
-    setNumberOfItems("");
+    setTotalItems("");
     setPackageValue("");
     setSpecialHandling("");
     setPackageReferenceNumber("");
@@ -119,7 +119,7 @@ export default function Package({ selectedCode }) {
     setPackageWeight(pkg.PackageWeight);
     setPackageDimensions(pkg.PackageDimensions);
     setPackageDescription(pkg.PackageDescription);
-    setNumberOfItems(pkg.NumberOfItems);
+    setTotalItems(pkg.TotalItems);
     setPackageValue(pkg.PackageValue);
     setSpecialHandling(pkg.SpecialHandling);
     setPackageReferenceNumber(pkg.PackageReferenceNumber);
@@ -137,7 +137,7 @@ export default function Package({ selectedCode }) {
       <input type="text" placeholder="Package Weight" value={PackageWeight} onChange={(e) => setPackageWeight(e.target.value)} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
       <input type="text" placeholder="Package Dimensions" value={PackageDimensions} onChange={(e) => setPackageDimensions(e.target.value)} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
       <input type="text" placeholder="Package Description" value={PackageDescription} onChange={(e) => setPackageDescription(e.target.value)} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
-      <input type="number" placeholder="Number of Items" value={NumberOfItems} onChange={(e) => setNumberOfItems(e.target.value)} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <input type="number" placeholder="Total Items" value={TotalItems} onChange={(e) => setTotalItems(e.target.value)} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
       <input type="text" placeholder="Package Value" value={PackageValue} onChange={(e) => setPackageValue(e.target.value)} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
       <input type="text" placeholder="Special Handling" value={SpecialHandling} onChange={(e) => setSpecialHandling(e.target.value)} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
       <input type="text" placeholder="Package Reference Number" value={PackageReferenceNumber} onChange={(e) => setPackageReferenceNumber(e.target.value)} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
@@ -157,7 +157,7 @@ export default function Package({ selectedCode }) {
             <p className="text-gray-700"><span className="font-semibold">Package Weight:</span> {pkg.PackageWeight}</p>
             <p className="text-gray-700"><span className="font-semibold">Package Dimensions:</span> {pkg.PackageDimensions}</p>
             <p className="text-gray-700"><span className="font-semibold">Package Description:</span> {pkg.PackageDescription}</p>
-            <p className="text-gray-700"><span className="font-semibold">Number of Items:</span> {pkg.NumberOfItems}</p>
+            <p className="text-gray-700"><span className="font-semibold">Total Items:</span> {pkg.TotalItems}</p>
             <p className="text-gray-700"><span className="font-semibold">Package Value:</span> {pkg.PackageValue}</p>
             <p className="text-gray-700"><span className="font-semibold">Special Handling:</span> {pkg.SpecialHandling}</p>
             <p className="text-gray-700"><span className="font-semibold">Package Reference Number:</span> {pkg.PackageReferenceNumber}</p>
