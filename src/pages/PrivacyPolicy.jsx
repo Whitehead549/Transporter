@@ -59,7 +59,7 @@ const sections = [
   {
     title: "Introduction",
     content:
-      "At RAPIDOX Logistics, we value your trust and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and protect your information when you visit our website or use our services.",
+      "At Rapidox Logistics, we value your trust and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and protect your information when you visit our website or use our services.",
   },
   {
     title: "Collection of Personal Information",
