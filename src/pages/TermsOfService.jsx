@@ -5,7 +5,7 @@ const TermsOfService = () => {
     <div className="bg-gray-50 min-h-screen flex items-center justify-center">
       <section className="max-w-6xl w-full mx-auto px-6 sm:px-10 lg:px-16 py-16 text-center">
         {/* Header */}
-        <header className="mb-12">
+        <header className="my-8">
           <h1 className="text-4xl sm:text-5xl font-bold text-[#091242] mb-4">
             
           </h1>
