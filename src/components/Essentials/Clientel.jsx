@@ -159,7 +159,7 @@ const Clientel = ({ selectedCode }) => {
         </div>
       </div>
       <div className="flex justify-center mt-6">
-        <button onClick={() => setShowInvoice(true)} className="px-6 py-2 bg-blue-600 text-white font-semibold rounded shadow">
+        <button onClick={() => setShowInvoice(true)} className="px-6 py-2 bg-custom_blue text-white font-semibold rounded shadow">
           Print Invoice
         </button>
       </div>
