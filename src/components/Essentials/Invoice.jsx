@@ -87,16 +87,16 @@ const Invoice = ({ selectedCode }) => {
         <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-4 border-blue-800 pb-4 mb-4">
           {/* Logo Container */}
           <div className="flex-shrink-0">
-            <img src={logo} alt="Company Logo" className="h-auto w-[128px]" />
+            <img src={logo} alt="Company Logo" className="h-auto w-[108px]" />
           </div>
 
           {/* Invoice Details */}
           <div className="text-right mt-4 sm:mt-0 text-sm sm:text-md font-semibold text-gray-700 grid gap-1">
-            <p className="grid grid-cols-[auto_1fr] gap-4">
+            <p className="grid grid-cols-[auto_1fr] gap-6">
               <span className="whitespace-nowrap">Tracking Identifier: </span>
               <span className="font-normal text-gray-600">{selectedCode}</span>
             </p>
-            <p className="grid grid-cols-[auto_1fr] gap-4">
+            <p className="grid grid-cols-[auto_1fr] gap-6">
               <span className="whitespace-nowrap">Expected Date:</span>
               <span className="font-normal text-gray-600">{invoiceData.expectedDelivery}</span>
             </p>
@@ -104,28 +104,14 @@ const Invoice = ({ selectedCode }) => {
         </header>
 
         {/* Shipper and Receiver Details */}
-        <div className="mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4 border border-gray-300 rounded-lg p-4 bg-gray-50 shadow-sm">
-          <div>
-            <h2 className="text-md font-semibold text-blue-900 border-b pb-2 mb-2">Shipper Details</h2>
-            <p className="text-sm font-medium text-gray-700">
-              Name: <span className="font-normal text-gray-600">{invoiceData.shipper}</span>
-            </p>
-            <p className="text-sm font-medium text-gray-700">
-              Pickup Address: <span className="font-normal text-gray-600">{invoiceData.pickupAddress}</span>
-            </p>
-          </div>
-          <div>
-            <h2 className="text-md font-semibold text-blue-900 border-b pb-2 mb-2">Receiver Details</h2>
-            <p className="text-sm font-medium text-gray-700">
-              Name: <span className="font-normal text-gray-600">{invoiceData.receiver}</span>
-            </p>
-            <p className="text-sm font-medium text-gray-700">
-              Delivery Address: <span className="font-normal text-gray-600">{invoiceData.deliveryAddress}</span>
-            </p>
-          </div>
+        <div className="mb-6 border border-gray-300 rounded-lg p-4 bg-gray-50 shadow-sm">
+          <p className="text-sm font-medium text-gray-700">Shipper: <span className="font-normal text-gray-600">{invoiceData.shipper}</span></p>
+          <p className="text-sm font-medium text-gray-700">Receiver: <span className="font-normal text-gray-600">{invoiceData.receiver}</span></p>
+          <p className="text-sm font-medium text-gray-700">Pickup Address: <span className="font-normal text-gray-600">{invoiceData.pickupAddress}</span></p>
+          <p className="text-sm font-medium text-gray-700">Delivery Address: <span className="font-normal text-gray-600">{invoiceData.deliveryAddress}</span></p>
         </div>
 
-        {/* Package Details Table */}
+        {/* Package Details */}
         <div className="mb-4 overflow-x-auto">
           <table className="w-full border border-gray-300 rounded-lg overflow-hidden">
             <thead>

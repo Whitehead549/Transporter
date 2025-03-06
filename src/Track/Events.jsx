@@ -30,15 +30,15 @@ const Events = ({selectedCode}) => {
 
   return (
     <div className="max-w-lg mx-auto text-black text-sm md:text-base">
-    <h2 className="text-base md:text-lg font-semibold mb-2 bg-[#091242] text-white p-2 rounded-t-lg text-center">
-      Events
+    <h2 className="text-lg font-semibold mb-2 bg-[#091242] text-white p-2 rounded-t-lg text-center">
+      EVENTS
     </h2>
   
     {loading ? (
       <p className="text-center text-gray-500">Loading...</p>
     ) : events.length > 0 ? (
       <div className="overflow-auto">
-        <table className="w-full max-w-full border-collapse border border-gray-300 text-xs md:text-sm">
+        <table className="w-full max-w-full border-collapse border border-gray-300 text-sm text-gray-600">
           <thead>
             <tr className="bg-gray-200">
               <th className="border border-gray-400 px-2 py-1 text-left">Date</th>
