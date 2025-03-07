@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const testimonials = [
   {
@@ -59,7 +60,7 @@ const Testimonial = () => {
                 ))}
               </div>
             </div>
-            <blockquote className="mt-4 text-gray-600 italic text-sm">
+            <blockquote className="mt-4 text-gray-600  text-sm">
               {testimonial.text}
             </blockquote>
           </div>
