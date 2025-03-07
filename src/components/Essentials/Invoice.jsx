@@ -99,17 +99,17 @@ const Invoice = ({ selectedCode }) => {
       >
        <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-4 border-blue-800 pb-4 mb-4">
           {/* Logo Container */}
-          <div className="flex-shrink-0 mb-4 sm:mb-0">
-            <img src={logo} alt="Company Logo" className="h-auto w-[108px] sm:w-[120px] md:w-[140px]" />
+          <div className="flex-shrink-0">
+            <img src={logo} alt="Company Logo" className="h-auto w-[108px]" />
           </div>
 
           {/* Invoice Details */}
-          <div className="text-left sm:text-right text-xs sm:text-md lg:text-sm font-semibold text-gray-700 grid gap-2 sm:gap-1">
-            <p className="grid grid-cols-[auto_1fr] gap-4 sm:gap-6">
-              <span className="whitespace-nowrap">Tracking Identifier:</span>
+          <div className="text-right mt-4 sm:mt-0 text-xs sm:text-sm md:text-sm lg:text-sm font-semibold text-gray-700 grid gap-1">
+            <p className="grid grid-cols-[auto_1fr] gap-6">
+              <span className="whitespace-nowrap">Tracking Identifier: </span>
               <span className="font-normal text-gray-600">{selectedCode}</span>
             </p>
-            <p className="grid grid-cols-[auto_1fr] gap-4 sm:gap-6">
+            <p className="grid grid-cols-[auto_1fr] gap-6">
               <span className="whitespace-nowrap">Expected Date:</span>
               <span className="font-normal text-gray-600">{invoiceData.expectedDelivery}</span>
             </p>
