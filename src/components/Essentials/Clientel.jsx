@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -12,7 +12,8 @@ import Package from "../../Track/Package";
 import Events from "../../Track/Events";
 import ImageGallery from "../../Track/ImageGallery";
 import Invoice from "./Invoice";
-import { X } from "lucide-react"; // Import close (hamburger-style) icon
+import { X } from "lucide-react";
+import JsBarcode from "jsbarcode"; // Import JsBarcode
 
 const customIcon = L.icon({
   iconUrl: markerIconPng,
@@ -27,7 +28,9 @@ const Clientel = ({ selectedCode }) => {
   const [location, setLocation] = useState("");
   const [position, setPosition] = useState(null);
   const [showInvoice, setShowInvoice] = useState(false);
+  const barcodeRef = useRef(null); // Ref for barcode SVG
 
+  // Fetch location from Firestore
   useEffect(() => {
     const fetchLocation = async () => {
       try {
@@ -50,6 +53,7 @@ const Clientel = ({ selectedCode }) => {
     if (selectedCode) fetchLocation();
   }, [selectedCode]);
 
+  // Fetch coordinates from OpenStreetMap Nominatim API
   useEffect(() => {
     if (!location) return;
 
@@ -71,6 +75,20 @@ const Clientel = ({ selectedCode }) => {
 
     fetchCoordinates();
   }, [location]);
+
+  // Generate barcode using JsBarcode
+  useEffect(() => {
+    if (barcodeRef.current && selectedCode) {
+      JsBarcode(barcodeRef.current, selectedCode, {
+        format: "CODE128",
+        displayValue: false,
+        lineColor: "#000",
+        width: 1.8,
+        height: 70,
+        margin: 0,
+      });
+    }
+  }, [selectedCode]);
 
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 min-h-screen lg:py-[8rem]">
@@ -158,32 +176,35 @@ const Clientel = ({ selectedCode }) => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center mt-6">
-        <button onClick={() => setShowInvoice(true)} className="px-6 py-2 bg-custom_blue text-white font-semibold rounded shadow">
+
+      {/* Barcode and Print Invoice Button */}
+      <div className="flex flex-col items-center justify-center mt-6 space-y-4">
+      <div className="bg-white p-2 rounded-lg shadow w-full max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-[300px]">
+  <svg ref={barcodeRef} className="w-full h-auto"></svg>
+</div>
+        <button
+          onClick={() => setShowInvoice(true)}
+          className="px-6 py-2 bg-custom_blue text-white font-semibold rounded shadow"
+        >
           Print Invoice
         </button>
       </div>
 
+      {/* Invoice Modal */}
       {showInvoice && (
-     <div className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-[9999]">
-     <div className="bg-white rounded-lg shadow-lg relative w-full max-w-3xl lg:max-w-3xl md:max-w-full sm:max-w-full sm:p-4 h-full max-h-screen overflow-y-auto">
-     <button
-      onClick={() => setShowInvoice(false)}
-      className="absolute top-4 right-4 w-6 h-6 md:w-7 md:h-7 lg:w-7 lg:h-7 flex items-center justify-center rounded-full 
-                bg-gray-800 text-white hover:bg-gray-600 transition duration-300 
-                sm:w-7 sm:h-7 sm:top-3 sm:right-3 z-[10000]" 
-    >
-      <X size={28} className="sm:size-20" />
-    </button>
-
-    <div className="w-full h-full overflow-y-auto">
-      <Invoice selectedCode={selectedCode} />
-    </div>
-
-     </div>
-   </div>
-   
-     
+        <div className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-[9999]">
+          <div className="bg-white rounded-lg shadow-lg relative w-full max-w-3xl lg:max-w-3xl md:max-w-full sm:max-w-full sm:p-4 h-full max-h-screen overflow-y-auto">
+            <button
+              onClick={() => setShowInvoice(false)}
+              className="absolute top-4 right-4 w-6 h-6 md:w-7 md:h-7 lg:w-7 lg:h-7 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-gray-600 transition duration-300 sm:w-7 sm:h-7 sm:top-3 sm:right-3 z-[10000]"
+            >
+              <X size={28} className="sm:size-20" />
+            </button>
+            <div className="w-full h-full overflow-y-auto">
+              <Invoice selectedCode={selectedCode} />
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
