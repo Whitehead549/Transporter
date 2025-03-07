@@ -1,32 +1,37 @@
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/autoplay"; // Import necessary CSS for autoplay
+import React, { useState, useEffect } from "react";
 
 const testimonials = [
   {
     name: "Ethan Thompson",
     title: "Supply Chain Manager",
     rating: 5,
-    text: "Rapidox Logistics has been a game-changer for our business. Their reliable and efficient services have helped us streamline our operations and improve customer satisfaction.",
+    text: "Rapidox Logistics has been a game-changer for our business. Their reliable and efficient services have helped us streamline our operations and improve customer satisfaction.",
   },
   {
     name: "Maya Ramos",
     title: "Operations Director",
     rating: 5,
-    text: "Rapidox Logistics has consistently delivered exceptional service, providing timely and cost-effective solutions that meet our unique logistics needs.",
+    text: "Rapidox Logistics has consistently delivered exceptional service, providing timely and cost-effective solutions that meet our unique logistics needs.",
   },
   {
     name: "Lucas Brooks",
     title: "Logistics Manager",
     rating: 5,
-    text: "Rapidox Logistics has provided us with reliable, efficient, and cost-effective logistics solutions, exceeding our expectations and improving our bottom line.",
+    text: "Rapidox Logistics has provided us with reliable, efficient, and cost-effective logistics solutions, exceeding our expectations and improving our bottom line.",
   },
 ];
 
 const Testimonial = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="w-full px-4 py-10">
       {/* Desktop View */}
@@ -61,49 +66,54 @@ const Testimonial = () => {
         ))}
       </div>
 
-      {/* Mobile View with Swiper and Autoslide */}
-      <div className="md:hidden">
-        <Swiper
-          slidesPerView={1}
-          spaceBetween={20}
-          pagination={{ clickable: true }}
-          autoplay={{
-            delay: 2000, // Time between slides (in milliseconds)
-            disableOnInteraction: false, // Continue autoplay after user interaction
-          }}
-          modules={[Pagination, Autoplay]}
-          grabCursor={true}
-          touchRatio={1}
-          className="w-full"
+      {/* Mobile View with Custom Carousel */}
+      <div className="md:hidden relative overflow-hidden">
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {testimonials.map((testimonial, index) => (
-            <SwiperSlide key={index}>
-              <div className="bg-white p-6 shadow-lg rounded-xl">
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold text-gray-800">
-                    {testimonial.name}
-                  </h3>
-                  <p className="text-sm text-gray-600">{testimonial.title}</p>
-                  <div className="mt-2 flex justify-center space-x-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <i
-                        key={i}
-                        className={`fas fa-star ${
-                          i < testimonial.rating
-                            ? "text-yellow-500"
-                            : "text-gray-300"
-                        }`}
-                      ></i>
-                    ))}
-                  </div>
+            <div
+              key={index}
+              className="min-w-full bg-white p-6 shadow-lg rounded-xl"
+            >
+              <div className="text-center">
+                <h3 className="text-lg font-semibold text-gray-800">
+                  {testimonial.name}
+                </h3>
+                <p className="text-sm text-gray-600">{testimonial.title}</p>
+                <div className="mt-2 flex justify-center space-x-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <i
+                      key={i}
+                      className={`fas fa-star ${
+                        i < testimonial.rating
+                          ? "text-yellow-500"
+                          : "text-gray-300"
+                      }`}
+                    ></i>
+                  ))}
                 </div>
-                <blockquote className="mt-4 text-gray-600 italic text-sm">
-                  {testimonial.text}
-                </blockquote>
               </div>
-            </SwiperSlide>
+              <blockquote className="mt-4 text-gray-600 text-sm">
+                {testimonial.text}
+              </blockquote>
+            </div>
           ))}
-        </Swiper>
+        </div>
+
+        {/* Navigation Dots */}
+        <div className="flex justify-center mt-4 space-x-2">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              className={`w-2 h-2 rounded-full ${
+                index === currentIndex ? "bg-custom_blue" : "bg-gray-300"
+              }`}
+              onClick={() => setCurrentIndex(index)}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

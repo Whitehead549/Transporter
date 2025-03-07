@@ -30,7 +30,7 @@ const DailyStats = () => {
   const stats = [
     {
       title: "Offices Worldwide",
-      value: 85,
+      value: 81,
       icon: <FontAwesomeIcon icon={faGlobe} />,
       isThousandFormat: false,
     },
@@ -48,7 +48,7 @@ const DailyStats = () => {
     },
     {
       title: "Satisfied Clients",
-      value: 92000,
+      value: 98000,
       icon: <FontAwesomeIcon icon={faUsers} />,
       isThousandFormat: true,
     },
