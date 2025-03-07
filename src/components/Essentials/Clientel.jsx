@@ -178,7 +178,7 @@ const Clientel = ({ selectedCode }) => {
       </div>
 
       {/* Barcode and Print Invoice Button */}
-      <div className="flex flex-col items-center justify-center mt-6 space-y-8">
+      <div className="flex flex-col items-center justify-center mt-3 lg:mt-8 space-y-10">
       <div className="bg-white pb-2 rounded-lg shadow w-full max-w-[200px] mx-auto sm:max-w-[250px] md:max-w-[300px]">
         <svg ref={barcodeRef} className="w-full h-auto"></svg>
       </div>
