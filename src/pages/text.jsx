@@ -1,221 +1,164 @@
-import React, { useState } from "react";
-import Modal from "../components/Essentials/Modal"; // Import the Modal component
-import ContactUsImage from "../assets/ContactMe11.png"; // Import the local image
+import React, { useRef, useState, useEffect } from "react";
+import { db } from "../../Config/Config"; // Ensure Firebase is initialized
+import { doc, getDoc } from "firebase/firestore";
+import stamp from "../../assets/RAPIDOX 001.png";
+import logo from "../../assets/navLogo.png"; // Adjust the path as needed
+import printJS from "print-js";
 
-const ContactUs = () => {
-  // State for form data
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    houseAddress: "",
-    country: "",
-    phoneNumber: "",
-    whatsappNumber: "",
-    message: "",
-  });
+const Invoice = ({ selectedCode }) => {
+  const invoiceRef = useRef();
+  const [invoiceData, setInvoiceData] = useState(null);
 
-  // State for modal (success/error message)
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const docRef = doc(db, selectedCode, "Delivery");
+        const docSnap = await getDoc(docRef);
 
-  // Handle input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+        if (docSnap.exists()) {
+          const deliveries = docSnap.data().deliveries;
+          if (deliveries && deliveries.length > 0) {
+            const firstDelivery = deliveries[0];
+            setInvoiceData((prevState) => ({
+              ...prevState,
+              invoiceNumber: firstDelivery.TrackingIdentifier || "Unknown ID",
+              expectedDelivery: firstDelivery.ExpectedDate || "Unknown Date",
+              shipper: firstDelivery.Shipper || "Unknown Shipper",
+              receiver: firstDelivery.Receiver || "Unknown Receiver",
+              pickupAddress: firstDelivery.PickupAddress || "Unknown Address",
+              deliveryAddress: firstDelivery.DeliveryAddress || "Unknown Address",
+            }));
+          }
+        }
+
+        const packageDocRef = doc(db, selectedCode, "Package");
+        const packageDocSnap = await getDoc(packageDocRef);
+
+        if (packageDocSnap.exists()) {
+          const packages = packageDocSnap.data().packages;
+          if (packages && packages.length > 0) {
+            const packageDetails = packages[0];
+            setInvoiceData((prevState) => ({
+              ...prevState,
+              packageDetails: {
+                description: packageDetails.PackageDescription || "Unknown Description",
+                dimensions: packageDetails.PackageDimensions || "Unknown Dimensions",
+                referenceNumber: packageDetails.PackageReferenceNumber || "Unknown Reference",
+                type: packageDetails.PackageType || "Unknown Type",
+                value: packageDetails.PackageValue || "Unknown Value",
+                weight: packageDetails.PackageWeight || "Unknown Weight",
+              },
+            }));
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching invoice data:", error);
+      }
+    };
+
+    fetchData();
+  }, [selectedCode]);
+
+  const handlePrint = () => {
+    if (invoiceRef.current) {
+      console.log("Printing invoice..."); // Debugging log
+      printJS({
+        printable: "invoiceContainer",
+        type: "html",
+        targetStyles: ["*"], // Ensure all styles are applied
+      });
+    } else {
+      console.error("Invoice element not found!");
+    }
   };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Simulate a successful form submission
-    setModalMessage("Thank you for contacting us! We'll respond within 24 hours.");
-    setIsModalOpen(true);
-
-    // Reset form
-    setFormData({
-      fullName: "",
-      email: "",
-      houseAddress: "",
-      country: "",
-      phoneNumber: "",
-      whatsappNumber: "",
-      message: "",
-    });
-  };
+  if (!invoiceData) {
+    return <p>Loading Invoice Data...</p>;
+  }
 
   return (
-    <div className="bg-[#F3F3F3] overflow-x-hidden">
-    <section className="relative px-6 md:px-12 lg:px-20 py-12 pt-24">
-      {/* Replace the <h1> with an image */}
-      <div className="flex justify-center mb-8">
-        <img
-          src={ContactUsImage}
-          alt="Contact Us"
-          className="w-full max-w-[130px] sm:max-w-[150px] md:max-w-[150px] lg:max-w-[180px]" // Smaller size
-        />
+    <div className="relative min-h-screen flex flex-col items-center justify-center p-4">
+      {/* Printable Invoice Container */}
+      <div
+        id="invoiceContainer"
+        ref={invoiceRef}
+        className="invoice-container w-full max-w-2xl mx-auto px-4 sm:px-6 py-4 bg-white shadow-lg border border-gray-300 overflow-y-auto"
+      >
+        <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-4 border-blue-800 pb-4 mb-4">
+          {/* Logo Container */}
+          <div className="flex-shrink-0">
+            <img src={logo} alt="Company Logo" className="h-auto w-[108px]" />
+          </div>
+
+          {/* Invoice Details */}
+          <div className="text-right mt-4 sm:mt-0 text-sm sm:text-md font-semibold text-gray-700 grid gap-1">
+            <p className="grid grid-cols-[auto_1fr] gap-6">
+              <span className="whitespace-nowrap">Tracking Identifier: </span>
+              <span className="font-normal text-gray-600">{selectedCode}</span>
+            </p>
+            <p className="grid grid-cols-[auto_1fr] gap-6">
+              <span className="whitespace-nowrap">Expected Date:</span>
+              <span className="font-normal text-gray-600">{invoiceData.expectedDelivery}</span>
+            </p>
+          </div>
+        </header>
+
+        {/* Shipper and Receiver Details */}
+        <div className="mb-6 border border-gray-300 rounded-lg p-4 bg-gray-50 shadow-sm">
+          <p className="text-sm font-medium text-gray-700">Shipper: <span className="font-normal text-gray-600">{invoiceData.shipper}</span></p>
+          <p className="text-sm font-medium text-gray-700">Receiver: <span className="font-normal text-gray-600">{invoiceData.receiver}</span></p>
+          <p className="text-sm font-medium text-gray-700">Pickup Address: <span className="font-normal text-gray-600">{invoiceData.pickupAddress}</span></p>
+          <p className="text-sm font-medium text-gray-700">Delivery Address: <span className="font-normal text-gray-600">{invoiceData.deliveryAddress}</span></p>
+        </div>
+
+        {/* Package Details */}
+        <div className="mb-4 overflow-x-auto">
+          <table className="w-full border border-gray-300 rounded-lg overflow-hidden">
+            <thead>
+              <tr className="bg-blue-900 text-white">
+                <th className="py-2 px-3 text-left text-xs sm:text-sm font-semibold" colSpan="2">
+                  Package Details
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {invoiceData.packageDetails &&
+                Object.entries(invoiceData.packageDetails).map(([key, value]) => (
+                  <tr key={key} className="bg-white border-b border-gray-300">
+                    <td className="py-2 px-3 text-xs sm:text-sm text-gray-700 font-semibold capitalize">
+                      {key.replace(/([A-Z])/g, " $1")}:
+                    </td>
+                    <td className="py-2 px-3 text-xs sm:text-sm text-gray-700">{value}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Footer */}
+        <footer className="text-center text-xs sm:text-sm text-gray-500 mt-4 border-t pt-3">
+          <p>Thank you for choosing Rapidox Logistics!</p>
+          <p>
+            If you have any questions, contact us at{" "}
+            <a href="mailto:support@yourlogistics.com" className="text-blue-900 hover:underline">
+              contact@rapidoxlogistics.com
+            </a>
+          </p>
+          <div className="mt-2 flex justify-center sm:justify-start">
+            <img src={stamp} alt="Authorized Stamp" className="w-20 h-20 sm:w-24 sm:h-24 object-cover" />
+          </div>
+        </footer>
       </div>
-  
-      {/* Contact Information */}
-      <div className="text-center mb-12">
-        <p className="text-[#4A5568] text-base md:text-lg mb-4">
-          At Velo Trust Logistics, we value your feedback and look forward to hearing from you. Whether you have a question, comment, or need assistance with a shipment, our team is here to help.
-        </p>
-        <p className="text-[#4A5568] text-base md:text-lg mb-2">
-          <strong className="text-[#091242]">Email:</strong> contact@rapidoxlogistics.com
-        </p>
-        <p className="text-[#4A5568] text-base md:text-lg">
-          <strong className="text-[#091242]">Address:</strong> 620 Emerson Road, Alexandria, LA 71302
-        </p>
-      </div>
-  
-      {/* Contact Form */}
-      <div className="max-w-3xl mx-auto p-6">
-        <h2 className="text-lg md:text-xl font-semibold text-center mb-6 text-[#091242]">
-          Please complete the form below and we'll respond within 24 hours:
-        </h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Full Name */}
-          <div>
-            <label htmlFor="fullName" className="block text-sm font-medium text-[#091242]">
-              Full Name
-            </label>
-            <input
-              type="text"
-              id="fullName"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-[#091242] rounded-md shadow-sm focus:ring-[#FFCC44] focus:border-[#FFCC44]"
-              placeholder="Enter your full name"
-              required
-            />
-          </div>
-  
-          {/* Email Address */}
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-[#091242]">
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-[#091242] rounded-md shadow-sm focus:ring-[#FFCC44] focus:border-[#FFCC44]"
-              placeholder="Enter your email address"
-              required
-            />
-          </div>
-  
-          {/* House Address */}
-          <div>
-            <label htmlFor="houseAddress" className="block text-sm font-medium text-[#091242]">
-              House Address
-            </label>
-            <input
-              type="text"
-              id="houseAddress"
-              name="houseAddress"
-              value={formData.houseAddress}
-              onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-[#091242] rounded-md shadow-sm focus:ring-[#FFCC44] focus:border-[#FFCC44]"
-              placeholder="Enter your house address"
-              required
-            />
-          </div>
-  
-          {/* Country */}
-          <div>
-            <label htmlFor="country" className="block text-sm font-medium text-[#091242]">
-              Country
-            </label>
-            <input
-              type="text"
-              id="country"
-              name="country"
-              value={formData.country}
-              onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-[#091242] rounded-md shadow-sm focus:ring-[#FFCC44] focus:border-[#FFCC44]"
-              placeholder="Enter your country"
-              required
-            />
-          </div>
-  
-          {/* Phone Number */}
-          <div>
-            <label htmlFor="phoneNumber" className="block text-sm font-medium text-[#091242]">
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              id="phoneNumber"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-[#091242] rounded-md shadow-sm focus:ring-[#FFCC44] focus:border-[#FFCC44]"
-              placeholder="Enter your phone number"
-              required
-            />
-          </div>
-  
-          {/* WhatsApp Number */}
-          <div>
-            <label htmlFor="whatsappNumber" className="block text-sm font-medium text-[#091242]">
-              WhatsApp Number
-            </label>
-            <input
-              type="tel"
-              id="whatsappNumber"
-              name="whatsappNumber"
-              value={formData.whatsappNumber}
-              onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-[#091242] rounded-md shadow-sm focus:ring-[#FFCC44] focus:border-[#FFCC44]"
-              placeholder="Enter your WhatsApp number"
-              required
-            />
-          </div>
-  
-          {/* Message */}
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium text-[#091242]">
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows="4"
-              value={formData.message}
-              onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-[#091242] rounded-md shadow-sm focus:ring-[#FFCC44] focus:border-[#FFCC44]"
-              placeholder="Enter your message"
-              required
-            ></textarea>
-          </div>
-  
-          {/* Submit Button */}
-          <div className="text-center">
-            <button
-              type="submit"
-              className="px-8 py-3 bg-[#091242] text-white font-semibold text-lg rounded-full shadow-md hover:bg-[#FFCC44] hover:text-[#091242] transition-transform transform hover:scale-105"
-            >
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
-  
-      {/* Modal for Success/Error Messages */}
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        title="Thank You!"
-        message={modalMessage}
-      />
-    </section>
-  </div>
+
+      {/* Print Button (Hidden in Print Mode) */}
+      <button
+        onClick={handlePrint}
+        className="mt-6 bg-blue-900 text-white px-6 py-2 rounded-md shadow-md hover:bg-blue-800 print:hidden"
+      >
+        Print
+      </button>
+    </div>
   );
 };
 
-export default ContactUs;
+export default Invoice;

@@ -2,11 +2,13 @@ import React, { useRef, useState, useEffect } from "react";
 import { db } from "../../Config/Config"; // Ensure Firebase is initialized
 import { doc, getDoc } from "firebase/firestore";
 import stamp from "../../assets/RAPIDOX 001.png";
-import logo from "../../assets/navLogo.png"; // Adjust the path as needed
+import logo from "../../assets/navLogo.png";
 import printJS from "print-js";
+import JsBarcode from "jsbarcode";
 
 const Invoice = ({ selectedCode }) => {
   const invoiceRef = useRef();
+  const barcodeRef = useRef(null);
   const [invoiceData, setInvoiceData] = useState(null);
 
   useEffect(() => {
@@ -19,7 +21,7 @@ const Invoice = ({ selectedCode }) => {
           const deliveries = docSnap.data().deliveries;
           if (deliveries && deliveries.length > 0) {
             const firstDelivery = deliveries[0];
-            setInvoiceData((prevState) => ({
+            setInvoiceData(prevState => ({
               ...prevState,
               invoiceNumber: firstDelivery.TrackingIdentifier || "Unknown ID",
               expectedDelivery: firstDelivery.ExpectedDate || "Unknown Date",
@@ -38,7 +40,7 @@ const Invoice = ({ selectedCode }) => {
           const packages = packageDocSnap.data().packages;
           if (packages && packages.length > 0) {
             const packageDetails = packages[0];
-            setInvoiceData((prevState) => ({
+            setInvoiceData(prevState => ({
               ...prevState,
               packageDetails: {
                 description: packageDetails.PackageDescription || "Unknown Description",
@@ -59,13 +61,25 @@ const Invoice = ({ selectedCode }) => {
     fetchData();
   }, [selectedCode]);
 
+  useEffect(() => {
+    if (barcodeRef.current && selectedCode) {
+      JsBarcode(barcodeRef.current, selectedCode, {
+        format: "CODE128",
+        displayValue: false,
+        lineColor: "#000",
+        width: 1.8,
+        height: 70,
+        margin: 0,
+      });
+    }
+  }, [selectedCode, invoiceData]);
+
   const handlePrint = () => {
     if (invoiceRef.current) {
-      console.log("Printing invoice..."); // Debugging log
       printJS({
         printable: "invoiceContainer",
         type: "html",
-        targetStyles: ["*"], // Ensure all styles are applied
+        targetStyles: ["*"],
       });
     } else {
       console.error("Invoice element not found!");
@@ -78,40 +92,26 @@ const Invoice = ({ selectedCode }) => {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center p-4">
-      {/* Printable Invoice Container */}
       <div
         id="invoiceContainer"
         ref={invoiceRef}
         className="invoice-container w-full max-w-2xl mx-auto px-4 sm:px-6 py-4 bg-white shadow-lg border border-gray-300 overflow-y-auto"
       >
         <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-4 border-blue-800 pb-4 mb-4">
-          {/* Logo Container */}
           <div className="flex-shrink-0">
             <img src={logo} alt="Company Logo" className="h-auto w-[108px]" />
           </div>
-
-          {/* Invoice Details */}
           <div className="text-right mt-4 sm:mt-0 text-sm sm:text-md font-semibold text-gray-700 grid gap-1">
-            <p className="grid grid-cols-[auto_1fr] gap-6">
-              <span className="whitespace-nowrap">Tracking Identifier: </span>
-              <span className="font-normal text-gray-600">{selectedCode}</span>
-            </p>
-            <p className="grid grid-cols-[auto_1fr] gap-6">
-              <span className="whitespace-nowrap">Expected Date:</span>
-              <span className="font-normal text-gray-600">{invoiceData.expectedDelivery}</span>
-            </p>
+            <p>Tracking Identifier: {selectedCode}</p>
+            <p>Expected Date: {invoiceData.expectedDelivery}</p>
           </div>
         </header>
-
-        {/* Shipper and Receiver Details */}
         <div className="mb-6 border border-gray-300 rounded-lg p-4 bg-gray-50 shadow-sm">
-          <p className="text-sm font-medium text-gray-700">Shipper: <span className="font-normal text-gray-600">{invoiceData.shipper}</span></p>
-          <p className="text-sm font-medium text-gray-700">Receiver: <span className="font-normal text-gray-600">{invoiceData.receiver}</span></p>
-          <p className="text-sm font-medium text-gray-700">Pickup Address: <span className="font-normal text-gray-600">{invoiceData.pickupAddress}</span></p>
-          <p className="text-sm font-medium text-gray-700">Delivery Address: <span className="font-normal text-gray-600">{invoiceData.deliveryAddress}</span></p>
+          <p>Shipper: {invoiceData.shipper}</p>
+          <p>Receiver: {invoiceData.receiver}</p>
+          <p>Pickup Address: {invoiceData.pickupAddress}</p>
+          <p>Delivery Address: {invoiceData.deliveryAddress}</p>
         </div>
-
-        {/* Package Details */}
         <div className="mb-4 overflow-x-auto">
           <table className="w-full border border-gray-300 rounded-lg overflow-hidden">
             <thead>
@@ -134,12 +134,10 @@ const Invoice = ({ selectedCode }) => {
             </tbody>
           </table>
         </div>
-
-        {/* Footer */}
         <footer className="text-center text-xs sm:text-sm text-gray-500 mt-4 border-t pt-3">
           <p>Thank you for choosing Rapidox Logistics!</p>
           <p>
-            If you have any questions, contact us at{" "}
+            If you have any questions, contact us at
             <a href="mailto:support@yourlogistics.com" className="text-blue-900 hover:underline">
               contact@rapidoxlogistics.com
             </a>
@@ -147,10 +145,11 @@ const Invoice = ({ selectedCode }) => {
           <div className="mt-2 flex justify-center sm:justify-start">
             <img src={stamp} alt="Authorized Stamp" className="w-20 h-20 sm:w-24 sm:h-24 object-cover" />
           </div>
+          <div className="mt-4 flex justify-center">
+            <svg ref={barcodeRef}></svg>
+          </div>
         </footer>
       </div>
-
-      {/* Print Button (Hidden in Print Mode) */}
       <button
         onClick={handlePrint}
         className="mt-6 bg-blue-900 text-white px-6 py-2 rounded-md shadow-md hover:bg-blue-800 print:hidden"
