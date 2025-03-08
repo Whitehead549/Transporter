@@ -91,10 +91,10 @@ const Clientel = ({ selectedCode }) => {
   }, [selectedCode]);
 
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 min-h-screen lg:py-[8rem]">
+    <div className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50 min-h-screen lg:py-[6rem]">
        {/* Heading */}
-      <div className="flex justify-center mb-8">
-        <h1 className="text-xl md:text-4xl font-bold text-center mb-6 relative z-10 text-[#091242]">
+      <div className="flex justify-center mb-1 lg:mb-8 mt-12 lg:mt-1">
+        <h1 className="text-xl md:text-4xl font-bold text-center mb-1 relative z-10 text-[#091242]">
           Tracking Details
         </h1>
       </div>
