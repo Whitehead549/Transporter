@@ -97,29 +97,29 @@ const Invoice = ({ selectedCode }) => {
         ref={invoiceRef}
         className="invoice-container w-full max-w-2xl mx-auto px-4 sm:px-6 py-4 bg-white shadow-lg border border-gray-300 overflow-y-auto"
       >
-       <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-4 border-blue-800 pb-4 mb-4">
+       <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-2 border-blue-800 pb-4 mb-2">
           {/* Logo Container */}
           <div className="flex-shrink-0">
             <img src={logo} alt="Company Logo" className="h-auto w-[108px]" />
           </div>
 
           {/* Invoice Details */}
-          <div className="text-right mt-4 sm:mt-0 text-xs sm:text-sm md:text-sm lg:text-sm font-semibold text-gray-700 grid gap-1">
-            <p className="grid grid-cols-[auto_1fr] gap-6">
-              <span className="whitespace-nowrap font-semibold text-[#000]">Tracking ID: </span>
-              <span className="font-normal text-gray-600">{selectedCode}</span>
+          <div className="text-right mt-4 sm:mt-0 text-gray-700 grid gap-1">
+            <p className="grid grid-cols-[auto_1fr] gap-9">
+              <span className="whitespace-nowrap font-semibold text-[#000] text-xs">Tracking Identifier: </span>
+              <span className="font-normal text-gray-600 text-xs">{selectedCode}</span>
             </p>
-            <p className="grid grid-cols-[auto_1fr] gap-6">
-              <span className="whitespace-nowrap font-semibold text-[#000]">Expected Date:</span>
-              <span className="font-normal text-gray-600">{invoiceData.expectedDelivery}</span>
+            <p className="grid grid-cols-[auto_1fr] gap-8">
+              <span className="whitespace-nowrap font-semibold text-[#000] text-xs">Expected Date:</span>
+              <span className="font-normal text-gray-600 text-xs">{invoiceData.expectedDelivery}</span>
             </p>
           </div>
         </header>
-        <div className="mb-6 border border-gray-300 rounded-lg p-6 bg-gray-50 shadow-sm text-sm">
-          <p><span className="font-bold text-[#000] text-sm">Shipper: </span>{invoiceData.shipper}</p>
-          <p><span className="font-bold text-[#000] text-sm">Receiver: </span>{invoiceData.receiver}</p>
-          <p><span className="font-bold text-[#000] text-sm">Pickup Address: </span>{invoiceData.pickupAddress}</p>
-          <p><span className="font-bold text-[#000] text-sm">Delivery Address: </span>{invoiceData.deliveryAddress}</p>
+        <div className="mb-6 border border-gray-300 rounded-lg p-4 bg-gray-50 shadow-sm">
+          <p><span className="font-bold text-[#000]">Shipper: </span>{invoiceData.shipper}</p>
+          <p><span className="font-bold text-[#000]">Receiver: </span>{invoiceData.receiver}</p>
+          <p><span className="font-bold text-[#000]">Pickup Address: </span>{invoiceData.pickupAddress}</p>
+          <p><span className="font-bold text-[#000]">Delivery Address: </span>{invoiceData.deliveryAddress}</p>
         </div>
         <div className="mb-4 overflow-x-auto">
           <table className="w-full border border-gray-300 rounded-lg overflow-hidden">
