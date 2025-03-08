@@ -15,7 +15,7 @@ const Footer = () => {
           <img 
             src={logo} 
             alt="Company Logo" 
-            className="w-32 md:w-32 h-9 mx-auto md:mx-0 mb-3"
+            className="w-16 h-8 sm:w-24 sm:h-9 md:w-22 md:h-9 lg:w-22 lg:h-8 mx-auto md:mx-0 mb-3"
           />
 
             <p className="text-xs md:text-sm leading-relaxed">
