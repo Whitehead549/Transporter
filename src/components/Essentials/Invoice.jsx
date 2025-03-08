@@ -97,7 +97,7 @@ const Invoice = ({ selectedCode }) => {
         ref={invoiceRef}
         className="invoice-container w-full max-w-2xl mx-auto px-4 sm:px-6 py-4 bg-white shadow-lg border border-gray-300 overflow-y-auto"
       >
-       <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-4 border-blue-800 pb-4 mb-4">
+       <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-4 border-blue-900 pb-4 mb-4">
           {/* Logo Container */}
           <div className="flex-shrink-0">
             <img src={logo} alt="Company Logo" className="h-auto w-[108px]" />
@@ -124,16 +124,16 @@ const Invoice = ({ selectedCode }) => {
         <div className="mb-4 overflow-x-auto">
           <table className="w-full border border-gray-300 rounded-lg overflow-hidden">
             <thead>
-              <tr className="bg-blue-900 text-white">
-                <th className="py-2 px-3 text-left text-xs sm:text-sm font-semibold" colSpan="2">
-                  Package Details
-                </th>
-              </tr>
+            <tr className="border-b-4 border-blue-900">
+              <th className="py-2 px-3 text-center text-lg sm:text-lg font-bold text-custom_blue" colSpan="2">
+                Package Details
+              </th>
+            </tr>
             </thead>
             <tbody>
               {invoiceData.packageDetails &&
                 Object.entries(invoiceData.packageDetails).map(([key, value]) => (
-                  <tr key={key} className="bg-white border-b border-gray-300">
+                  <tr key={key} className="bg-white border-b border-gray-400">
                     <td className="py-2 px-3 text-xs sm:text-sm text-gray-700 font-semibold capitalize">
                       {key.replace(/([A-Z])/g, " $1")}:
                     </td>
@@ -146,11 +146,12 @@ const Invoice = ({ selectedCode }) => {
         <footer className="text-center text-xs sm:text-sm text-gray-500 mt-4 border-t pt-3">
           <p>Thank you for choosing Rapidox Logistics!</p>
           <p>
-            If you have any questions, contact us at
-            <a href="mailto:support@yourlogistics.com" className="text-blue-900 hover:underline">
+            If you have any questions, contact us at{" "}
+            <a href="mailto:support@yourlogistics.com" className="text-custom_blue hover:underline">
               contact@rapidoxlogistics.com
             </a>
           </p>
+
           <div className="mt-2 flex justify-center sm:justify-start">
             <img src={stamp} alt="Authorized Stamp" className="w-20 h-20 sm:w-24 sm:h-24 object-cover" />
           </div>
@@ -161,7 +162,7 @@ const Invoice = ({ selectedCode }) => {
       </div>
       <button
         onClick={handlePrint}
-        className="mt-6 bg-blue-900 text-white px-6 py-2 rounded-md shadow-md hover:bg-blue-800 print:hidden"
+        className="mt-6 bg-custom_blue text-white px-6 py-2 rounded-md shadow-md hover:bg-blue-900 print:hidden"
       >
         Print
       </button>
