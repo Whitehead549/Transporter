@@ -92,6 +92,12 @@ const Clientel = ({ selectedCode }) => {
 
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 min-h-screen lg:py-[8rem]">
+       {/* Heading */}
+      <div className="flex justify-center mb-8">
+        <h1 className="text-xl md:text-4xl font-bold text-center mb-6 relative z-10 text-[#091242]">
+          Tracking Details
+        </h1>
+      </div>
       <div className="hidden lg:block">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-12xl mx-auto">
           <div className="space-y-4">

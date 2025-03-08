@@ -97,7 +97,7 @@ const Invoice = ({ selectedCode }) => {
         ref={invoiceRef}
         className="invoice-container w-full max-w-2xl mx-auto px-4 sm:px-6 py-4 bg-white shadow-lg border border-gray-300 overflow-y-auto"
       >
-       <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-4 border-blue-900 pb-4 mb-4">
+       <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-4 border-blue-800 pb-4 mb-4">
           {/* Logo Container */}
           <div className="flex-shrink-0">
             <img src={logo} alt="Company Logo" className="h-auto w-[108px]" />
@@ -106,34 +106,46 @@ const Invoice = ({ selectedCode }) => {
           {/* Invoice Details */}
           <div className="text-right mt-4 sm:mt-0 text-xs sm:text-sm md:text-sm lg:text-sm font-semibold text-gray-700 grid gap-1">
             <p className="grid grid-cols-[auto_1fr] gap-6">
-              <span className="whitespace-nowrap">Tracking Identifier: </span>
+              <span className="whitespace-nowrap font-semibold text-[#000]">Tracking Identifier: </span>
               <span className="font-normal text-gray-600">{selectedCode}</span>
             </p>
             <p className="grid grid-cols-[auto_1fr] gap-6">
-              <span className="whitespace-nowrap">Expected Date:</span>
+              <span className="whitespace-nowrap font-semibold text-[#000]">Expected Date:</span>
               <span className="font-normal text-gray-600">{invoiceData.expectedDelivery}</span>
             </p>
           </div>
         </header>
-        <div className="mb-6 border border-gray-300 rounded-lg p-4 bg-gray-50 shadow-sm">
-          <p>Shipper: {invoiceData.shipper}</p>
-          <p>Receiver: {invoiceData.receiver}</p>
-          <p>Pickup Address: {invoiceData.pickupAddress}</p>
-          <p>Delivery Address: {invoiceData.deliveryAddress}</p>
+        <div className="mb-6 border border-gray-300 rounded-lg p-4 bg-gray-50 shadow-sm text-md">
+          <p><span className="font-bold text-[#000]">Shipper: </span>{invoiceData.shipper}</p>
+          <p><span className="font-bold text-[#000]">Receiver: </span>{invoiceData.receiver}</p>
+          <p><span className="font-bold text-[#000]">Pickup Address: </span>{invoiceData.pickupAddress}</p>
+          <p><span className="font-bold text-[#000]">Delivery Address: </span>{invoiceData.deliveryAddress}</p>
         </div>
         <div className="mb-4 overflow-x-auto">
           <table className="w-full border border-gray-300 rounded-lg overflow-hidden">
             <thead>
-            <tr className="border-b-4 border-blue-900">
-              <th className="py-2 px-3 text-center text-lg sm:text-lg font-bold text-custom_blue" colSpan="2">
-                Package Details
-              </th>
-            </tr>
+            <tr className="relative">
+  <th
+    className="py-2 px-3 text-center text-sm sm:text-sm md:text-lg lg:text-md font-bold text-[#ffffff] relative overflow-hidden"
+    colSpan="2"
+  >
+    <svg
+      className="absolute top-0 left-0 w-full h-full"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+    >
+      <rect width="100" height="100" fill="#1E3A8A" />
+    </svg>
+    <span className="relative z-10">Package Details</span>
+  </th>
+</tr>
+
             </thead>
             <tbody>
               {invoiceData.packageDetails &&
                 Object.entries(invoiceData.packageDetails).map(([key, value]) => (
-                  <tr key={key} className="bg-white border-b border-gray-400">
+                  <tr key={key} className="bg-white border-b border-gray-300">
                     <td className="py-2 px-3 text-xs sm:text-sm text-gray-700 font-semibold capitalize">
                       {key.replace(/([A-Z])/g, " $1")}:
                     </td>
@@ -147,7 +159,7 @@ const Invoice = ({ selectedCode }) => {
           <p>Thank you for choosing Rapidox Logistics!</p>
           <p>
             If you have any questions, contact us at{" "}
-            <a href="mailto:support@yourlogistics.com" className="text-custom_blue hover:underline">
+            <a href="mailto:support@yourlogistics.com" className="text-blue-900 hover:underline">
               contact@rapidoxlogistics.com
             </a>
           </p>
@@ -162,7 +174,7 @@ const Invoice = ({ selectedCode }) => {
       </div>
       <button
         onClick={handlePrint}
-        className="mt-6 bg-custom_blue text-white px-6 py-2 rounded-md shadow-md hover:bg-blue-900 print:hidden"
+        className="mt-6 bg-blue-900 text-white px-6 py-2 rounded-md shadow-md hover:bg-blue-800 print:hidden"
       >
         Print
       </button>

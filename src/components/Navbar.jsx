@@ -19,7 +19,7 @@ const Navbar = () => {
         {/* Logo Section */}
         <div className="flex-shrink-0">
           <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-          <img src={logo} alt="Shipping Site Logo" className="h-8 w-20 sm:h-8 sm:w-20 md:h-8 md:w-22 lg:h-10 lg:w-30" />
+          <img src={logo} alt="Shipping Site Logo" className="h-8 w-22 sm:h-8 sm:w-20 md:h-8 md:w-22 lg:h-10 lg:w-32" />
           </Link>
         </div>
 
