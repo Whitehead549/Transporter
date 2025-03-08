@@ -87,7 +87,7 @@ const Invoice = ({ selectedCode }) => {
   };
 
   if (!invoiceData) {
-    return <p>Loading Invoice Data...</p>;
+    return <p>Loading...</p>;
   }
 
   return (
@@ -115,7 +115,7 @@ const Invoice = ({ selectedCode }) => {
             </p>
           </div>
         </header>
-        <div className="mb-6 border border-gray-300 rounded-lg p-4 bg-gray-50 shadow-sm text-sm">
+        <div className="mb-6 border border-gray-300 rounded-lg p-2 bg-gray-50 shadow-sm text-sm">
           <p><span className="font-bold text-[#000]">Shipper: </span>{invoiceData.shipper}</p>
           <p><span className="font-bold text-[#000]">Receiver: </span>{invoiceData.receiver}</p>
           <p><span className="font-bold text-[#000]">Pickup Address: </span>{invoiceData.pickupAddress}</p>
@@ -125,21 +125,21 @@ const Invoice = ({ selectedCode }) => {
           <table className="w-full border border-gray-300 rounded-lg overflow-hidden">
             <thead>
             <tr className="relative">
-  <th
-    className="py-2 px-3 text-center text-sm sm:text-sm md:text-lg lg:text-md font-bold text-[#ffffff] relative overflow-hidden"
-    colSpan="2"
-  >
-    <svg
-      className="absolute top-0 left-0 w-full h-full"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 100 100"
-      preserveAspectRatio="none"
-    >
-      <rect width="100" height="100" fill="#1E3A8A" />
-    </svg>
-    <span className="relative z-10">Package Details</span>
-  </th>
-</tr>
+              <th
+                className="py-2 px-3 text-center text-sm sm:text-sm md:text-lg lg:text-md font-bold text-[#ffffff] relative overflow-hidden"
+                colSpan="2"
+              >
+                <svg
+                  className="absolute top-0 left-0 w-full h-full"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                >
+                  <rect width="100" height="100" fill="#1E3A8A" />
+                </svg>
+                <span className="relative z-10">Package Details</span>
+              </th>
+            </tr>
 
             </thead>
             <tbody>
