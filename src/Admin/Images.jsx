@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { doc, setDoc, getDoc, onSnapshot } from "firebase/firestore";
 import { db } from "../Config/Config";
 import { Client, Storage, ID } from "appwrite";
+import { Trash2 } from "lucide-react";
 
 const Images = ({ selectedCode }) => {
   const [files, setFiles] = useState([]);
@@ -9,13 +10,11 @@ const Images = ({ selectedCode }) => {
   const [uploadStatus, setUploadStatus] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Initialize Appwrite client and storage
   const client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1")
     .setProject("67703f600001aff47a10");
   const storage = new Storage(client);
 
-  // Fetch uploaded images from Firestore
   useEffect(() => {
     if (!selectedCode) return;
 
@@ -31,18 +30,15 @@ const Images = ({ selectedCode }) => {
     return () => unsubscribe();
   }, [selectedCode]);
 
-  // Handle file selection
   const handleFileChange = (e) => {
     const selectedFiles = Array.from(e.target.files);
     setFiles([...files, ...selectedFiles]);
   };
 
-  // Remove a file from the selection
   const handleRemoveImage = (index) => {
     setFiles(files.filter((_, i) => i !== index));
   };
 
-  // Upload files to Appwrite and Firestore
   const handleUpload = async (e) => {
     e.preventDefault();
     if (files.length === 0) {
@@ -89,15 +85,14 @@ const Images = ({ selectedCode }) => {
     }
   };
 
-  // Delete an image from Appwrite and Firestore
   const handleDeleteImage = async (imageId) => {
+    if (!window.confirm("Are you sure you want to delete this image?")) return;
     try {
       await storage.deleteFile("6770453700013c9a128c", imageId);
 
       const docRef = doc(db, selectedCode, "Images");
       const updatedImages = uploadedImages.filter((img) => img.id !== imageId);
 
-      // Update Firestore and state immediately
       await setDoc(docRef, { images: updatedImages }, { merge: true });
       setUploadedImages(updatedImages);
     } catch (error) {
@@ -106,8 +101,8 @@ const Images = ({ selectedCode }) => {
   };
 
   return (
-    <div className="p-6 bg-white shadow-md rounded-lg max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto">
-      <h3 className="text-lg font-semibold mb-4 text-center sm:text-left">Upload Images</h3>
+    <div className="p-6 bg-white shadow-md rounded-lg max-w-3xl mx-auto">
+      <h3 className="text-lg font-semibold mb-4 text-center">Upload Images</h3>
       <input
         type="file"
         multiple
@@ -116,9 +111,8 @@ const Images = ({ selectedCode }) => {
         className="w-full mb-3 border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
 
-      {/* Preview selected files */}
       {files.length > 0 && (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mt-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-3">
           {files.map((file, index) => (
             <div key={index} className="relative">
               <img
@@ -128,7 +122,7 @@ const Images = ({ selectedCode }) => {
               />
               <button
                 onClick={() => handleRemoveImage(index)}
-                className="absolute top-1 right-1 bg-red-500 text-white text-xs px-2 py-1 rounded hover:bg-red-600"
+                className="absolute top-1 right-1 bg-red-500 text-white text-xs px-2 py-1 rounded-full shadow-md"
               >
                 ✕
               </button>
@@ -137,21 +131,18 @@ const Images = ({ selectedCode }) => {
         </div>
       )}
 
-      {/* Upload button */}
       <button
         onClick={handleUpload}
-        className={`w-full bg-blue-600 text-white py-2 mt-3 rounded-md transition disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-800`}
+        className="w-full bg-blue-600 text-white py-2 mt-3 rounded-md transition disabled:opacity-50 hover:bg-blue-800"
         disabled={loading}
       >
         {loading ? "Uploading..." : "Upload"}
       </button>
 
-      {/* Upload status message */}
       {uploadStatus && <p className="mt-2 text-sm text-gray-700 text-center">{uploadStatus}</p>}
 
-      {/* Display uploaded images */}
-      <h3 className="text-lg font-semibold mt-6 text-center sm:text-left">Uploaded Images</h3>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mt-3">
+      <h3 className="text-lg font-semibold mt-6 text-center">Uploaded Images</h3>
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-3">
         {uploadedImages.map((image) => (
           <div key={image.id} className="relative border p-2 rounded-lg shadow-md">
             <img
@@ -161,10 +152,9 @@ const Images = ({ selectedCode }) => {
             />
             <button
               onClick={() => handleDeleteImage(image.id)}
-              onTouchEnd={() => handleDeleteImage(image.id)}
-              className="absolute top-1 right-1 bg-red-500 text-white text-xs px-2 py-1 rounded hover:bg-red-600"
+              className="absolute top-2 right-2 bg-red-600 text-white p-2 rounded-full shadow-lg flex items-center justify-center hover:bg-red-800 transition"
             >
-              Delete
+              <Trash2 size={16} />
             </button>
           </div>
         ))}
