@@ -106,7 +106,7 @@ const Invoice = ({ selectedCode }) => {
           {/* Invoice Details */}
           <div className="text-right mt-4 sm:mt-0 text-xs sm:text-sm md:text-sm lg:text-sm font-semibold text-gray-700 grid gap-1">
             <p className="grid grid-cols-[auto_1fr] gap-6">
-              <span className="whitespace-nowrap font-semibold text-[#000]">Tracking Identifier: </span>
+              <span className="whitespace-nowrap font-semibold text-[#000]">Tracking ID: </span>
               <span className="font-normal text-gray-600">{selectedCode}</span>
             </p>
             <p className="grid grid-cols-[auto_1fr] gap-6">
@@ -115,11 +115,11 @@ const Invoice = ({ selectedCode }) => {
             </p>
           </div>
         </header>
-        <div className="mb-6 border border-gray-300 rounded-lg p-2 bg-gray-50 shadow-sm text-sm">
-          <p><span className="font-bold text-[#000]">Shipper: </span>{invoiceData.shipper}</p>
-          <p><span className="font-bold text-[#000]">Receiver: </span>{invoiceData.receiver}</p>
-          <p><span className="font-bold text-[#000]">Pickup Address: </span>{invoiceData.pickupAddress}</p>
-          <p><span className="font-bold text-[#000]">Delivery Address: </span>{invoiceData.deliveryAddress}</p>
+        <div className="mb-6 border border-gray-300 rounded-lg p-6 bg-gray-50 shadow-sm text-sm">
+          <p><span className="font-bold text-[#000] text-sm">Shipper: </span>{invoiceData.shipper}</p>
+          <p><span className="font-bold text-[#000] text-sm">Receiver: </span>{invoiceData.receiver}</p>
+          <p><span className="font-bold text-[#000] text-sm">Pickup Address: </span>{invoiceData.pickupAddress}</p>
+          <p><span className="font-bold text-[#000] text-sm">Delivery Address: </span>{invoiceData.deliveryAddress}</p>
         </div>
         <div className="mb-4 overflow-x-auto">
           <table className="w-full border border-gray-300 rounded-lg overflow-hidden">
