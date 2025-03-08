@@ -115,7 +115,7 @@ const Invoice = ({ selectedCode }) => {
             </p>
           </div>
         </header>
-        <div className="mb-6 border border-gray-300 rounded-lg p-4 bg-gray-50 shadow-sm text-md">
+        <div className="mb-6 border border-gray-300 rounded-lg p-4 bg-gray-50 shadow-sm text-sm">
           <p><span className="font-bold text-[#000]">Shipper: </span>{invoiceData.shipper}</p>
           <p><span className="font-bold text-[#000]">Receiver: </span>{invoiceData.receiver}</p>
           <p><span className="font-bold text-[#000]">Pickup Address: </span>{invoiceData.pickupAddress}</p>
