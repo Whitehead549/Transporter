@@ -121,7 +121,7 @@ const Images = ({ selectedCode }) => {
               />
               <button
                 onClick={() => handleRemoveImage(index)}
-                className="absolute top-1 right-1 bg-red-500 text-white text-xs px-2 py-1 rounded delete-button"
+                className="absolute top-1 right-1 bg-red-500 text-white text-xs px-1 rounded z-10 pointer-events-auto"
               >
                 ✕
               </button>
@@ -150,15 +150,9 @@ const Images = ({ selectedCode }) => {
               className="w-full h-32 object-cover rounded-lg"
             />
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                handleDeleteImage(image.id);
-              }}
-              onTouchEnd={(e) => {
-                e.stopPropagation();
-                handleDeleteImage(image.id);
-              }}
-              className="absolute top-1 right-1 bg-red-500 text-white text-xs px-2 py-1 rounded delete-button"
+              onClick={() => handleDeleteImage(image.id)}
+              onTouchStart={() => handleDeleteImage(image.id)}
+              className="absolute top-1 right-1 bg-red-500 text-white text-xs px-1 rounded z-50 pointer-events-auto"
             >
               Delete
             </button>
