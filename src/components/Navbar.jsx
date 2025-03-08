@@ -95,7 +95,7 @@ const Navbar = () => {
             <CgMenuGridO
               onClick={toggleMenu}
               className="cursor-pointer text-custom_blue transition-transform transform hover:scale-110"
-              size={30}
+              size={28}
             />
           )}
         </div>

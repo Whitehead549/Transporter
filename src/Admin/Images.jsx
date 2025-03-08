@@ -101,65 +101,71 @@ const Images = ({ selectedCode }) => {
 
   return (
     <div className="p-6 bg-white shadow-md rounded-lg max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto">
-    <h3 className="text-lg font-semibold mb-4 text-center sm:text-left">Upload Images</h3>
-    <input
-      type="file"
-      multiple
-      accept="image/*"
-      onChange={handleFileChange}
-      className="w-full mb-3 border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  
-    {files.length > 0 && (
+      <h3 className="text-lg font-semibold mb-4 text-center sm:text-left">Upload Images</h3>
+      <input
+        type="file"
+        multiple
+        accept="image/*"
+        onChange={handleFileChange}
+        className="w-full mb-3 border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+
+      {files.length > 0 && (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mt-3">
+          {files.map((file, index) => (
+            <div key={index} className="relative">
+              <img
+                src={URL.createObjectURL(file)}
+                alt="preview"
+                className="w-full h-24 object-cover rounded-lg"
+              />
+              <button
+                onClick={() => handleRemoveImage(index)}
+                className="absolute top-1 right-1 bg-red-500 text-white text-xs px-2 py-1 rounded delete-button"
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <button
+        onClick={handleUpload}
+        className={`w-full bg-blue-600 text-white py-2 mt-3 rounded-md transition disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-800`}
+        disabled={loading}
+      >
+        {loading ? "Uploading..." : "Upload"}
+      </button>
+
+      {uploadStatus && <p className="mt-2 text-sm text-gray-700 text-center">{uploadStatus}</p>}
+
+      <h3 className="text-lg font-semibold mt-6 text-center sm:text-left">Uploaded Images</h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mt-3">
-        {files.map((file, index) => (
-          <div key={index} className="relative">
+        {uploadedImages.map((image) => (
+          <div key={image.id} className="relative border p-2 rounded-lg shadow-md">
             <img
-              src={URL.createObjectURL(file)}
-              alt="preview"
-              className="w-full h-24 object-cover rounded-lg"
+              src={image.url}
+              alt="uploaded"
+              className="w-full h-32 object-cover rounded-lg"
             />
             <button
-              onClick={() => handleRemoveImage(index)}
-              className="absolute top-1 right-1 bg-red-500 text-white text-xs px-1 rounded"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDeleteImage(image.id);
+              }}
+              onTouchEnd={(e) => {
+                e.stopPropagation();
+                handleDeleteImage(image.id);
+              }}
+              className="absolute top-1 right-1 bg-red-500 text-white text-xs px-2 py-1 rounded delete-button"
             >
-              ✕
+              Delete
             </button>
           </div>
         ))}
       </div>
-    )}
-  
-    <button
-      onClick={handleUpload}
-      className={`w-full bg-blue-600 text-white py-2 mt-3 rounded-md transition disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-800`}
-      disabled={loading}
-    >
-      {loading ? "Uploading..." : "Upload"}
-    </button>
-  
-    {uploadStatus && <p className="mt-2 text-sm text-gray-700 text-center">{uploadStatus}</p>}
-  
-    <h3 className="text-lg font-semibold mt-6 text-center sm:text-left">Uploaded Images</h3>
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mt-3">
-      {uploadedImages.map((image) => (
-        <div key={image.id} className="relative border p-2 rounded-lg shadow-md">
-          <img
-            src={image.url}
-            alt="uploaded"
-            className="w-full h-32 object-cover rounded-lg"
-          />
-          <button
-            onClick={() => handleDeleteImage(image.id)}
-            className="absolute top-1 right-1 bg-red-500 text-white text-xs px-1 rounded"
-          >
-            Delete
-          </button>
-        </div>
-      ))}
     </div>
-  </div>
-  
   );
 };
 
