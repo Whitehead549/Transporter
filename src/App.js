@@ -15,14 +15,21 @@ import Contact from './Admin/Contact';
 import Quote from './pages/Quote';
 import WhatsAppButton from './Track/WhatsAppButton';
 import Whatapp from './Admin/Whatapp';
-
+import GoogleTranslate from "./pages/GoogleTranslate";
 
 function App() {
   return (
     <div className="overflow-x-hidden relative">
       <Router>
         <div className="min-h-screen flex flex-col">
+          {/* Google Translate at the top */}
+          <div className=' bg-white'><GoogleTranslate /></div>
+          
+          
+          {/* Navbar below Google Translate */}
           <Navbar />
+          
+          {/* Main content */}
           <main className="flex-grow">
             <Routes>
               {/* Main Routes */}
@@ -43,6 +50,8 @@ function App() {
               <Route path="/admin" element={<Admin />} />
             </Routes>
           </main>
+          
+          {/* Footer */}
           <Footer />
         </div>
       </Router>

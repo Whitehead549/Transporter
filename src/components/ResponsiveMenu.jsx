@@ -29,33 +29,55 @@ const navbarLinks = [
   },
 ];
 
-const ResponsiveMenu = ({ showMenu, setShowMenu}) => {
+const ResponsiveMenu = ({ showMenu, setShowMenu }) => {
+  // Function to handle Home link click
+  const handleHomeClick = () => {
+    window.scrollTo(0, 0); // Scroll to the top of the page
+    window.location.href = "/"; // Force a full page reload
+    setShowMenu(false); // Close the responsive menu
+  };
+
+  // Function to handle other link clicks
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0); // Scroll to the top of the page
+    setShowMenu(false); // Close the responsive menu
+  };
 
   return (
     <div
       className={`${
         showMenu ? "left-0" : "-left-[100%]"
-      } fixed bottom-0 top-0 z-20 flex h-screen w-[75%] flex-col justify-between bg-custom_blue dark:text-white px-8 pb-0 pt-16 text-white transition-all duration-200 md:hidden rounded-r-xl shadow-md`}
+      } fixed bottom-0 top-0 z-20 flex h-screen w-[75%] flex-col justify-between bg-custom_blue dark:text-white px-8 pb-0 pt-16 text-white transition-all duration-200 md:hidden rounded-r-xl shadow-md `}
     >
       <div className="Navbar_card">
         {/* Top section */}
-       
+
         {/* Navlinks section */}
-        <div className='text-white mt-12'>
-          <ul className='space-y-4 text-xl'>
-            {
-              navbarLinks.map(({ name, link, id }) => (
-                <li key={id}>
+        <div className="text-white mt-12">
+          <ul className="space-y-4 text-xl">
+            {navbarLinks.map(({ name, link, id }) => (
+              <li key={id}>
+                {name === "Home" ? (
+                  // Home link with custom onClick handler
                   <Link
                     to={link}
-                    onClick={() => setShowMenu(false)}
-                    className='mb-5 inline-block text-white'
+                    onClick={handleHomeClick} // Apply custom handler for Home
+                    className="mb-5 inline-block text-white"
                   >
                     {name}
                   </Link>
-                </li>
-              ))
-            }
+                ) : (
+                  // Other links with default behavior
+                  <Link
+                    to={link}
+                    onClick={handleLinkClick} // Apply scroll and close menu for other links
+                    className="mb-5 inline-block text-white"
+                  >
+                    {name}
+                  </Link>
+                )}
+              </li>
+            ))}
           </ul>
         </div>
       </div>

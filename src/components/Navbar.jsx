@@ -12,19 +12,25 @@ const Navbar = () => {
     setShowMenu(!showMenu);
   };
 
+  // Function to handle Home link click
+  const handleHomeClick = () => {
+    window.scrollTo(0, 0); // Scroll to the top of the page
+    window.location.href = "/"; // Force a full page reload
+  };
+
   return (
-    <div className="fixed top-0 left-0 w-full text-custom_blue bg-white shadow-md z-[9999]">
+    <div className="fixed top-0 left-0 w-full text-custom_blue bg-white z-[999] pt-[1rem]">
       {/* Main Navbar */}
-      <div className="container mx-auto px-4 lg:px-8 py-4 flex justify-between items-center">
+      <div className="container mx-auto px-4 lg:px-8 py-4 flex justify-between items-center pt-[1.6rem]">
         {/* Logo Section */}
-        <div className="flex-shrink-0">
-          <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-          <img src={logo} alt="Shipping Site Logo" className="h-8 w-22 sm:h-8 sm:w-20 md:h-8 md:w-22 lg:h-10 lg:w-32" />
+        <div className="flex-shrink-0 pt-[1.2rem]">
+          <Link to="/" onClick={handleHomeClick}>
+            <img src={logo} alt="Shipping Site Logo" className="h-8 w-22 sm:h-8 sm:w-20 md:h-8 md:w-22 lg:h-10 lg:w-32 " />
           </Link>
         </div>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden md:flex gap-6 items-center">
+        <div className="hidden md:flex gap-6 items-center pt-[1.2rem]">
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -32,7 +38,7 @@ const Navbar = () => {
                 ? "text-custom_gold font-semibold"
                 : "hover:text-custom_gold transition-colors duration-300"
             }
-            onClick={() => window.scrollTo(0, 0)}
+            onClick={handleHomeClick} // Use the same handler for the Home link
           >
             Home
           </NavLink>
@@ -69,7 +75,6 @@ const Navbar = () => {
           >
             Track Package
           </NavLink>
-        
           <NavLink
             to="/contact"
             className={({ isActive }) =>
@@ -84,11 +89,11 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Hamburger Menu */}
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center pt-4">
           {showMenu ? (
             <IoClose
               onClick={toggleMenu}
-              className="cursor-pointer text-custom_blue transition-transform transform hover:scale-110"
+              className="cursor-pointer text-custom_blue transition-transform transform hover:scale-110 "
               size={30}
             />
           ) : (
