@@ -23,7 +23,7 @@ const Navbar = () => {
       {/* Main Navbar */}
       <div className="container mx-auto px-4 lg:px-8 py-4 flex justify-between items-center pt-[1.6rem]">
         {/* Logo Section */}
-        <div className="flex-shrink-0 pt-[1.2rem]">
+        <div className="flex-shrink-0 pt-[1rem]">
           <Link to="/" onClick={handleHomeClick}>
             <img src={logo} alt="Shipping Site Logo" className="h-8 w-22 sm:h-8 sm:w-20 md:h-8 md:w-22 lg:h-10 lg:w-32 " />
           </Link>

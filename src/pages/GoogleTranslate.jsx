@@ -54,7 +54,7 @@ const GoogleTranslate = () => {
         <div>
            <style>{`
     .goog-te-combo {
-        padding: 4px 2px 2px 4px;
+        padding: 8px 2px 8px 8px;
         border-radius: 4px;
         border: 2px solid #091242;
         background-color: #ffffff;
@@ -64,8 +64,8 @@ const GoogleTranslate = () => {
         transition: all 0.3s ease;
         z-index: 9999;
         position: fixed;
-        top: 1px;
-        left: 6rem;
+        top: 8px;
+        left: 40rem;
     }
     .goog-te-menu-value span {
         color: #091242 !important;
@@ -86,21 +86,52 @@ const GoogleTranslate = () => {
 
     @media (max-width: 768px) {
     .goog-te-combo {
+       
         left: 2rem;
         font-size: 12px;
         padding: 3px 2px;
         border-width: 1.5px;
+        padding: 8px 4px 4px 8px;
     }
 
     @media (max-width: 480px) {
+    .goog-te-combo {
+        left: 7.5rem;
+        top: 12px;
+        font-size: 12px;
+        padding: 5px 0px 5px 16px;
+    }
+    }
+
+     @media (max-width: 428px) {
+    .goog-te-combo {
+        left: 8rem;
+        top: 12px;
+        font-size: 12px;
+        padding: 5px 0px 5px 16px;
+    }
+    }
+
+    @media (max-width: 375px) {
         .goog-te-combo {
-            left: 0.5rem;
+            left: 6.4rem;
             top: 10px;
-            font-size: 10px;
-            padding: 2px 1px;
+            font-size: 12px;
+            padding: 5px 0px 5px 16px;
         }
 
     }
+    
+    @media (max-width: 320px) {
+    .goog-te-combo {
+        left: 4.8rem;
+        top: 10px;
+        font-size: 12px;
+        padding: 5px 0px 5px 16px;
+    }
+
+}
+        
 }
 `}</style>
             <div id="google_translate_element"></div>
