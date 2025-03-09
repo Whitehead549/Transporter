@@ -25,8 +25,8 @@ const Navbar = () => {
 
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex gap-6 items-center">
-          <a
-            href="http://localhost:3000/"
+          <NavLink
+            to="/"
             className={({ isActive }) =>
               isActive
                 ? "text-custom_gold font-semibold"
@@ -35,7 +35,7 @@ const Navbar = () => {
             onClick={() => window.scrollTo(0, 0)}
           >
             Home
-          </a>
+          </NavLink>
           <NavLink
             to="/about"
             className={({ isActive }) =>
