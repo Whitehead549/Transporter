@@ -9,6 +9,7 @@ import PerService from "../components/Essentials/PerService";
 import Partners from "../components/Partners";
 import Spinner from "../components/Spinner";
 import heroImage from "../assets/ship.jpg";
+import GoogleTranslate from "./GoogleTranslate";
 
 const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -53,6 +54,7 @@ const Home = () => {
               <p className="text-sm sm:text-xs md:text-xl lg:text-lg text-white max-w-xs sm:max-w-xl md:max-w-2xl mb-4 sm:mb-3 md:mb-6 px-2 sm:px-6 leading-relaxed">
                 Your partner for efficient and reliable logistics solutions worldwide
               </p>
+              <GoogleTranslate/>
               <div className="flex flex-wrap space-x-0 sm:space-x-4 justify-center gap-2 sm:gap-0 pb-4">
                 <Link
                   to="/quote"
