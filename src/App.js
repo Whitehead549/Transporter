@@ -1,4 +1,4 @@
-import { BrowserRouter, HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -16,31 +16,17 @@ import Quote from './pages/Quote';
 import WhatsAppButton from './Track/WhatsAppButton';
 import Whatapp from './Admin/Whatapp';
 
-// Wrapper to choose between BrowserRouter and HashRouter
-const RouterWrapper = ({ children }) => {
-  // Get current path
-  const path = window.location.pathname;
-  
-  // Use BrowserRouter only for the Home page
-  if (path === '/') {
-    return <BrowserRouter>{children}</BrowserRouter>;
-  } else {
-    return <HashRouter>{children}</HashRouter>;
-  }
-};
 
 function App() {
   return (
     <div className="overflow-x-hidden relative">
-      <RouterWrapper>
+      <Router>
         <div className="min-h-screen flex flex-col">
           <Navbar />
           <main className="flex-grow">
             <Routes>
-              {/* Home uses BrowserRouter */}
+              {/* Main Routes */}
               <Route path="/" element={<Home />} />
-
-              {/* Other pages use HashRouter */}
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/payment" element={<MakePayment />} />
@@ -52,12 +38,16 @@ function App() {
               <Route path="/whatapp" element={<Whatapp />} />
               <Route path="/contacts" element={<Contact />} />
               <Route path="/quote" element={<Quote />} />
+
+              {/* Admin Route */}
               <Route path="/admin" element={<Admin />} />
             </Routes>
           </main>
           <Footer />
         </div>
-      </RouterWrapper>
+      </Router>
+
+      {/* WhatsApp Chat Button */}
       <WhatsAppButton />
     </div>
   );
