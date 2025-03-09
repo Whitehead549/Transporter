@@ -3,8 +3,9 @@ import { db } from "../../Config/Config"; // Ensure Firebase is initialized
 import { doc, getDoc } from "firebase/firestore";
 import stamp from "../../assets/RAPIDOX 001.png";
 import logo from "../../assets/navLogo.png";
-import printJS from "print-js";
 import JsBarcode from "jsbarcode";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 const Invoice = ({ selectedCode }) => {
   const invoiceRef = useRef();
@@ -74,12 +75,16 @@ const Invoice = ({ selectedCode }) => {
     }
   }, [selectedCode, invoiceData]);
 
-  const handlePrint = () => {
+  const handleDownloadPDF = () => {
     if (invoiceRef.current) {
-      printJS({
-        printable: "invoiceContainer",
-        type: "html",
-        targetStyles: ["*"],
+      html2canvas(invoiceRef.current).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const imgWidth = 210; // A4 width in mm
+        const imgHeight = canvas.height * imgWidth / canvas.width;
+
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+        pdf.save('invoice.pdf');
       });
     } else {
       console.error("Invoice element not found!");
@@ -97,13 +102,11 @@ const Invoice = ({ selectedCode }) => {
         ref={invoiceRef}
         className="invoice-container w-full max-w-2xl mx-auto px-4 sm:px-6 py-4 bg-white shadow-lg border border-gray-300 overflow-y-auto"
       >
-       <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-2 border-blue-800 pb-4 mb-2">
-          {/* Logo Container */}
+        {/* Your existing invoice content */}
+        <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-2 border-blue-800 pb-4 mb-2">
           <div className="flex-shrink-0">
             <img src={logo} alt="Company Logo" className="h-auto w-[108px]" />
           </div>
-
-          {/* Invoice Details */}
           <div className="text-right mt-4 sm:mt-0 text-gray-700 grid gap-1">
             <p className="grid grid-cols-[auto_1fr] gap-9">
               <span className="whitespace-nowrap font-semibold text-[#000] text-xs">Tracking Identifier: </span>
@@ -124,23 +127,22 @@ const Invoice = ({ selectedCode }) => {
         <div className="mb-4 overflow-x-auto">
           <table className="w-full border border-gray-300 rounded-lg overflow-hidden">
             <thead>
-            <tr className="relative">
-              <th
-                className="py-2 px-3 text-center text-sm sm:text-sm md:text-lg lg:text-md font-bold text-[#ffffff] relative overflow-hidden"
-                colSpan="2"
-              >
-                <svg
-                  className="absolute top-0 left-0 w-full h-full"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 100 100"
-                  preserveAspectRatio="none"
+              <tr className="relative">
+                <th
+                  className="py-2 px-3 text-center text-sm sm:text-sm md:text-lg lg:text-md font-bold text-[#ffffff] relative overflow-hidden"
+                  colSpan="2"
                 >
-                  <rect width="100" height="100" fill="#1E3A8A" />
-                </svg>
-                <span className="relative z-10">Package Details</span>
-              </th>
-            </tr>
-
+                  <svg
+                    className="absolute top-0 left-0 w-full h-full"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 100 100"
+                    preserveAspectRatio="none"
+                  >
+                    <rect width="100" height="100" fill="#1E3A8A" />
+                  </svg>
+                  <span className="relative z-10">Package Details</span>
+                </th>
+              </tr>
             </thead>
             <tbody>
               {invoiceData.packageDetails &&
@@ -163,7 +165,6 @@ const Invoice = ({ selectedCode }) => {
               contact@rapidoxlogistics.com
             </a>
           </p>
-
           <div className="mt-2 flex justify-center sm:justify-start">
             <img src={stamp} alt="Authorized Stamp" className="w-20 h-20 sm:w-24 sm:h-24 object-cover" />
           </div>
@@ -173,10 +174,10 @@ const Invoice = ({ selectedCode }) => {
         </footer>
       </div>
       <button
-        onClick={handlePrint}
+        onClick={handleDownloadPDF}
         className="mt-6 bg-blue-900 text-white px-6 py-2 rounded-md shadow-md hover:bg-blue-800 print:hidden"
       >
-        Print
+        Download PDF
       </button>
     </div>
   );
