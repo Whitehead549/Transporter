@@ -104,7 +104,7 @@ const Invoice = ({ selectedCode }) => {
           heightLeft -= pageHeight;
         }
 
-        pdf.save("invoice.pdf");
+        pdf.save("Details.pdf");
       });
     } else {
       console.error("Invoice element not found!");
