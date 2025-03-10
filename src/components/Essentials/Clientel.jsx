@@ -192,7 +192,7 @@ const Clientel = ({ selectedCode }) => {
           onClick={() => setShowInvoice(true)}
           className="px-6 py-2 bg-custom_blue text-white font-semibold rounded shadow"
         >
-          Print Details
+           Download Details
         </button>
       </div>
 

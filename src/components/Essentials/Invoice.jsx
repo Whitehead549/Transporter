@@ -204,7 +204,7 @@ const Invoice = ({ selectedCode }) => {
         onClick={handleDownloadPDF}
         className="mt-6 bg-blue-900 text-white px-6 py-2 rounded-md shadow-md hover:bg-blue-800"
       >
-        Download PDF
+        Download
       </button>
     </div>
   );
