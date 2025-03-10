@@ -22,7 +22,7 @@ const Invoice = ({ selectedCode }) => {
           const deliveries = docSnap.data().deliveries;
           if (deliveries && deliveries.length > 0) {
             const firstDelivery = deliveries[0];
-            setInvoiceData((prevState) => ({
+            setInvoiceData(prevState => ({
               ...prevState,
               invoiceNumber: firstDelivery.TrackingIdentifier || "Unknown ID",
               expectedDelivery: firstDelivery.ExpectedDate || "Unknown Date",
@@ -41,7 +41,7 @@ const Invoice = ({ selectedCode }) => {
           const packages = packageDocSnap.data().packages;
           if (packages && packages.length > 0) {
             const packageDetails = packages[0];
-            setInvoiceData((prevState) => ({
+            setInvoiceData(prevState => ({
               ...prevState,
               packageDetails: {
                 description: packageDetails.PackageDescription || "Unknown Description",
@@ -80,39 +80,32 @@ const Invoice = ({ selectedCode }) => {
       window.scrollTo(0, 0); // Ensure full view is loaded before capturing
 
       html2canvas(invoiceRef.current, {
-        scale: window.devicePixelRatio * 2, // Increase resolution for better quality
+        scale: 2, // Increase resolution for better quality
         useCORS: true, // Ensure images are captured
         scrollY: -window.scrollY, // Capture the full height
-        height: invoiceRef.current.scrollHeight, // Capture the full height of the content
-        windowHeight: invoiceRef.current.scrollHeight, // Set the window height to the content height
-        logging: true, // Enable logging for debugging
-      })
-        .then((canvas) => {
-          const imgData = canvas.toDataURL("image/png");
-          const pdf = new jsPDF("p", "mm", "a4");
+      }).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+        const pdf = new jsPDF("p", "mm", "a4");
 
-          const imgWidth = 210; // A4 width in mm
-          const pageHeight = 297; // A4 height in mm
-          const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        const imgWidth = 210; // A4 width in mm
+        const pageHeight = 297; // A4 height in mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-          let heightLeft = imgHeight;
-          let position = 0;
+        let heightLeft = imgHeight;
+        let position = 0;
 
+        pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        while (heightLeft > 0) {
+          position -= pageHeight;
+          pdf.addPage();
           pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
           heightLeft -= pageHeight;
+        }
 
-          while (heightLeft > 0) {
-            position -= pageHeight;
-            pdf.addPage();
-            pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-          }
-
-          pdf.save("Details.pdf");
-        })
-        .catch((error) => {
-          console.error("Error capturing the invoice:", error);
-        });
+        pdf.save("Details.pdf");
+      });
     } else {
       console.error("Invoice element not found!");
     }
@@ -148,33 +141,21 @@ const Invoice = ({ selectedCode }) => {
 
         {/* Shipper & Receiver Details */}
         <div className="mb-6 border border-gray-300 rounded-lg p-4 bg-gray-50 shadow-sm">
-          <p>
-            <span className="font-bold text-[#000]">Shipper: </span>
-            {invoiceData.shipper}
-          </p>
-          <p>
-            <span className="font-bold text-[#000]">Receiver: </span>
-            {invoiceData.receiver}
-          </p>
-          <p>
-            <span className="font-bold text-[#000]">Pickup Address: </span>
-            {invoiceData.pickupAddress}
-          </p>
-          <p>
-            <span className="font-bold text-[#000]">Delivery Address: </span>
-            {invoiceData.deliveryAddress}
-          </p>
+          <p><span className="font-bold text-[#000]">Shipper: </span>{invoiceData.shipper}</p>
+          <p><span className="font-bold text-[#000]">Receiver: </span>{invoiceData.receiver}</p>
+          <p><span className="font-bold text-[#000]">Pickup Address: </span>{invoiceData.pickupAddress}</p>
+          <p><span className="font-bold text-[#000]">Delivery Address: </span>{invoiceData.deliveryAddress}</p>
         </div>
 
         {/* Package Details Table */}
         <div className="mb-4 overflow-x-auto">
           <table className="w-full border border-gray-300 rounded-lg overflow-hidden">
             <thead>
-              <tr className="border-b-4 border-blue-900">
-                <th className="py-2 px-3 text-center text-lg sm:text-lg font-bold text-custom_blue" colSpan="2">
-                  Package Details
-                </th>
-              </tr>
+            <tr className="border-b-4 border-blue-900">
+              <th className="py-2 px-3 text-center text-lg sm:text-lg font-bold text-custom_blue" colSpan="2">
+                Package Details
+              </th>
+            </tr>
             </thead>
             <tbody>
               {invoiceData.packageDetails &&
