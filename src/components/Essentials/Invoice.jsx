@@ -151,20 +151,9 @@ const Invoice = ({ selectedCode }) => {
         <div className="mb-4 overflow-x-auto">
           <table className="w-full border border-gray-300 rounded-lg overflow-hidden">
             <thead>
-            <tr className="relative">
-              <th
-                className="py-2 px-3 text-center text-sm sm:text-sm md:text-lg lg:text-md font-bold text-[#ffffff] relative overflow-hidden"
-                colSpan="2"
-              >
-                <svg
-                  className="absolute top-0 left-0 w-full h-full"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 100 100"
-                  preserveAspectRatio="none"
-                >
-                  <rect width="100" height="100" fill="#1E3A8A" />
-                </svg>
-                <span className="relative z-10">Package Details</span>
+            <tr className="border-b-4 border-blue-900">
+              <th className="py-2 px-3 text-center text-lg sm:text-lg font-bold text-custom_blue" colSpan="2">
+                Package Details
               </th>
             </tr>
             </thead>
