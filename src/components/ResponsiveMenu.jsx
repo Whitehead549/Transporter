@@ -54,7 +54,7 @@ const ResponsiveMenu = ({ showMenu, setShowMenu }) => {
 
         {/* Navlinks section */}
         <div className="text-white mt-4">
-          <ul className="space-y-1 text-sm md:text-md md:space-y-2">
+          <ul className="space-y-4 text-sm md:text-md md:space-y-2">
             {navbarLinks.map(({ name, link, id }) => (
               <li key={id}>
                 {name === "Home" ? (
